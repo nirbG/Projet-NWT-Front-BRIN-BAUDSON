@@ -1,0 +1,16 @@
+<mat-toolbar >
+    <mat-toolbar-row>
+        <div class="comicsTitle " style=" color: #fbf4ff">BDtheque</div>
+        <span class="example-spacer"></span>
+        <button mat-stroked-button [matMenuTriggerFor]="list">Nos List</button>
+        <mat-menu #list="matMenu">
+            <button mat-menu-item [routerLink]="['/comics']">Comics</button>
+            <button mat-menu-item [routerLink]="['/heros']">Héros</button>
+        </mat-menu>
+        <button mat-stroked-button [matMenuTriggerFor]="BDt">Ma BDthéque</button>
+        <mat-menu #BDt="matMenu">
+            <button mat-menu-item [routerLink]="['/BDthéque/heros']">Héros</button>
+            <button mat-menu-item [routerLink]="['/BDthéque/comics']">Comics</button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>

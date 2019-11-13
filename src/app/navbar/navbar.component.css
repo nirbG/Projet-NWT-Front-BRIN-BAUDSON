@@ -1,0 +1,136 @@
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+body {
+    background-color: #ED6565;
+}
+
+.wrap {
+    padding: 5em 0.5em;
+    margin: 0 auto;
+}
+
+.comicsTitle {
+    padding-top: 1%;
+    text-overflow: ellipsis;
+    font-weight: normal;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 8em;
+    white-space: nowrap;
+    font-size: 4vw;
+    z-index: 1000;
+    font-family: 'Bangers', cursive;
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+    -moz-transform: skew(0, -6.7deg);
+    -ms-transform: skew(0, -6.7deg);
+    -webkit-transform: skew(0, -6.7deg);
+    transform: skew(0, -6.7deg);
+    -moz-transition-property: font-size;
+    -o-transition-property: font-size;
+    -webkit-transition-property: font-size;
+    transition-property: font-size;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+@media screen and (max-width: 50em) {
+    .comicsTitle {
+        font-size: 20vw;
+    }
+}
+
+.btn-DetailComics button{
+    color: #fbf4ff;
+    background-color: #740f00;
+    margin-bottom: 2%;
+}
+.textarea{
+    color: #000000;
+    background-color: #fbf4ff;
+    border: 2px solid;
+    border-radius: 25px;
+    width:100%;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #000000;
+    background-color: #fbf4ff;
+}
+::ng-deep mat-form-field .mat-hint,
+input, ::placeholder, .mat-form-field-label, .mat-form-field-underline  {
+    color: #000000;
+    background-color: #fbf4ff;
+}
+.overflow-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+mat-grid-tile:hover img{
+    position: absolute;
+    height: 250px;
+    width: 120%;
+}
+/*******************************************************************/
+mat-toolbar{
+    background-color: #141414;
+    color: #fbf4ff;
+}
+mat-toolbar button{
+    background-color: rgba(36, 36, 36, 0.93);
+    color: #fbf4ff;
+}
+.button-row button,
+.button-row a {
+    margin-right: 8px;
+}
+.example-icon {
+    padding: 0 14px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+section{
+    padding: 5% 10%;
+}
+/**************************************************/
+
+mat-toolbar.extend-toolbar {
+    background-color: #0168AB;
+    background-image: url('/assets/images/bg_right.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    top: 0px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    width: 100%;
+    z-index: 1;
+    color: white;
+    margin-bottom: 10px;
+}
+
+mat-toolbar .flex {
+    flex: 1 1 auto;
+}
+
+mat-toolbar a {
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    margin: 0px 10px 0px 10px;
+    border-bottom: 2px solid transparent;
+    font-size: 1.1em;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+}
+
+mat-toolbar a:not(.active):hover {
+    border-bottom: 2px solid white;
+}
+
+mat-toolbar a img {
+    height: 100%;
+    margin-left: -60px;
+}
+
