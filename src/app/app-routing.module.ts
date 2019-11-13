@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {ComicsComponent} from "./comics/comics.component";
 import {ComicsDetailComponent} from "./comics-detail/comics-detail.component";
+import {HerosComponent} from "./heros/heros.component";
+import {HeroDetailComponent} from "./hero-detail/hero-detail.component";
 
 
 const routes: Routes = [
@@ -10,6 +12,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'comics', component: ComicsComponent },
   { path: 'comics/:isbn', component: ComicsDetailComponent },
+  { path: 'heros', component: HerosComponent },
+  { path: 'hero/:id', component: HeroDetailComponent },
 ];
 
 @NgModule({

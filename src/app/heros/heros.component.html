@@ -1,0 +1,76 @@
+<main>
+    <div class="title col-lg-12 " style="overflow: hidden">
+        <img src="../../assets/line.png" class="col-lg-12" style="margin-left: 30%; position: absolute; z-index: -1" height="90px">
+        <h1 style="padding-left: 5%">Nos Héros</h1>
+    </div>
+    <div style="text-align: right; margin: 0% 12%">
+        <p>
+      <span [className]="filtre === 'none' ? 'filter_active' : 'filter_inactive'"
+            (click)="switchFilter('none')">Tous</span> |
+            <span [className]="filtre === 'Alphabet' ? 'filter_active' : 'filter_inactive'"
+                  (click)="switchFilter('Alphabet')">Alphabet</span> |
+            <span [className]="filtre === 'Search' ? 'filter_active' : 'filter_inactive'"
+                  (click)="switchFilter('Search')">Search</span>
+        </p>
+        <div *ngIf="filtre === 'Alphabet'">
+            <div id="divider">
+                <span></span><span>
+          <div id="alphabet">
+            <span></span>
+          <span (click)="switchLettre('A')"> A </span>
+          <span (click)="switchLettre('B')"> B </span>
+          <span (click)="switchLettre('C')"> C </span>
+          <span (click)="switchLettre('D')"> D </span>
+          <span (click)="switchLettre('E')"> E </span>
+          <span (click)="switchLettre('F')"> F </span>
+          <span (click)="switchLettre('G')"> G </span>
+          <span (click)="switchLettre('H')"> H </span>
+          <span (click)="switchLettre('I')"> I </span>
+          <span (click)="switchLettre('J')"> J </span>
+          <span (click)="switchLettre('K')"> K </span>
+          <span (click)="switchLettre('L')"> L </span>
+          <span (click)="switchLettre('M')"> M </span>
+          <span (click)="switchLettre('N')"> N </span>
+          <span (click)="switchLettre('O')"> O </span>
+          <span (click)="switchLettre('P')"> P </span>
+          <span (click)="switchLettre('Q')"> Q </span>
+          <span (click)="switchLettre('R')"> R </span>
+          <span (click)="switchLettre('S')"> S </span>
+          <span (click)="switchLettre('T')"> T </span>
+          <span (click)="switchLettre('U')"> U </span>
+          <span (click)="switchLettre('V')"> V </span>
+          <span (click)="switchLettre('W')"> W </span>
+          <span (click)="switchLettre('X')"> X </span>
+          <span (click)="switchLettre('Y')"> Y </span>
+          <span (click)="switchLettre('Z')"> Z </span>
+            <span></span>
+          </div>
+        </span><span></span>
+            </div>
+        </div>
+        <div *ngIf="filtre === 'Search'">
+            <app-auto-complete (submit)="refresh($event)" [models]="heros"></app-auto-complete>
+        </div>
+    </div>
+    <div class="listHeros row">
+        <mat-card class="example-card col-lg-2" style="margin: 2% 1%" *ngFor="let hero of heros"
+                  [routerLink]="['/hero',hero.id]" >
+            <img mat-card-image style="height: 250px" src="../../assets/heros/{{hero.photo}}" alt="{{hero.name}}">
+            <mat-card-content style="text-align: center">
+                <h3>{{hero.name}}</h3>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <section class="col-lg-12" *ngIf="isLoadMore">
+        <div class="loader " >
+            <svg class="circular">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+            </svg>
+        </div>
+    </section>
+    <div class="title col-lg-12 " style="margin-bottom: 100px">
+        <img src="../../assets/line.png" class="col-lg-12"
+             style="float: right; position: absolute; z-index: -1;margin-left: -30%"
+             height="90px" (mouseover)="seeMore()">
+    </div>
+</main>

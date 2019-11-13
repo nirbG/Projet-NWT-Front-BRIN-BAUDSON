@@ -27,6 +27,10 @@ import {HttpClientModule} from "@angular/common/http";
 import { ComicsDetailComponent } from './comics-detail/comics-detail.component';
 import { CarrouselHerosComponent } from './carrousel-heros/carrousel-heros.component';
 import {NguCarouselModule} from "@ngu/carousel";
+import { HerosComponent } from './heros/heros.component';
+import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,10 @@ import {NguCarouselModule} from "@ngu/carousel";
     ListComicsComponent,
     CardComicsSnackBarComponent,
     ComicsDetailComponent,
-    CarrouselHerosComponent
+    CarrouselHerosComponent,
+    HerosComponent,
+    AutoCompleteComponent,
+    HeroDetailComponent
   ],
     imports: [
         BrowserModule,
@@ -51,9 +58,14 @@ import {NguCarouselModule} from "@ngu/carousel";
         MatCardModule,
         MatSnackBarModule,
         HttpClientModule,
-        NguCarouselModule
+        NguCarouselModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule
     ],
-  providers: [{ provide: MAT_SNACK_BAR_DATA, useValue: {} }],
+  providers: [AutoCompleteComponent,
+      { provide: MAT_SNACK_BAR_DATA, useValue: {} }],
   bootstrap: [AppComponent],
     entryComponents:[CardComicsSnackBarComponent]
 })
