@@ -1,0 +1,62 @@
+.mat-card{
+    display: inline-block !important;
+}
+fa-icon{
+    color: #740f00;
+}
+.btn-default-color{
+    background-color: black !important;
+}
+.mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+    background-color: #740f00 ;
+}
+.filter_active{
+    color: #0168AB;
+}
+
+section {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-list-item {
+    border: 1px solid rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.87);
+    background-color: white;
+    font-size: 14px;
+    display: block;
+    margin: 3px 0 3px -12px;
+    padding: 0;
+    height: 70px;
+    width: 400px;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+}
+
+mat-list-item:hover {
+    box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.07),
+    0 9px 46px 8px rgba(0, 0, 0, 0.09);
+}
+
+.buttons-fab{
+    position: absolute;
+    margin: -10% 80%;
+}
+
+.buttons-fab button {
+    position: absolute;
+    transition: bottom 0.2s;
+}
+
+
+.buttons-fab .button-add {
+    bottom: 90px;
+}
+.buttons-fab .button-fav {
+    bottom: 150px;
+}
+.buttons-fab .button-info {
+    bottom: 30px;
+}

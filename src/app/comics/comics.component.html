@@ -1,0 +1,21 @@
+<main>
+    <div class="title col-lg-12 " style="overflow: hidden">
+        <img src="../../assets/line.png" class="col-lg-12" style="margin-left: 30%; position: absolute; z-index: -1" height="90px">
+        <h1 style="padding-left: 5%">Nos comics</h1>
+    </div>
+    <div class="listComics">
+        <app-card-comics *ngFor="let comic of comics"  [card]="comic"></app-card-comics>
+    </div>
+    <section class="col-lg-12" *ngIf="isLoadMore">
+        <div class="loader " >
+            <svg class="circular">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+            </svg>
+        </div>
+    </section>
+    <div class="title col-lg-12 " style="margin-bottom: 100px">
+        <img src="../../assets/line.png" class="col-lg-12"
+             style="float: right; position: absolute; z-index: -1;margin-left: -30%"
+             height="90px" (mouseover)="seeMore()" >
+    </div>
+</main>

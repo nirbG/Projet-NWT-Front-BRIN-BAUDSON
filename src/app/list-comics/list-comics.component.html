@@ -1,0 +1,11 @@
+<mat-card class="example-card col-lg-12 no_padding" style="margin: 2% 1% 0% 1%;">
+    <img mat-card-image class="col-lg-2 no_padding"  style="height: 75px;width: 50px;margin: 0%"
+         src="../../assets/comics/{{list.photo}}" alt="{{list.title}}">
+    <h3 [routerLink]="['/comics', list.id]" class="col-lg-8">{{list.title}}</h3>
+    <div class="col-lg-3 no_padding" style="text-align: right;margin-top: 20px;color: #740f00">
+        <i class="material-icons" (click)="addWish()" *ngIf="!list.wish">favorite_border</i>
+        <i class="material-icons" (click)="suppWish()" *ngIf="list.wish">favorite</i>
+        <i class="material-icons" (click)="add()" *ngIf="!list.inBD">add</i>
+        <i class="material-icons" (click)="supp()" *ngIf="list.inBD">remove</i>
+    </div>
+</mat-card>

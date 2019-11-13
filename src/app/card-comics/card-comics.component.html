@@ -1,0 +1,21 @@
+<mat-card class=" col-lg-2" style="margin: 2% 1%;padding-bottom: 0;" >
+    <img mat-card-image style="height: 250px;margin-bottom: 2%;"
+         src="../../assets/comics/{{card.photo}}" alt="{{card.title}}">
+    <section class="buttons-fab" >
+        <button mat-fab  class="button-fav" *ngIf="show && !card.inBD">
+            <i class="material-icons" (click)="addWish()" *ngIf="!card.wish">favorite_border</i>
+            <i class="material-icons" (click)="suppWish()" *ngIf="card.wish">favorite</i>
+        </button>
+        <button  mat-fab  class="button-add" *ngIf="show">
+            <i class="material-icons" (click)="add()" *ngIf="!card.inBD">add</i>
+            <i class="material-icons" (click)="supp()" *ngIf="card.inBD">remove</i>
+        </button>
+        <button [routerLink]="['/comics',card.isbn]"  mat-fab class="button-info"  *ngIf="show">
+            <i class="material-icons">info</i>
+        </button>
+        <button (click)="toggle()" mat-fab class="btn-default-color" >
+            <i class="material-icons" *ngIf="!show" >menu</i>
+            <i class="material-icons" *ngIf="show" >clear</i>
+        </button>
+    </section>
+</mat-card>
