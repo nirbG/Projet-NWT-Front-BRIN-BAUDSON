@@ -28,6 +28,7 @@
     "@hapiness/logger": "^1.1.0",
     "@hapiness/swag": "^1.2.0",
     "@juneil/entityts": "^1.2.2",
+    "@ngu/carousel": "^1.5.5",
     "bootstrap": "^4.3.1",
     "bunyan": "^1.8.12",
     "hammerjs": "^2.0.8",

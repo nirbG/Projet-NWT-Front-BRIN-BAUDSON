@@ -1,0 +1,17 @@
+<ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async" class="col-lg-12"
+              style="padding: 0%;margin-top: 5%">
+    <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate" class="col-lg-4"
+              style="max-width: 33.333333333333336%;">
+        <!-- [@slider]="ani" PLease this animation to this tile to see animation. stackblitz have error with animations -->
+        <div style="height: 300px"  class="tile col-lg-12" [style.background]="'url('+image(i)+')'">
+            <div class="comicsTitle overflow-ellipsis" style="font-size: 3vw;width: 90%">{{item.name}}</div>
+        </div>
+    </ngu-tile>
+
+    <button NguCarouselPrev class="leftRs" [style.opacity]="myCarousel.isFirst ? 0.5:1">&lt;</button>
+    <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
+
+    <ul class="myPoint" NguCarouselPoint style="display: none">
+        <li *ngFor="let i of myCarousel.pointNumbers; let i = index" [class.active]="i==myCarousel.activePoint" (click)="myCarousel.moveTo(i)"></li>
+    </ul>
+</ngu-carousel>

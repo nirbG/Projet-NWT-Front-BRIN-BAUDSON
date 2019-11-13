@@ -24,6 +24,9 @@ import {
     MatToolbarModule
 } from '@angular/material';
 import {HttpClientModule} from "@angular/common/http";
+import { ComicsDetailComponent } from './comics-detail/comics-detail.component';
+import { CarrouselHerosComponent } from './carrousel-heros/carrousel-heros.component';
+import {NguCarouselModule} from "@ngu/carousel";
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import {HttpClientModule} from "@angular/common/http";
     ComicsComponent,
     CardComicsComponent,
     ListComicsComponent,
-    CardComicsSnackBarComponent
+    CardComicsSnackBarComponent,
+    ComicsDetailComponent,
+    CarrouselHerosComponent
   ],
     imports: [
         BrowserModule,
@@ -45,7 +50,8 @@ import {HttpClientModule} from "@angular/common/http";
         MatButtonModule,
         MatCardModule,
         MatSnackBarModule,
-        HttpClientModule
+        HttpClientModule,
+        NguCarouselModule
     ],
   providers: [{ provide: MAT_SNACK_BAR_DATA, useValue: {} }],
   bootstrap: [AppComponent],

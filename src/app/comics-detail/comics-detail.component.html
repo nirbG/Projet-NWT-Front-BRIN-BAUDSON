@@ -1,0 +1,43 @@
+<main>
+    <img src="../../assets/Events2019(1).png" style="width: 100%; height: 250px">
+    <div style="margin: -150px 10% 0% 10%; padding: 0" class="row">
+        <img src="../../assets/comics/{{comics.photo}}" style="height: 400px; padding: 0" class="col-md-3">
+        <div class="col-lg-9" style="padding: 0;">
+            <div class="col-lg-12">
+                <div class="comicsTitle overflow-ellipsis" style="margin-bottom: 5%; color: #fbf4ff">{{comics.title}}</div>
+            </div>
+            <div class="col-md-12 row" style="padding: 0%">
+                <div class="col-md-6">
+                    <p>paru le 10/02/2017 chez DC Comics</p>
+                    <p>serie : <a>superman</a></p>
+                    <p>ISBN  : 2809454132</p>
+                    <p>EAn   : 978-2809454130</p>
+                    <p>Price : 7.50 €</p>
+                </div>
+                <div class="col-md-6 btn-DetailComics">
+                    <button mat-stroked-button class="btn" style="width: 100%; padding: 0%">
+                        <h4>Ajouter a la liste d'envie</h4>
+                    </button>
+                    <button mat-stroked-button class="btn" style="width: 100%;padding: 0%">
+                        <h4>ajouter a la votre BDtheque</h4>
+                    </button>
+                    <i class="fab fa-amazon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 " style="padding: 0% 10%">
+        <div class="title col-lg-12 " style="overflow: hidden">
+            <img src="../../assets/line.png" class="col-lg-12" style="margin-left: 30%; position: absolute; z-index: -1" height="90px">
+            <h1 style="padding-left: 5%">Héros</h1>
+        </div>
+        <div class="col-lg-12 row">
+            <div class="col-lg-9">
+                <app-carrousel-heros></app-carrousel-heros>
+            </div>
+            <div class="col-lg-3" style="text-align: center">
+                <img src="../../assets/heros/superman.jpg" style="height: 400px">
+            </div>
+        </div>
+    </div>
+</main>
