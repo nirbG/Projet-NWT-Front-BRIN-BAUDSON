@@ -14,12 +14,18 @@
                     <p>EAn   : 978-2809454130</p>
                     <p>Price : 7.50 €</p>
                 </div>
-                <div class="col-md-6 btn-DetailComics">
-                    <button mat-stroked-button class="btn" style="width: 100%; padding: 0%">
-                        <h4>Ajouter a la liste d'envie</h4>
+                <div class="col-md-6 btn-DetailComics" >
+                    <button *ngIf="!comics.wish && !comics.inBD" mat-stroked-button class="btn" style="width: 100%; padding: 0%">
+                        <h4>Ajouter à la liste d'envie</h4>
                     </button>
-                    <button mat-stroked-button class="btn" style="width: 100%;padding: 0%">
+                    <button *ngIf="comics.wish && !comics.inBD" mat-stroked-button class="btn" style="width: 100%; padding: 0%">
+                        <h4>Supprimer de la liste d'envie</h4>
+                    </button>
+                    <button *ngIf="!comics.inBD" mat-stroked-button class="btn" style="width: 100%;padding: 0%">
                         <h4>ajouter a la votre BDtheque</h4>
+                    </button>
+                    <button *ngIf="comics.inBD" mat-stroked-button class="btn" style="width: 100%;padding: 0%">
+                        <h4>Suprimer de la votre BDtheque</h4>
                     </button>
                     <i class="fab fa-amazon"></i>
                 </div>
@@ -33,7 +39,7 @@
         </div>
         <div class="col-lg-12 row">
             <div class="col-lg-9">
-                <app-carrousel-heros></app-carrousel-heros>
+                <app-carrousel-heros [heros]="comics.otherHeros"></app-carrousel-heros>
             </div>
             <div class="col-lg-3" style="text-align: center">
                 <img [src]='image(comics.mainHeros.photo) ' style="height: 400px">

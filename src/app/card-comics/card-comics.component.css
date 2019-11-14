@@ -57,3 +57,9 @@ mat-list-item:hover {
 .buttons-fab .button-info {
     bottom: 30px;
 }
+.buttons-fab .button-sup {
+    left: -90px
+}
+.buttons-fab .button-up {
+    left: -150px;
+}

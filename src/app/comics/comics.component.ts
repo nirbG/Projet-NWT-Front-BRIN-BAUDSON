@@ -43,4 +43,9 @@ export class ComicsComponent implements OnInit {
         }, 2000
     );
   }
+
+  delete(data: Comics) {
+    this._comics = this._comics.filter(__ => __.isbn !== data.isbn);
+
+  }
 }

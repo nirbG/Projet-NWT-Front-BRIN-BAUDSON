@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Comics} from "../shared/interfaces/Comics";
 import {CardComicsSnackBarComponent} from "../snackBar/card-comics-snack-bar/card-comics-snack-bar.component";
@@ -12,7 +12,10 @@ export class CardComicsComponent implements OnInit {
 
   private _card: Comics;
   private _show: boolean;
+  // private property to store delete$ value
+  private readonly _delete$: EventEmitter<Comics>;
   constructor(private _snackBar: MatSnackBar) {
+    this._delete$ = new EventEmitter<Comics>();
     this._show = false;
     this._card = {} as Comics ;
   }
@@ -44,17 +47,22 @@ export class CardComicsComponent implements OnInit {
 
   add() {
     this.openSnackBar('add :' + this._card.title);
+    this._card.inBD = true;
+    this._card.wish = false;
   }
 
   supp() {
     this.openSnackBar('supp :' + this._card.title);
+    this._card.inBD = false;
   }
   addWish() {
     this.openSnackBar('addWish :' + this._card.title);
+    this._card.wish = true;
   }
 
   suppWish() {
     this.openSnackBar('suppWish :' + this._card.title);
+    this._card.wish = false;
   }
 
   openSnackBar(message: string) {
@@ -63,5 +71,11 @@ export class CardComicsComponent implements OnInit {
       data: message,
       panelClass: ['snackWatchers']
     });
+  }
+  @Output('deleteComics') get delete$(): EventEmitter<Comics> {
+    return this._delete$;
+  }
+  suppComics(){
+    this._delete$.emit(this.card);
   }
 }

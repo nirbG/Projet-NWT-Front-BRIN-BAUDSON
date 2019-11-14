@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,7 +15,7 @@ import {
     MAT_SNACK_BAR_DEFAULT_OPTIONS,
     MatAutocompleteModule,
     MatButtonModule,
-    MatCardModule, MatCheckboxModule, MatDialogModule, MatDividerModule, MatFormFieldModule,
+    MatCardModule, MatCheckboxModule, MatDividerModule, MatFormFieldModule,
     MatGridListModule,
     MatIconModule, MatInputModule,
     MatMenuModule, MatSnackBarModule,
@@ -31,6 +30,10 @@ import { HerosComponent } from './heros/heros.component';
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { DialogComponent} from "./shared/dialog/dialog.component";
+import { UpdateComponent } from './update/update.component';
+import { FormComponent } from './shared/form/form.component';
+import {MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
     CarrouselHerosComponent,
     HerosComponent,
     AutoCompleteComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
+    DialogComponent,
+    UpdateComponent,
+    FormComponent
   ],
     imports: [
         BrowserModule,
@@ -59,14 +65,16 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
         MatSnackBarModule,
         HttpClientModule,
         NguCarouselModule,
-        MatDialogModule,
         MatFormFieldModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        MatDialogModule
     ],
   providers: [AutoCompleteComponent,
-      { provide: MAT_SNACK_BAR_DATA, useValue: {} }],
+      { provide: MAT_SNACK_BAR_DATA, useValue: {} },
+      {provide: MAT_DIALOG_DATA, useValue: {}}],
   bootstrap: [AppComponent],
-    entryComponents:[CardComicsSnackBarComponent]
+    entryComponents:[CardComicsSnackBarComponent,
+        DialogComponent]
 })
 export class AppModule { }

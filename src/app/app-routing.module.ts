@@ -5,6 +5,7 @@ import {ComicsComponent} from "./comics/comics.component";
 import {ComicsDetailComponent} from "./comics-detail/comics-detail.component";
 import {HerosComponent} from "./heros/heros.component";
 import {HeroDetailComponent} from "./hero-detail/hero-detail.component";
+import {UpdateComponent} from "./update/update.component";
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'comics', component: ComicsComponent },
   { path: 'comics/:isbn', component: ComicsDetailComponent },
+  { path: 'comicsEdit/:id', component: UpdateComponent },
   { path: 'heros', component: HerosComponent },
   { path: 'hero/:id', component: HeroDetailComponent },
 ];

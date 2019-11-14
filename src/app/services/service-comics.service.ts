@@ -49,6 +49,16 @@ export class ServiceComicsService {
 
      */
   }
+
+  fetchOne(id: any): Observable<Comics> {
+    return of(this._comicstab[id-1]);
+  }
+
+  update(data: Comics): Observable<Comics> {
+    return null;
+  }
+
+
   comicsByHeros(id: string): Observable<Comics[]> {
     return of(COMICS.filter((_: Comics) => _.mainHeros.id === id ));
     /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))

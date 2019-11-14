@@ -10,6 +10,12 @@
             <i class="material-icons" (click)="add()" *ngIf="!card.inBD">add</i>
             <i class="material-icons" (click)="supp()" *ngIf="card.inBD">remove</i>
         </button>
+        <button mat-fab  class="button-sup" *ngIf="show">
+            <i class="material-icons" (click)="suppComics()" >delete</i>
+        </button>
+        <button  mat-fab  class="button-up" *ngIf="show">
+            <i class="material-icons" [routerLink]="['/comicsEdit', card.isbn]" >create</i>
+        </button>
         <button [routerLink]="['/comics',card.isbn]"  mat-fab class="button-info"  *ngIf="show">
             <i class="material-icons">info</i>
         </button>

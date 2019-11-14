@@ -3,6 +3,8 @@ import {Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
 import {NguCarouselConfig} from "@ngu/carousel";
 import {Hero, HEROS} from "../shared/interfaces/Heros";
+import {COMICS, Comics} from "../shared/interfaces/Comics";
+import {HeroSimple} from "../shared/interfaces/HeroSimple";
 
 @Component({
   selector: 'app-carrousel-heros',
@@ -12,7 +14,9 @@ import {Hero, HEROS} from "../shared/interfaces/Heros";
 export class CarrouselHerosComponent implements OnInit {
   @Input() name: string;
 
-  public carouselTileItems$: Observable<Hero[]>;
+  private _heros: HeroSimple[];
+  tempData: HeroSimple[];
+  public carouselTileItems$: Observable<HeroSimple[]>;
   public carouselTileConfig: NguCarouselConfig = {
     grid: {xs: 1, sm: 1, md: 3, lg: 3, all: 0},
     speed: 250,
@@ -24,16 +28,16 @@ export class CarrouselHerosComponent implements OnInit {
     interval: {timing: 1500},
     animation: 'lazy'
   };
-  tempData: Hero[];
 
   constructor(private cdr: ChangeDetectorRef) {
+    this._heros = [] as HeroSimple[] ;
   }
 
   ngOnInit() {
-    this.tempData = [] as Hero[];
+    this.tempData = [] as HeroSimple[];
     this.carouselTileItems$ = of('carousel').pipe(
         map(val => {
-          const data = (this.tempData = this.tempData.concat(HEROS.slice(0, 5 )));
+          const data = (this.tempData = this.tempData.concat(this._heros));
           return data;
         })
     );
@@ -43,4 +47,14 @@ export class CarrouselHerosComponent implements OnInit {
     return '../../assets/heros/' + this.tempData[id].photo;
   }
 
+  @Input()
+  set heros(h: HeroSimple[]) {
+    this._heros = h;
+  }
+  /**
+   * Returns private property _person
+   */
+  get heros(): HeroSimple[] {
+    return this._heros;
+  }
 }

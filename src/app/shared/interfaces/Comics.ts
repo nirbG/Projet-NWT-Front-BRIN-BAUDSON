@@ -34,7 +34,28 @@ export const COMICS = [
             photo: 'avengers.jpg',
             name: 'Avengers',
         },
-        otherHeros: [] as HeroSimple[],
+        otherHeros: [
+            {
+                id: '6',
+                photo: 'ironman.jpg',
+                name: 'Iron Man',
+            },
+            {
+                id: '15',
+                photo: 'thor.jpg',
+                name: 'Thor',
+            },
+            {
+                id: '14',
+                photo: 'hulk.jpg',
+                name: 'Hulk',
+            },
+            {
+                id: '16',
+                photo: 'Captain_America.png',
+                name: 'Captain America',
+            }
+        ],
         price: 7.5,
         wish: false,
         inBD: false
@@ -62,7 +83,13 @@ export const COMICS = [
             photo: 'batman.jpg',
             name: 'Batman',
         },
-        otherHeros:  [] as HeroSimple[],
+        otherHeros:  [
+            {
+                id: '5',
+                photo: 'joker.jpg',
+                name: 'Joker',
+            }
+        ],
         price: 28,
         wish: false,
         inBD: false
@@ -104,7 +131,13 @@ export const COMICS = [
             photo: 'batman.jpg',
             name: 'Batman',
         },
-        otherHeros:  [] as HeroSimple[],
+        otherHeros:  [
+            {
+                id: '12',
+                photo: 'robin.jpg',
+                name: 'Robin',
+            }
+        ],
         price: 17.5,
         wish: false,
         inBD: false
@@ -132,7 +165,28 @@ export const COMICS = [
             photo: 'avengers.jpg',
             name: 'Avengers',
         },
-        otherHeros:  [] as HeroSimple[],
+        otherHeros:  [
+            {
+                id: '6',
+                photo: 'ironman.jpg',
+                name: 'Iron Man',
+            },
+            {
+                id: '15',
+                photo: 'thor.jpg',
+                name: 'Thor',
+            },
+            {
+                id: '14',
+                photo: 'hulk.jpg',
+                name: 'Hulk',
+            },
+            {
+                id: '16',
+                photo: 'Captain_America.png',
+                name: 'Captain America',
+            }
+        ],
         price: 7.50,
         wish: false,
         inBD: false
@@ -188,7 +242,33 @@ export const COMICS = [
             photo: 'batman.jpg',
             name: 'Batman',
         },
-        otherHeros: [] as HeroSimple[],
+        otherHeros: [
+            {
+                id: '5',
+                photo: 'joker.jpg',
+                name: 'Joker',
+            },
+            {
+                id: '9',
+                photo: 'catwoman.jpg',
+                name: 'Catwoman',
+            },
+            {
+                id: '12',
+                photo: 'robin.jpg',
+                name: 'Robin',
+            },
+            {
+                id: '18',
+                photo: 'superman.jpg',
+                name: 'Superman',
+            },
+            {
+                id: '11',
+                photo: 'aquaman.jpg',
+                name: 'Aquaman',
+            }
+        ],
         price: 22.50,
         wish: false,
         inBD: false
@@ -202,7 +282,23 @@ export const COMICS = [
             photo: 'batman.jpg',
             name: 'Batman',
         },
-        otherHeros: [] as HeroSimple[],
+        otherHeros: [
+            {
+                id: '5',
+                photo: 'joker.jpg',
+                name: 'Joker',
+            },
+            {
+                id: '9',
+                photo: 'catwoman.jpg',
+                name: 'Catwoman',
+            },
+            {
+                id: '12',
+                photo: 'robin.jpg',
+                name: 'Robin',
+            },
+        ],
         price: 22.50,
         wish: false,
         inBD: false
@@ -216,7 +312,23 @@ export const COMICS = [
             photo: 'batman.jpg',
             name: 'Batman',
         },
-        otherHeros: [] as HeroSimple[],
+        otherHeros: [
+            {
+                id: '5',
+                photo: 'joker.jpg',
+                name: 'Joker',
+            },
+            {
+                id: '9',
+                photo: 'catwoman.jpg',
+                name: 'Catwoman',
+            },
+            {
+                id: '12',
+                photo: 'robin.jpg',
+                name: 'Robin',
+            },
+        ],
         price: 22.50,
         wish: false,
         inBD: false
