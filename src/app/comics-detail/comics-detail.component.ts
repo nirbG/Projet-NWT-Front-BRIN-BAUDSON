@@ -38,4 +38,8 @@ export class ComicsDetailComponent implements OnInit {
       this.itemIdRatingClicked = item.company;
     }
   }
+
+    image(photo: string) {
+        return '../../assets/heros/'+photo;
+    }
 }

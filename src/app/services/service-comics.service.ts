@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {COMICS, Comics} from "../shared/interfaces/Comics";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Observable, of} from "rxjs";
-import {defaultIfEmpty, filter} from "rxjs/operators";
+import {from, Observable, of} from "rxjs";
+import {defaultIfEmpty, filter, flatMap, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ServiceComicsService {
   private readonly _backendURL: any;
   private _comicstab: Comics[];
   constructor(private _http: HttpClient) {
-    this._comicstab = COMICS;
+    this._comicstab = COMICS as Comics[];
     this._backendURL = {};
 
     // build backend base url
@@ -41,6 +41,16 @@ export class ServiceComicsService {
    */
   some(start: string, end: string): Observable<Comics[]> {
     return of(this._comicstab.slice(+start, +end));
+    /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))
+        .pipe(
+            filter(_ => !!_),
+            defaultIfEmpty([])
+        );
+
+     */
+  }
+  comicsByHeros(id: string): Observable<Comics[]> {
+    return of(COMICS.filter((_: Comics) => _.mainHeros.id === id ));
     /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))
         .pipe(
             filter(_ => !!_),

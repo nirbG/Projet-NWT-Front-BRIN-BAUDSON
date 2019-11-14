@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {COMICS} from "../shared/interfaces/Comics";
+import {Comics, COMICS} from "../shared/interfaces/Comics";
 import {HEROS} from "../shared/interfaces/Heros";
+import {ServiceComicsService} from "../services/service-comics.service";
 
 @Component({
   selector: 'app-hero-detail',
@@ -9,20 +10,21 @@ import {HEROS} from "../shared/interfaces/Heros";
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-  comics = COMICS.slice(0, 5);
+  comics : Comics[];
   showComics: boolean;
   showSeries: boolean;
   private _hero: any;
 
-  constructor(private _route: ActivatedRoute) {
+  constructor(private _route: ActivatedRoute,private _service: ServiceComicsService) {
     this.showComics = true;
     this.showSeries = true;
-    this._hero = {}
+    this._hero = {};
     console.log(this._route.snapshot.params.id);
   }
 
   ngOnInit() {
     this._hero = HEROS.filter( _ => _.id === this._route.snapshot.params.id).shift();
+    this._service.comicsByHeros(this._hero.id).subscribe((_ : Comics[]) => this.comics = _);
   }
 
   add($event: string) {}
@@ -37,4 +39,6 @@ export class HeroDetailComponent implements OnInit {
   get hero(): any {
     return this._hero;
   }
+
+
 }
