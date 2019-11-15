@@ -1,0 +1,42 @@
+<mat-toolbar style="background-color: #740f00; color: #fbf4ff">
+    <h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ formh.get('name').value }}</h2>
+    <h2 mat-dialog-title *ngIf="!isUpdateMode">Create new Comics </h2>
+</mat-toolbar>
+<mat-dialog-content>
+    <form novalidate [formGroup]="formh">
+        <table class="full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="full-width" [class.mgb15]="formh.get('name').dirty && formh.get('name').invalid">
+                        <input matInput placeholder="Name" formControlName="name" minlength="2" required name="name" />
+                        <mat-error *ngIf="formh.get('name').dirty && formh.get('name').hasError('required')">
+                            name is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="formh.get('name').dirty && formh.get('name').hasError('minlength')">
+                            name is <strong>2 chars min</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Pouvoir" formControlName="pouvoir"name="pouvoir" />
+                        <mat-error *ngIf="formh.get('pouvoir').dirty && formh.get('pouvoir').hasError('required')">
+                            Last name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-checkbox formControlName="isHumain" name="isHumain" (change)="isHumanChecked($event.checked)">Human</mat-checkbox>
+                </td>
+                <td class="align-right">
+                    <img width="112" src="../../../assets/heros/{{ formh.get('photo').value }}"/>
+                    <input type="hidden" formControlName="photo" name="photo">
+                </td>
+            </tr>
+        </table>
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+    <button mat-button color="primary" type="submit" (click)="submit(formh.value)" [disabled]="formh.invalid">Save</button>
+</mat-dialog-actions>
+
+

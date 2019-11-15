@@ -1,0 +1,24 @@
+img {
+    border-radius: 0%;
+    margin-right: 18px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mgb15{
+    margin-bottom: 15px;
+}
+mat-dialog-actions{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+mat-dialog-content{
+    padding-top: 2%;
+    margin: 0 ;
+}

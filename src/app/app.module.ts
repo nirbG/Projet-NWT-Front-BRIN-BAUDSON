@@ -30,10 +30,13 @@ import { HerosComponent } from './heros/heros.component';
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { DialogComponent} from "./shared/dialog/dialog.component";
-import { UpdateComponent } from './update/update.component';
-import { FormComponent } from './shared/form/form.component';
+import { DialogComicsComponent} from "./shared/dialog/dialog-comics/dialog-comics.component";
+import { UpdateComicsComponent} from "./update/update-comics/update-comics.component"
+import { FormComicsComponent} from "./shared/form/form-comics/form-comics.component";
 import {MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
+import { DialogHerosComponent } from './shared/dialog/dialog-heros/dialog-heros.component';
+import { FormHerosComponent } from './shared/form/form-heros/form-heros.component';
+import { UpdateHeroComponent } from './update/update-hero/update-hero.component';
 
 @NgModule({
   declarations: [
@@ -50,9 +53,12 @@ import {MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
     HerosComponent,
     AutoCompleteComponent,
     HeroDetailComponent,
-    DialogComponent,
-    UpdateComponent,
-    FormComponent
+    DialogComicsComponent,
+    UpdateComicsComponent,
+    FormComicsComponent,
+    DialogHerosComponent,
+    FormHerosComponent,
+    UpdateHeroComponent
   ],
     imports: [
         BrowserModule,
@@ -68,13 +74,15 @@ import {MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
         MatFormFieldModule,
         ReactiveFormsModule,
         MatInputModule,
-        MatDialogModule
+        MatDialogModule,
+        MatCheckboxModule
     ],
   providers: [AutoCompleteComponent,
       { provide: MAT_SNACK_BAR_DATA, useValue: {} },
       {provide: MAT_DIALOG_DATA, useValue: {}}],
   bootstrap: [AppComponent],
     entryComponents:[CardComicsSnackBarComponent,
-        DialogComponent]
+        DialogComicsComponent,
+    DialogHerosComponent]
 })
 export class AppModule { }

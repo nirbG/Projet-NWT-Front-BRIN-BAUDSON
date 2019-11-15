@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {from, Observable, of} from "rxjs";
 import {defaultIfEmpty, filter, flatMap, map} from "rxjs/operators";
+import {Hero} from "../shared/interfaces/Heros";
 
 @Injectable({
   providedIn: 'root'
@@ -50,17 +51,21 @@ export class ServiceComicsService {
      */
   }
 
-  fetchOne(id: any): Observable<Comics> {
-    return of(this._comicstab[id-1]);
+  fetchOne(isbn: string): Observable<Comics> {
+    return of(this._comicstab.find( (_: Comics) => _.isbn === isbn));
   }
 
   update(data: Comics): Observable<Comics> {
     return null;
   }
 
+  create(data: Comics): Observable<Comics> {
+    return null;
+  }
+
 
   comicsByHeros(id: string): Observable<Comics[]> {
-    return of(COMICS.filter((_: Comics) => _.mainHeros.id === id ));
+    return of(COMICS.filter((_: Comics) => _.mainHeros.id === id ).slice(0,5));
     /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))
         .pipe(
             filter(_ => !!_),

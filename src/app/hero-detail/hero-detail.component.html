@@ -1,5 +1,6 @@
+<app-navbar></app-navbar>
 <main>
-    <img src="../../assets/67OQQx2.jpg" style="width: 100%; height: 250px">
+    <img src="../../assets/banner/{{hero.photo}}" style="width: 100%; height: 250px">
     <div style="margin: -150px 10% 0% 10%; padding: 0" class="row">
         <img src="../../assets/heros/{{hero.photo}}" style="height: 400px; padding: 0" class="col-md-3">
         <div class="col-lg-9" style="padding: 0; margin-top: 6%">
@@ -16,6 +17,12 @@
                         radiophoniques, émissions de télévision, films, comic strips et jeux vidéo. Au vu du succès et de la
                         notoriété de ses aventures, Superman est essentiel dans la création d’un genre propre aux super-héros</p>
                 </div>
+                <button *ngIf="true" [routerLink]="['/heroEdit', hero.id]" mat-stroked-button class="btn-admin btn  col-lg-5"style="margin-right: 70%" >
+                    <h4>modifier le héros</h4>
+                </button>
+                <button *ngIf="true" mat-stroked-button class="btn-admin btn  col-lg-5" style="margin-right: 70%">
+                    <h4>Suprimer le héros</h4>
+                </button>
             </div>
         </div>
     </div>
@@ -54,8 +61,9 @@
             <h1>Ses comics :</h1>
         </div>
         <div class="listComics offset-1 col-lg-10 row" *ngIf="showComics" >
-            <app-card-comics class="col-md-2" style="width: 20%; margin: 1% 0%"  (addComics)="add($event)"
+            <app-card-comics class="col-md-2" style="width: 20%;margin: 1% 0%;flex: 20%;max-width: 20%;"  (addComics)="add($event)"
                              (addWish)="addWish($event)" *ngFor="let comic of comics"  [card]="comic"></app-card-comics>
         </div>
     </div>
 </main>
+<app-footer></app-footer>

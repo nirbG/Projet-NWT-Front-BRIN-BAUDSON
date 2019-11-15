@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Hero, HEROS} from "../shared/interfaces/Heros";
+import {HerosService} from "../services/heros.service";
 
 @Component({
   selector: 'app-heros',
@@ -14,9 +15,11 @@ export class HerosComponent implements OnInit {
   private _isLoadMore: boolean;
   private _lettre: string;
 
-  constructor() {
+  constructor(private  herosService: HerosService) {
     this._isLoadMore = false;
-    this._heros = HEROS.slice(this._nbstart, this._nbend);
+    this.herosService.some(this._nbstart, this._nbend).subscribe( (_: Hero[]) =>
+        this._heros = _
+    );
     this._filtre = 'none';
     this._lettre = 'A';
 
@@ -25,7 +28,10 @@ export class HerosComponent implements OnInit {
   }
 
   Load() {
-    this._heros = this._heros.concat(HEROS.slice(this._nbstart, this._nbend));
+    this.herosService.some(this._nbstart, this._nbend).subscribe( (_: Hero[]) =>
+        this._heros = this._heros.concat(_)
+    );
+
   }
   seeMore() {
     if (this._filtre === 'none') {
@@ -57,13 +63,19 @@ export class HerosComponent implements OnInit {
     this._nbend = 10;
     switch (f) {
       case 'Alphabet' :
-        this._heros = HEROS.filter( _ => _.name.charAt(0) === this._lettre);
+        this.herosService.fetch().subscribe( (_: Hero[]) =>
+            this._heros = _.filter( _ => _.name.charAt(0) === this._lettre)
+        );
         break;
       case 'Search' :
-        this._heros = HEROS.slice(0, HEROS.length);
+        this.herosService.fetch().subscribe( (_: Hero[]) =>
+          this._heros = _
+        );
         break;
       default :
-        this._heros = HEROS.slice(this._nbstart, this._nbend);
+        this.herosService.some(this._nbstart, this._nbend).subscribe( (_: Hero[]) =>
+            this._heros = _
+        );
         break;
     }
     this._filtre = f;

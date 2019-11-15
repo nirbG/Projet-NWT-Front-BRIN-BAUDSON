@@ -71,6 +71,11 @@ mat-grid-tile:hover img{
     width: 120%;
 }
 
+.btn-admin{
+    background-color: black !important;
+    color: #740f00 !important;
+}
+
 /********************************carrousel */
 
 

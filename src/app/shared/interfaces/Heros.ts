@@ -60,8 +60,8 @@ export const HEROS = [
       },
       {
         id: '19',
-        photo: 'deadsthroke.jpg',
-        name: 'Deadsthroke',
+        photo: 'deathstroke.jpg',
+        name: 'deathstroke',
       },
       {
         id: '19',
@@ -128,8 +128,8 @@ export const HEROS = [
       },
       {
         id: '19',
-        photo: 'deadsthroke.jpg',
-        name: 'Deadsthroke',
+        photo: 'deathstroke.jpg',
+        name: 'deathstroke',
       }
     ],
     isHumain: true
@@ -321,7 +321,7 @@ export const HEROS = [
   },
   {
     id: '17',
-    photo: '4Fan.jpg',
+    photo: '4fan.jpg',
     name: 'Les 4 Fantastique',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
@@ -350,8 +350,8 @@ export const HEROS = [
   },
   {
     id: '19',
-    photo: 'deadsthroke.jpg',
-    name: 'Deadsthroke',
+    photo: 'deathstroke.jpg',
+    name: 'Deathstroke',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
     allie: [] as HeroSimple[],
