@@ -1,0 +1,41 @@
+
+<div class="site-wrapper" style="background-size: cover; position:fixed; top: 0; left: 0; height: 100% "
+     [ngStyle]="{'background-image': 'url(' + image() + ')'}">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="ombreAC"></div>
+            <header>
+                <div class="inner" Style="color: rgb(156, 48, 255);">
+                    <div class="comicsTitle " style=" color: #fbf4ff; margin-top: -7%">BDtheque</div>
+                    <button mat-stroked-button  style="float: right;margin-top: -5%" class="btn"
+                            [routerLink]="['/connexion']"
+                            (mouseenter)="hoverActive = true"
+                            (mouseleave)="hoverActive = false"
+                            [ngStyle]="hoverActive ? {'background-color': 'rgb(156, 48, 255)', 'color': 'white'} : {
+                            'background-color': 'transparent', 'color': 'rgb(156, 48, 255)'}">
+                        <strong>Connexion</strong>
+                    </button>
+                </div>
+            </header>
+            <main class="info" [ngStyle]="{'color': 'rgb(156, 48, 255)' }" >
+                <h1><strong>Bienvenue.</strong></h1>
+                <h4 class="lead" style="color: white">Dans cette bibliothèque en ligne spécialisée dans les comics.
+                    Découvrez et partagez autour de votre passion pour les comics,
+                    enrichissez la base de données et gérez votre collection gratuitement avec la bibliothèque des watchers</h4>
+
+                <button mat-stroked-button class="btn" (click)="showDialog()"
+                        (mouseenter)="hoverDialogActive = true"
+                        (mouseleave)="hoverDialogActive = false"
+                        [ngStyle]="hoverDialogActive ? {'background-color': 'rgb(156, 48, 255)', 'color': 'white'} : {
+                                'background-color': 'transparent', 'color': 'rgb(156, 48, 255)'}">
+                    <h4>En savoir plus</h4>
+                </button>
+            </main>
+            <footer>
+                <div id="divider" class="purpledivi" >
+                    <span></span><span><strong>Projet Personnel</strong></span><span></span>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

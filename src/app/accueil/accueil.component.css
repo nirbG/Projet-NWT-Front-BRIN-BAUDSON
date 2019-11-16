@@ -1,0 +1,258 @@
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+body{
+    font-family: Helvetica;
+}
+.site-wrapper{
+    display: table;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+
+.cover-container{
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.site-wrapper-inner{
+    vertical-align: center;
+    display: table-cell;
+}
+.inner{
+    padding: 2rem;
+}
+main{
+    text-align: center;
+    position: fixed;
+    right: 25%;
+    left: 25%;
+    top: 25%;
+    bottom: 25%;
+}
+
+footer{
+    position: fixed;
+    right: 25%;
+    left: 25%;
+    bottom: 3%;
+    text-align: center;
+}
+
+.ombreAC{
+    background-color: black;
+    border-radius: 5px;
+    position: fixed;
+    right: 20%;
+    left: 20%;
+    top: 0%;
+    opacity: .4;
+    padding-top: 5%;
+    height: 100%;
+}
+
+.logo{
+    width: 250px;
+    position: absolute;
+}
+.btn{
+    border: 2px solid ;
+}
+
+/****************************************** DIVIDER********************************/
+
+#divider.yellowdivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff100), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, #fff100, transparent);
+    background-image: -moz-linear-gradient(180deg, #fff100, transparent);
+    background-image: -o-linear-gradient(180deg, #fff100, transparent);
+    background-image: linear-gradient(90deg, #fff100, transparent);
+}
+#divider.yellowdivi span:first-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#fff100));
+    background-image: -webkit-linear-gradient(180deg, transparent, #fff100);
+    background-image: -moz-linear-gradient(180deg, transparent, #fff100);
+    background-image: -o-linear-gradient(180deg, transparent, #fff100);
+    background-image: linear-gradient(90deg, transparent, #fff100);
+}
+#divider.yellowdivi span:nth-child(2) {
+    color: #fff100; padding: 0px 5px; width: auto; white-space: nowrap;
+}
+#divider.yellowdivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff100), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, #fff100, transparent);
+    background-image: -moz-linear-gradient(180deg, #fff100, transparent);
+    background-image: -o-linear-gradient(180deg, #fff100, transparent);
+    background-image: linear-gradient(90deg, #fff100, transparent);
+}
+
+#divider.whitedivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(255, 255, 255)), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, rgb(255, 255, 255), transparent);
+    background-image: -moz-linear-gradient(180deg, rgb(255, 255, 255), transparent);
+    background-image: -o-linear-gradient(180deg, rgb(255, 255, 255), transparent);
+    background-image: linear-gradient(90deg, rgb(255, 255, 255), transparent);
+}
+#divider.whitedivi span:first-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgb(255, 255, 255)));
+    background-image: -webkit-linear-gradient(180deg, transparent, rgb(255, 255, 255));
+    background-image: -moz-linear-gradient(180deg, transparent, rgb(255, 255, 255));
+    background-image: -o-linear-gradient(180deg, transparent, rgb(255, 255, 255));
+    background-image: linear-gradient(90deg, transparent, rgb(255, 255, 255));
+}
+#divider.whitedivi span:nth-child(2) {
+    color: rgb(255, 255, 255); padding: 0px 5px; width: auto; white-space: nowrap;
+}
+#divider.whitedivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(255, 255, 255)), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, rgb(255, 255, 255), transparent);
+    background-image: -moz-linear-gradient(180deg, rgb(255, 255, 255), transparent);
+    background-image: -o-linear-gradient(180deg, rgb(255, 255, 255), transparent);
+    background-image: linear-gradient(90deg, rgb(255, 255, 255), transparent);
+}
+
+
+#divider.purpledivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(156, 48, 255)), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, rgb(156, 48, 255), transparent);
+    background-image: -moz-linear-gradient(180deg, rgb(156, 48, 255), transparent);
+    background-image: -o-linear-gradient(180deg, rgb(156, 48, 255), transparent);
+    background-image: linear-gradient(90deg, rgb(156, 48, 255), transparent);
+}
+#divider.purpledivi span:first-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgb(156, 48, 255)));
+    background-image: -webkit-linear-gradient(180deg, transparent, rgb(156, 48, 255));
+    background-image: -moz-linear-gradient(180deg, transparent, rgb(156, 48, 255));
+    background-image: -o-linear-gradient(180deg, transparent, rgb(156, 48, 255));
+    background-image: linear-gradient(90deg, transparent, rgb(156, 48, 255));
+}
+#divider.purpledivi span:nth-child(2) {
+    color: rgb(156, 48, 255); padding: 0px 5px; width: auto; white-space: nowrap;
+}
+#divider.purpledivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(156, 48, 255)), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, rgb(156, 48, 255), transparent);
+    background-image: -moz-linear-gradient(180deg, rgb(156, 48, 255), transparent);
+    background-image: -o-linear-gradient(180deg, rgb(156, 48, 255), transparent);
+    background-image: linear-gradient(90deg, rgb(156, 48, 255), transparent);
+}
+
+
+#divider.greendivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(14,200,0)), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, rgb(14,200,0), transparent);
+    background-image: -moz-linear-gradient(180deg, rgb(14,200,0), transparent);
+    background-image: -o-linear-gradient(180deg, rgb(14,200,0), transparent);
+    background-image: linear-gradient(90deg, rgb(14,200,0), transparent);
+}
+#divider.greendivi span:first-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgb(14,200,0)));
+    background-image: -webkit-linear-gradient(180deg, transparent, rgb(14,200,0));
+    background-image: -moz-linear-gradient(180deg, transparent, rgb(14,200,0));
+    background-image: -o-linear-gradient(180deg, transparent, rgb(14,200,0));
+    background-image: linear-gradient(90deg, transparent, rgb(14,200,0));
+}
+#divider.greendivi span:nth-child(2) {
+    color: rgb(14,200,0); padding: 0px 5px; width: auto; white-space: nowrap;
+}
+#divider.greendivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(14,200,0)), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, rgb(14,200,0), transparent);
+    background-image: -moz-linear-gradient(180deg, rgb(14,200,0), transparent);
+    background-image: -o-linear-gradient(180deg, rgb(14,200,0), transparent);
+    background-image: linear-gradient(90deg, rgb(14,200,0), transparent);
+}
+
+
+#divider.bluedivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(0,119,200)), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, rgb(0,119,200), transparent);
+    background-image: -moz-linear-gradient(180deg, rgb(0,119,200), transparent);
+    background-image: -o-linear-gradient(180deg, rgb(0,119,200), transparent);
+    background-image: linear-gradient(90deg, rgb(0,119,200), transparent);
+}
+#divider.bluedivi span:first-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(rgb(0,119,200)));
+    background-image: -webkit-linear-gradient(180deg, transparent, rgb(0,119,200));
+    background-image: -moz-linear-gradient(180deg, transparent, rgb(0,119,200));
+    background-image: -o-linear-gradient(180deg, transparent, rgb(0,119,200));
+    background-image: linear-gradient(90deg, transparent, rgb(0,119,200));
+}
+#divider.bluedivi span:nth-child(2) {
+    color: rgb(0,119,200); padding: 0px 5px; width: auto; white-space: nowrap;
+}
+#divider.bluedivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(0,119,200)), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, rgb(0,119,200), transparent);
+    background-image: -moz-linear-gradient(180deg, rgb(0,119,200), transparent);
+    background-image: -o-linear-gradient(180deg, rgb(0,119,200), transparent);
+    background-image: linear-gradient(90deg, rgb(0,119,200), transparent);
+}
+
+#divider.rosedivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ce41cb), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, #ce41cb, transparent);
+    background-image: -moz-linear-gradient(180deg, #ce41cb, transparent);
+    background-image: -o-linear-gradient(180deg, #ce41cb, transparent);
+    background-image: linear-gradient(90deg, #ce41cb, transparent);
+}
+#divider.rosedivi span:first-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#ce41cb));
+    background-image: -webkit-linear-gradient(180deg, transparent, #ce41cb);
+    background-image: -moz-linear-gradient(180deg, transparent, #ce41cb);
+    background-image: -o-linear-gradient(180deg, transparent, #ce41cb);
+    background-image: linear-gradient(90deg, transparent, #ce41cb);
+}
+#divider.rosedivi span:nth-child(2) {
+    color: #ce41cb; padding: 0px 5px; width: auto; white-space: nowrap;
+}
+#divider.rosedivi span:last-child {				/* color changes in here */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ce41cb), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, #ce41cb, transparent);
+    background-image: -moz-linear-gradient(180deg, #ce41cb, transparent);
+    background-image: -o-linear-gradient(180deg, #ce41cb, transparent);
+    background-image: linear-gradient(90deg, #ce41cb, transparent);
+}
+
+/***********************************************************************************/
+body {
+    background-color: #ED6565;
+}
+
+.wrap {
+    padding: 5em 0.5em;
+    margin: 0 auto;
+}
+
+.comicsTitle {
+    padding-top: 1%;
+    text-overflow: ellipsis;
+    font-weight: normal;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 8em;
+    white-space: nowrap;
+    font-size: 4vw;
+    z-index: 1000;
+    font-family: 'Bangers', cursive;
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+    -moz-transform: skew(0, -6.7deg);
+    -ms-transform: skew(0, -6.7deg);
+    -webkit-transform: skew(0, -6.7deg);
+    transform: skew(0, -6.7deg);
+    -moz-transition-property: font-size;
+    -o-transition-property: font-size;
+    -webkit-transition-property: font-size;
+    transition-property: font-size;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+@media screen and (max-width: 50em) {
+    .comicsTitle {
+        font-size: 5vw;
+    }
+}

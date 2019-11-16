@@ -37,6 +37,13 @@ import {MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
 import { DialogHerosComponent } from './shared/dialog/dialog-heros/dialog-heros.component';
 import { FormHerosComponent } from './shared/form/form-heros/form-heros.component';
 import { UpdateHeroComponent } from './update/update-hero/update-hero.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { FormCoComponent } from './shared/form/form-co/form-co.component';
+import { FormForgetpwdComponent } from './shared/form/form-forgetpwd/form-forgetpwd.component';
+import { FormSubscribeComponent } from './shared/form/form-subscribe/form-subscribe.component';
+import { DialogAccueilComponent } from './shared/dialog/dialog-accueil/dialog-accueil.component';
+import { DialogConnexionComponent } from './shared/dialog/dialog-connexion/dialog-connexion.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +65,14 @@ import { UpdateHeroComponent } from './update/update-hero/update-hero.component'
     FormComicsComponent,
     DialogHerosComponent,
     FormHerosComponent,
-    UpdateHeroComponent
+    UpdateHeroComponent,
+    AccueilComponent,
+    ConnexionComponent,
+    FormCoComponent,
+    FormForgetpwdComponent,
+    FormSubscribeComponent,
+    DialogAccueilComponent,
+    DialogConnexionComponent
   ],
     imports: [
         BrowserModule,
@@ -83,6 +97,8 @@ import { UpdateHeroComponent } from './update/update-hero/update-hero.component'
   bootstrap: [AppComponent],
     entryComponents:[CardComicsSnackBarComponent,
         DialogComicsComponent,
-    DialogHerosComponent]
+    DialogHerosComponent,
+    DialogConnexionComponent,
+    DialogAccueilComponent]
 })
 export class AppModule { }

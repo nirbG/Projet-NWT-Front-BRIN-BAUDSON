@@ -14,35 +14,49 @@ import {Router} from "@angular/router";
   styleUrls: ['./comics.component.css']
 })
 export class ComicsComponent implements OnInit {
-  get dialogStatus(): string {
-    return this._dialogStatus;
-  }
+  // etat du dialog
   private _dialogStatus: string;
   // private property to store dialog reference
   private _comicsDialog: MatDialogRef<DialogComicsComponent>;
+  // liste de comics
   private _comics: Comics[];
+  // lindice de depart pour l'affichage
   private _nbstart = 0;
   private _nbend = 10;
+  // boolean qui permet d'afficher une barre de chargement
   private _isLoadMore: boolean;
 
+  /**
+   *
+   * @param _snackBar
+   * @param _service
+   * @param _dialog
+   * @param _router
+   */
   constructor(private _snackBar: MatSnackBar, private _service: ServiceComicsService,
               private _dialog: MatDialog, private _router: Router) {
     this._dialogStatus = 'inactive';
   }
+
+  /**
+   *
+   */
   ngOnInit() {
     this._service.some(this._nbstart + '', this._nbend + '').subscribe((comics: Comics[]) => this._comics = comics);
   }
 
-  get comics(): any[] {
-    return this._comics;
-  }
+  /**
+   * load des comics et les ajoute a la liste
+   */
   Load() {
     this._service.some(this._nbstart + '', this._nbend + '')
         .subscribe((comics: Comics[]) => this._comics = this._comics.concat(comics));
   }
 
+  /**
+   * affiche plus de comics
+   */
   seeMore() {
-    console.log('hover');
     this._isLoadMore = true;
     setTimeout(
         () => {
@@ -54,12 +68,13 @@ export class ComicsComponent implements OnInit {
     );
   }
 
+  /**
+   * supprime le comics passer en parametre
+   * @param data
+   */
   delete(data: Comics) {
     this._comics = this._comics.filter(__ => __.isbn !== data.isbn);
 
-  }
-  get isLoadMore(): boolean {
-    return this._isLoadMore;
   }
 
   /**
@@ -95,5 +110,16 @@ export class ComicsComponent implements OnInit {
   private _add(comics: Comics): Observable<Comics> {
     return this._service
         .create(comics);
+  }
+  /************************************************************GET & SET **********************************/
+
+  get dialogStatus(): string {
+    return this._dialogStatus;
+  }
+  get comics(): any[] {
+    return this._comics;
+  }
+  get isLoadMore(): boolean {
+    return this._isLoadMore;
   }
 }

@@ -1,0 +1,9 @@
+<mat-toolbar >
+    <mat-toolbar-row [ngStyle]="{'background-color': '#740f00' }">
+        <i class="material-icons" (click)="onCancel()" style="float: right">clear</i>
+    </mat-toolbar-row>
+</mat-toolbar>
+<section>
+    <app-form-forget-pwd *ngIf="!subscribe"></app-form-forget-pwd>
+    <app-form-subscribe *ngIf="subscribe" (cancel)="onCancel()"></app-form-subscribe>
+</section>

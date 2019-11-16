@@ -9,11 +9,17 @@ import {CardComicsSnackBarComponent} from "../snackBar/card-comics-snack-bar/car
   styleUrls: ['./card-comics.component.css']
 })
 export class CardComicsComponent implements OnInit {
-
+  // Comics
   private _card: Comics;
+  // boolean qui determine si on affiche les boutons
   private _show: boolean;
   // private property to store delete$ value
   private readonly _delete$: EventEmitter<Comics>;
+
+  /**
+   *
+   * @param _snackBar      permet d'afficher le resultat des requette
+   */
   constructor(private _snackBar: MatSnackBar) {
     this._delete$ = new EventEmitter<Comics>();
     this._show = false;
@@ -24,47 +30,71 @@ export class CardComicsComponent implements OnInit {
   }
 
   /**
-   * Returns private property _person
+   * Returns Comics
    */
   get card(): Comics {
     return this._card;
   }
 
   /**
-   * Sets private property _person
+   * Sets Comics
    */
   @Input()
   set card(c: Comics) {
     this._card = c;
   }
+
+  /**
+   * fonction qui permet de show ou hide les boutons
+   */
   toggle() {
     this._show = (this._show === false) ? true : false;
   }
+
+  /**
+   * return l'etat des boutons
+   */
   get show(): boolean {
     return this._show;
   }
 
-
+  /**
+   * ajoute le comics a la BD
+   */
   add() {
     this.openSnackBar('add :' + this._card.title);
     this._card.inBD = true;
     this._card.wish = false;
   }
 
+  /**
+   * supprime le comics de la BD
+   */
   supp() {
     this.openSnackBar('supp :' + this._card.title);
     this._card.inBD = false;
   }
+
+  /**
+   * ajoute le comics aux envie
+   */
   addWish() {
     this.openSnackBar('addWish :' + this._card.title);
     this._card.wish = true;
   }
 
+  /**
+   * supprime le comics de envie
+   */
   suppWish() {
     this.openSnackBar('suppWish :' + this._card.title);
     this._card.wish = false;
   }
 
+  /**
+   * affiche la snackBar
+   * @param message message a afficher
+   */
   openSnackBar(message: string) {
     this._snackBar.openFromComponent(CardComicsSnackBarComponent, {
       duration: 2 * 1000,
@@ -72,9 +102,17 @@ export class CardComicsComponent implements OnInit {
       panelClass: ['snackWatchers']
     });
   }
+
+  /**
+   *
+   */
   @Output('deleteComics') get delete$(): EventEmitter<Comics> {
     return this._delete$;
   }
+
+  /**
+   * emet l'event a fin de supprimer le comics
+   */
   suppComics(){
     this._delete$.emit(this.card);
   }

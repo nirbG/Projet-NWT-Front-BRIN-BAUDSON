@@ -15,23 +15,23 @@
                     <p>EAn   : 978-2809454130</p>
                     <p>Price : 7.50 €</p>
                 </div>
-                <div class="col-md-6 btn-DetailComics" >
-                    <button *ngIf="!comics.wish && !comics.inBD" mat-stroked-button class="btn" style="width: 100%; padding: 0%">
+                <div class="col-md-6 btn-DetailComics btn-comics" >
+                    <button *ngIf="!comics.wish && !comics.inBD" mat-stroked-button class="btn" >
                         <h4>Ajouter à la liste d'envie</h4>
                     </button>
-                    <button *ngIf="comics.wish && !comics.inBD" mat-stroked-button class="btn" style="width: 100%; padding: 0%">
+                    <button *ngIf="comics.wish && !comics.inBD" mat-stroked-button class="btn">
                         <h4>Supprimer de la liste d'envie</h4>
                     </button>
-                    <button *ngIf="!comics.inBD" mat-stroked-button class="btn" style="width: 100%;padding: 0%">
+                    <button *ngIf="!comics.inBD" mat-stroked-button class="btn">
                         <h4>ajouter a la votre BDtheque</h4>
                     </button>
-                    <button *ngIf="comics.inBD" mat-stroked-button class="btn" style="width: 100%;padding: 0%">
+                    <button *ngIf="comics.inBD" mat-stroked-button class="btn" >
                         <h4>Suprimer de la votre BDtheque</h4>
                     </button>
-                    <button *ngIf="true" [routerLink]="['/comicsEdit', comics.isbn]" mat-stroked-button class="btn-admin btn" style="width: 100%;padding: 0%">
+                    <button *ngIf="true" [routerLink]="['/comicsEdit', comics.isbn]" mat-stroked-button class="btn-admin btn" >
                         <h4>modifier le comics</h4>
                     </button>
-                    <button *ngIf="true" mat-stroked-button class="btn-admin btn" style="width: 100%;padding: 0%">
+                    <button *ngIf="true" mat-stroked-button class="btn-admin btn" >
                         <h4>Suprimer le comics</h4>
                     </button>
                     <i class="fab fa-amazon"></i>

@@ -1,0 +1,23 @@
+
+<div class="site-wrapper" style="background-size: cover; position:fixed; top: 0; left: 0; height: 100% "
+     [ngStyle]="{'background-image': 'url(' + image() + ')'}">
+    <div class="site-wrapper-inner">
+        <div class="cover-container" style="color: white">
+            <div class="ombreAC"></div>
+            <header>
+                <div class="inner" >
+                    <div class="comicsTitle " style=" color: #fbf4ff">BDtheque</div>
+                </div>
+            </header>
+            <main class="info"  >
+                <app-form-co style="color: #fbf4ff"
+                             (submit)="logIn($event)"></app-form-co>
+            </main>
+            <footer>
+                <div id="divider" class="whitedivi" >
+                    <span></span><span><strong>Projet Personnel</strong></span><span></span>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

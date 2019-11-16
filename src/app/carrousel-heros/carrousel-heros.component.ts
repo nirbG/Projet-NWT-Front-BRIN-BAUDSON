@@ -13,10 +13,13 @@ import {HeroSimple} from "../shared/interfaces/HeroSimple";
 })
 export class CarrouselHerosComponent implements OnInit {
   @Input() name: string;
-
+  // la liste des hero simplifié
   private _heros: HeroSimple[];
+  // variable tmp
   tempData: HeroSimple[];
+  // Carousel item
   public carouselTileItems$: Observable<HeroSimple[]>;
+  // carousel conf
   public carouselTileConfig: NguCarouselConfig = {
     grid: {xs: 1, sm: 1, md: 3, lg: 3, all: 0},
     speed: 250,
@@ -29,10 +32,17 @@ export class CarrouselHerosComponent implements OnInit {
     animation: 'lazy'
   };
 
+  /**
+   *
+   * @param cdr
+   */
   constructor(private cdr: ChangeDetectorRef) {
     this._heros = [] as HeroSimple[] ;
   }
 
+  /**
+   *
+   */
   ngOnInit() {
     this.tempData = [] as HeroSimple[];
     this.carouselTileItems$ = of('carousel').pipe(
@@ -43,16 +53,24 @@ export class CarrouselHerosComponent implements OnInit {
     );
   }
 
+  /**
+   * retourn l'image
+   * @param id
+   */
   image(id: number): string {
     return '../../assets/heros/' + this.tempData[id].photo;
   }
 
+  /**
+   * set les Heros
+   * @param h
+   */
   @Input()
   set heros(h: HeroSimple[]) {
     this._heros = h;
   }
   /**
-   * Returns private property _person
+   * Returns les heros
    */
   get heros(): HeroSimple[] {
     return this._heros;

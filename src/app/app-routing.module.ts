@@ -7,11 +7,15 @@ import {HerosComponent} from "./heros/heros.component";
 import {HeroDetailComponent} from "./hero-detail/hero-detail.component";
 import {UpdateComicsComponent} from "./update/update-comics/update-comics.component";
 import {UpdateHeroComponent} from "./update/update-hero/update-hero.component";
+import {AccueilComponent} from "./accueil/accueil.component";
+import {ConnexionComponent} from "./connexion/connexion.component";
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: AccueilComponent },
+  { path: 'connexion', component: ConnexionComponent },
+  { path: 'BDtheque', component: HomeComponent },
   { path: 'comics', component: ComicsComponent },
   { path: 'comics/:isbn', component: ComicsDetailComponent },
   { path: 'comicsEdit/:isbn', component: UpdateComicsComponent },

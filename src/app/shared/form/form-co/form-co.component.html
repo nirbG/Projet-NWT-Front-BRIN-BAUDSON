@@ -1,0 +1,28 @@
+<h3>Se Connecters</h3>
+<mat-dialog-content>
+    <form [formGroup]="f">
+        <mat-form-field class="full-width" appearance="outline">
+            <input matInput placeholder="Email" formControlName="email" name="email"
+                   required/>
+            <mat-error *ngIf="f.get('email').dirty && f.get('email').hasError('required')">
+                l'email est <strong>obligatoire</strong>
+            </mat-error>
+            <mat-error *ngIf="f.get('email').dirty && !f.get('email').hasError('required') &&
+      f.get('email').hasError('googleEmail')">
+                l'email est <strong>invalid</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width " appearance="outline" >
+            <input matInput class="col-lg-8"  [type]="hide" placeholder="Mot de passe" formControlName="password"  name="password"
+                   required/>
+            <i class="material-icons eye" (click)="change()">remove_red_eye</i>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions  style="color: #fbf4ff;text-align: center!important;">
+    <button mat-stroked-button type="submit" style="background-color:transparent;color:white;border: solid;" class="btn connexion" (click)="submit(f.value)" ><h4><strong>Connexion</strong></h4></button>
+    <div class="col-lg-12">
+        <p>vous n'etes pas encore membre, <strong (click)="showDialog(true)">inscrivez-vous</strong>.</p>
+        <p><strong (click)="showDialog(false)">vous avez oublié votre mot de passe ?</strong></p>
+    </div>
+</mat-dialog-actions>

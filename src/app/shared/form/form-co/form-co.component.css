@@ -1,0 +1,42 @@
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+}
+::ng-deep mat-form-field .mat-hint,
+input, ::placeholder, .mat-form-field-label, .mat-form-field-underline  {
+    color: white;
+}
+form{
+    margin: 0% 15%;
+}
+.align-right {
+    text-align: right;
+}
+
+.full-width {
+    width: 100%;
+    margin: 0%;
+}
+.middle-width {
+    width: 50%;
+    margin: 0%;
+}
+.mgb15{
+    margin-bottom: 15px;
+}
+.btn{
+    width: 80%;
+    margin: 0% 10%;
+}
+
+.connexion:hover{
+    color: black !important;
+    background-color: white !important;
+}
+.eye{
+    position: absolute;
+    float: right;
+    margin: -1% 0% 0% -5%;
+    cursor: pointer;
+}
+
