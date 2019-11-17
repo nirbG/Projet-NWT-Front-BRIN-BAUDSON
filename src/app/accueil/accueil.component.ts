@@ -8,29 +8,32 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
+  // status du dialog
   private _dialogStatus: string;
-
-  get accueil(): boolean {
-    return this._accueil;
-  }
   // private property to store dialog reference
   private _peopleDialog: MatDialogRef<DialogAccueilComponent>;
+  //
   private _accueil: boolean;
+  //status hover btn
   hoverActive: boolean;
   hoverDialogActive: boolean;
 
+  /**
+   *
+   * @param _dialog
+   */
   constructor( private _dialog: MatDialog) {;
     this._accueil = true;
     this._dialogStatus = 'inactive';
 
   }
 
+  /**
+   *
+   */
   ngOnInit() {
   }
 
-  image(): string {
-    return '../../assets/joker.jpg';
-  }
   /**
    * Function to display modal
    */
@@ -51,5 +54,12 @@ export class AccueilComponent implements OnInit {
             _ => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive'
         );
+  }
+  /********************************************GET&SET*****************************************/
+  get accueil(): boolean {
+    return this._accueil;
+  }
+  image(): string {
+    return '../../assets/joker.jpg';
   }
 }

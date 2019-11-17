@@ -1,0 +1,6 @@
+<mat-toolbar style="background-color: #740f00; color: white"><h4>add heros</h4><i (click)="onCancel()">close</i></mat-toolbar>
+<div class="col-lg-12 marPad row"style="max-height:200px">
+    <div *ngFor="let hero of heros" (click)="add(hero)" class="tile col-lg-2 marPad" >
+        <img style="height: 200px;" src="{{image(hero.photo)}}" class="col-lg-12  marPad">
+    </div>
+</div>

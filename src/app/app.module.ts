@@ -44,6 +44,7 @@ import { FormForgetpwdComponent } from './shared/form/form-forgetpwd/form-forget
 import { FormSubscribeComponent } from './shared/form/form-subscribe/form-subscribe.component';
 import { DialogAccueilComponent } from './shared/dialog/dialog-accueil/dialog-accueil.component';
 import { DialogConnexionComponent } from './shared/dialog/dialog-connexion/dialog-connexion.component';
+import { DialogaddHeroSimpleComponent } from './shared/dialog/dialogadd-hero-simple/dialogadd-hero-simple.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { DialogConnexionComponent } from './shared/dialog/dialog-connexion/dialo
     FormForgetpwdComponent,
     FormSubscribeComponent,
     DialogAccueilComponent,
-    DialogConnexionComponent
+    DialogConnexionComponent,
+    DialogaddHeroSimpleComponent,
   ],
     imports: [
         BrowserModule,
@@ -97,8 +99,9 @@ import { DialogConnexionComponent } from './shared/dialog/dialog-connexion/dialo
   bootstrap: [AppComponent],
     entryComponents:[CardComicsSnackBarComponent,
         DialogComicsComponent,
-    DialogHerosComponent,
-    DialogConnexionComponent,
-    DialogAccueilComponent]
+        DialogHerosComponent,
+        DialogConnexionComponent,
+        DialogAccueilComponent,
+        DialogaddHeroSimpleComponent]
 })
 export class AppModule { }

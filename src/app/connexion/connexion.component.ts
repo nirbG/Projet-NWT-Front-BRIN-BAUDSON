@@ -7,17 +7,29 @@ import {Router} from "@angular/router";
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
-
+  /**
+   *
+   * @param _router
+   */
   constructor(private _router: Router) { }
 
+  /**
+   *
+   */
   ngOnInit() {
   }
-  image(): string {
-    return '../../assets/baroom-comic-book--wallpaper.jpg';
-  }
 
+  /**
+   * simule la connexion
+   * @param $event
+   */
   logIn($event: any) {
     console.log( {$event} );
     this._router.navigate(['BDtheque']);
   }
+  /************************************************************GET & SET **********************************/
+  image(): string {
+    return '../../assets/baroom-comic-book--wallpaper.jpg';
+  }
+
 }

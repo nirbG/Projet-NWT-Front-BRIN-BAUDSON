@@ -64,7 +64,7 @@ export const HEROS = [
         name: 'deathstroke',
       },
       {
-        id: '19',
+        id: '20',
         photo: 'doubleface.jpg',
         name: 'Double-Faces',
       },

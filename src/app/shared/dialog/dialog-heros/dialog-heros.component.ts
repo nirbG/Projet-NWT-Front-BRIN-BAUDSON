@@ -11,35 +11,36 @@ import {Hero} from "../../interfaces/Heros";
 export class DialogHerosComponent implements OnInit {
 
   /**
-   * Component constructor
+   *
+   * @param _dialogRef
+   * @param _hero
    */
   constructor(private _dialogRef: MatDialogRef<DialogHerosComponent>,
               @Inject(MAT_DIALOG_DATA) private _hero: Hero) {
-    console.log(_hero.name);
   }
 
   /**
-   * Returns person passed in dialog open
+   * Returns le hero
    */
   get hero(): Hero {
     return this._hero;
   }
 
   /**
-   * OnInit implementation
+   *
    */
   ngOnInit() {
   }
 
   /**
-   * Function to cancel the process and close the modal
+   * ferme le modal
    */
   onCancel() {
     this._dialogRef.close();
   }
 
   /**
-   * Function to close the modal and send person to parent
+   * retourn le hero au parent
    */
   onSave(hero: Hero) {
     this._dialogRef.close(hero);

@@ -47,21 +47,6 @@ export class AutoCompleteComponent implements OnInit {
 
 
   /**
-   * Returns les heros
-   */
-  get heros(): Hero[] {
-    return this._models;
-  }
-
-  /**
-   * Sets le model
-   */
-  @Input()
-  set models(model: Hero[]) {
-    this._models = model;
-  }
-
-  /**
    * Returns private property _submit$
    */
   @Output('submit')
@@ -75,6 +60,14 @@ export class AutoCompleteComponent implements OnInit {
    */
   submit(value: Hero[]) {
     this._submit$.emit(value);
+  }
+  /********************************************GET&SET*****************************************/
+  get heros(): Hero[] {
+    return this._models;
+  }
+  @Input()
+  set models(model: Hero[]) {
+    this._models = model;
   }
 
 }

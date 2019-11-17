@@ -8,6 +8,7 @@ import {DialogComicsComponent} from "../../shared/dialog/dialog-comics/dialog-co
 import {DialogHerosComponent} from "../../shared/dialog/dialog-heros/dialog-heros.component";
 import {HerosService} from "../../services/heros.service";
 import {Hero} from "../../shared/interfaces/Heros";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-update-hero',
@@ -22,7 +23,7 @@ export class UpdateHeroComponent implements OnInit {
    * Component constructor
    */
   constructor(private _route: ActivatedRoute, private _router: Router, private _heroservice: HerosService,
-              private _dialog: MatDialog) {}
+              private _dialog: MatDialog,private _location: Location) {}
 
   /**
    * OnInit implementation
@@ -47,8 +48,7 @@ export class UpdateHeroComponent implements OnInit {
                   filter(_ => !!_),
                   flatMap(_ => this._heroservice.update(_))
               )
-              .subscribe(() => undefined, () => undefined, () => this._router.navigate(
-                  [ '/hero/'+ this._route.snapshot.params.id]));
+              .subscribe(() => undefined, () => undefined, () => this._location.back());
         });
   }
   image(): string {

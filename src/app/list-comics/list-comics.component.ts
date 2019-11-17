@@ -9,31 +9,34 @@ import {CardComicsSnackBarComponent} from "../snackBar/card-comics-snack-bar/car
   styleUrls: ['./list-comics.component.css']
 })
 export class ListComicsComponent implements OnInit {
-
-
+  // card en mode list d'un comics
   private _list: Comics;
+  // etat des element a affiché
   private _show: boolean;
+
+  /**
+   *
+   * @param _snackBar
+   */
   constructor(private _snackBar: MatSnackBar) {
     this._show = false;
     this._list = {} as Comics ;
   }
 
+  /**
+   *
+   */
   ngOnInit() {
   }
 
-  get list(): Comics {
-    return this._list;
-  }
-  @Input()
-  set list(l: Comics) {
-    this._list = l;
-  }
+  /**
+   * modifie l'etat
+   */
   toggle() {
     this._show = (this._show === false) ? true : false;
   }
-  get show(): boolean {
-    return this._show;
-  }
+
+  /************************************************************SNACKBAR **********************************/
 
 
   add() {
@@ -57,5 +60,16 @@ export class ListComicsComponent implements OnInit {
       data: message,
       panelClass: ['snackWatchers']
     });
+  }
+  /************************************************************GET & SET **********************************/
+  get list(): Comics {
+    return this._list;
+  }
+  @Input()
+  set list(l: Comics) {
+    this._list = l;
+  }
+  get show(): boolean {
+    return this._show;
   }
 }

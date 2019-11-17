@@ -56,3 +56,14 @@
 .comicsTitle {
     font-size: 2vw;
 }
+
+.button-sup{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #740f00;
+}
+.button-sup i{
+    padding: 100%;
+    margin: -100%;
+}

@@ -10,10 +10,10 @@
             <div class="col-md-12 row" style="padding: 0%">
                 <div class="col-md-6">
                     <p>paru le 10/02/2017 chez DC Comics</p>
-                    <p>serie : <a>superman</a></p>
-                    <p>ISBN  : 2809454132</p>
-                    <p>EAn   : 978-2809454130</p>
-                    <p>Price : 7.50 €</p>
+                    <p>serie : {{comics.mainHeros.name}}</p>
+                    <p>ISBN  : {{comics.isbn}}</p>
+                    <p>EAN   : 978-2809454130</p>
+                    <p>Price : {{comics.price}} €</p>
                 </div>
                 <div class="col-md-6 btn-DetailComics btn-comics" >
                     <button *ngIf="!comics.wish && !comics.inBD" mat-stroked-button class="btn" >
@@ -42,14 +42,18 @@
     <div class="col-lg-12 " style="padding: 0% 10%">
         <div class="title col-lg-12 " style="overflow: hidden">
             <img src="../../assets/line.png" class="col-lg-12" style="margin-left: 30%; position: absolute; z-index: -1" height="90px">
-            <h1 style="padding-left: 5%">Héros</h1>
+            <h1 style="padding-left: 5%;padding-top: 2%;"><i class="material-icons" style="color:#740f00;"
+           (click)="showDialogOtherHero()" *ngIf="true">add</i>Héros</h1>
         </div>
         <div class="col-lg-12 row">
             <div class="col-lg-9">
-                <app-carrousel-heros [heros]="comics.otherHeros"></app-carrousel-heros>
+                <app-carrousel-heros [heros]="comics.otherHeros" (submit)="suppOtherHeros($event)"></app-carrousel-heros>
             </div>
             <div class="col-lg-3" style="text-align: center">
                 <img [src]='image(comics.mainHeros.photo) ' style="height: 400px">
+                <button mat-fab  class="button-sup" *ngIf="true">
+                    <i class="material-icons" (click)="showDialogMainHero()" >create</i>
+                </button>
             </div>
         </div>
     </div>

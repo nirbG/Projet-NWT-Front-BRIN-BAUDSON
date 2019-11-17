@@ -30,33 +30,12 @@ export class CardComicsComponent implements OnInit {
   }
 
   /**
-   * Returns Comics
-   */
-  get card(): Comics {
-    return this._card;
-  }
-
-  /**
-   * Sets Comics
-   */
-  @Input()
-  set card(c: Comics) {
-    this._card = c;
-  }
-
-  /**
    * fonction qui permet de show ou hide les boutons
    */
   toggle() {
     this._show = (this._show === false) ? true : false;
   }
 
-  /**
-   * return l'etat des boutons
-   */
-  get show(): boolean {
-    return this._show;
-  }
 
   /**
    * ajoute le comics a la BD
@@ -103,17 +82,36 @@ export class CardComicsComponent implements OnInit {
     });
   }
 
-  /**
-   *
-   */
-  @Output('deleteComics') get delete$(): EventEmitter<Comics> {
-    return this._delete$;
-  }
 
   /**
    * emet l'event a fin de supprimer le comics
    */
   suppComics(){
     this._delete$.emit(this.card);
+  }
+  /********************************************GET&SET*****************************************/
+
+  @Output('deleteComics') get delete$(): EventEmitter<Comics> {
+    return this._delete$;
+  }
+  /**
+   * Returns Comics
+   */
+  get card(): Comics {
+    return this._card;
+  }
+
+  /**
+   * Sets Comics
+   */
+  @Input()
+  set card(c: Comics) {
+    this._card = c;
+  }
+  /**
+   * return l'etat des boutons
+   */
+  get show(): boolean {
+    return this._show;
   }
 }

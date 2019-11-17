@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {filter, flatMap, map} from "rxjs/operators";
 import {COMICS, Comics} from "../../shared/interfaces/Comics";
 import {ServiceComicsService} from "../../services/service-comics.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-update',
@@ -19,7 +20,8 @@ export class UpdateComicsComponent implements OnInit {
    * Component constructor
    */
   constructor(private _route: ActivatedRoute, private _router: Router,
-              private _comicsService: ServiceComicsService, private _dialog: MatDialog) {
+              private _comicsService: ServiceComicsService, private _dialog: MatDialog,
+              private _location: Location) {
   }
 
   /**
@@ -45,7 +47,7 @@ export class UpdateComicsComponent implements OnInit {
                   filter(_ => !!_),
                   flatMap(_ => this._comicsService.update(_))
               )
-              .subscribe(() => undefined, () => undefined, () => this._router.navigate([ '/comics/' ]));
+              .subscribe(() => undefined, () => undefined, () => this._location.back());
         });
   }
     image(): string {

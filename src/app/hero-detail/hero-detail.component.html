@@ -38,15 +38,29 @@
             </ul>
         </div>
         <div class="col-lg-3">
-            <h3>Allie :</h3>
+            <h3>Allie :
+                <i class="material-icons" style="color:#740f00;
+            float: right " (click)="showDialogAllie()" *ngIf="true">add</i>
+            </h3>
             <ul>
-                <li *ngFor="let allie of hero.allie ">{{allie.name}}</li>
+                <li *ngFor="let allie of hero.allie ">
+                    <p>{{allie.name}}
+                        <i class="material-icons" style="color:#740f00;float: right " (click)="suppAllie(allie.id)" *ngIf="true">remove</i>
+                    </p>
+                </li>
             </ul>
         </div>
         <div class="col-lg-3">
-            <h3>Ennemi :</h3>
+            <h3>Ennemi :
+                <i class="material-icons" style="color:#740f00;
+            float: right " (click)="showDialogEnnemi()" *ngIf="true">add</i>
+            </h3>
             <ul>
-                <li *ngFor="let ennemi of hero.ennemi ">{{ennemi.name}}</li>
+                <li *ngFor="let ennemi of hero.ennemi ">
+                    <p>{{ennemi.name}}
+                        <i class="material-icons" style="color:#740f00;float: right " (click)="suppEnnemi(ennemi.id)" *ngIf="true">remove</i>
+                    </p>
+                </li>
             </ul>
         </div>
     </div>

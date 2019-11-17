@@ -5,6 +5,9 @@
         <!-- [@slider]="ani" PLease this animation to this tile to see animation. stackblitz have error with animations -->
         <div style="height: 300px"  class="tile col-lg-12" [style.background]="'url('+image(i)+')'">
             <div class="comicsTitle overflow-ellipsis" style="font-size: 3vw;width: 90%">{{item.name}}</div>
+            <button mat-fab  class="button-sup" *ngIf="true">
+                <i class="material-icons" (click)="submit(item)" >delete</i>
+            </button>
         </div>
     </ngu-tile>
 

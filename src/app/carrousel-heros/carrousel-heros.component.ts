@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
 import {NguCarouselConfig} from "@ngu/carousel";
@@ -11,7 +11,7 @@ import {HeroSimple} from "../shared/interfaces/HeroSimple";
   templateUrl: './carrousel-heros.component.html',
   styleUrls: ['./carrousel-heros.component.css', './style.scss']
 })
-export class CarrouselHerosComponent implements OnInit {
+export class CarrouselHerosComponent implements OnInit, OnChanges {
   @Input() name: string;
   // la liste des hero simplifié
   private _heros: HeroSimple[];
@@ -31,6 +31,9 @@ export class CarrouselHerosComponent implements OnInit {
     interval: {timing: 1500},
     animation: 'lazy'
   };
+  // private property to store submit$ value
+  private readonly _submit$: EventEmitter<HeroSimple>;
+
 
   /**
    *
@@ -38,12 +41,24 @@ export class CarrouselHerosComponent implements OnInit {
    */
   constructor(private cdr: ChangeDetectorRef) {
     this._heros = [] as HeroSimple[] ;
+    this._submit$= new EventEmitter<HeroSimple>();
   }
 
   /**
    *
    */
   ngOnInit() {
+    this.load();
+  }
+  ngOnChanges(record) {
+    console.log(record.heros)
+      if (record.heros && record.heros.currentValue) {
+        this._heros = record.heros.currentValue;
+        this.load();
+      }
+  }
+
+  load(){
     this.tempData = [] as HeroSimple[];
     this.carouselTileItems$ = of('carousel').pipe(
         map(val => {
@@ -74,5 +89,20 @@ export class CarrouselHerosComponent implements OnInit {
    */
   get heros(): HeroSimple[] {
     return this._heros;
+  }
+
+
+  /**
+   * Returns private property _submit$
+   */
+  @Output('submit')
+  get submit$(): EventEmitter<HeroSimple> {
+    return this._submit$;
+  }
+  /**
+   * Function to emit event to submit form and person
+   */
+  submit(hero: HeroSimple) {
+    this._submit$.emit(hero);
   }
 }

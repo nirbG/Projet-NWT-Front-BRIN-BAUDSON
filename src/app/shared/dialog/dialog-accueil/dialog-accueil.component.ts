@@ -7,6 +7,11 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./dialog-accueil.component.css']
 })
 export class DialogAccueilComponent implements OnInit {
+  /**
+   *
+   * @param _dialogRef
+   * @param _wall
+   */
   constructor(
       private _dialogRef: MatDialogRef<DialogAccueilComponent>,
       @Inject(MAT_DIALOG_DATA) private _wall: any) {}
@@ -18,19 +23,10 @@ export class DialogAccueilComponent implements OnInit {
   }
 
   /**
-   * Function to cancel the process and close the modal
+   * ferme le modal
    */
   onCancel() {
     this._dialogRef.close();
   }
 
-  /**
-   * Function to close the modal and send person to parent
-   */
-  onSave() {
-    this._dialogRef.close();
-  }
-  get wall(): any {
-    return this._wall;
-  }
 }

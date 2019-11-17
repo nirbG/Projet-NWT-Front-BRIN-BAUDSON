@@ -63,3 +63,8 @@ mat-list-item:hover {
 .buttons-fab .button-up {
     left: -150px;
 }
+.buttons-fab i{
+    padding: 100%;
+    margin: -100%;
+}
+

@@ -11,7 +11,13 @@ import {Hero, HEROS} from "../shared/interfaces/Heros";
 export class HerosService {
     // private property to store all backend URLs
     private readonly _backendURL: any;
+    // base des heros
     private _herostab: Hero[];
+
+    /**
+     *
+     * @param _http
+     */
     constructor(private _http: HttpClient) {
         this._herostab = HEROS as Hero[];
         this._backendURL = {};
@@ -25,8 +31,9 @@ export class HerosService {
         // build all backend urls
         Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints[ k ]}`);
     }
+
     /**
-     * Function to return list of person
+     * retourne les heros
      */
     fetch(): Observable<Hero[]> {
         return of(this._herostab);
@@ -37,7 +44,7 @@ export class HerosService {
             );*/
     }
     /**
-     * Function to return list of person
+     * retourne quelque heros
      */
     some(start: number, end: number): Observable<Hero[]> {
         return of(this._herostab.slice(start, end));
@@ -50,11 +57,26 @@ export class HerosService {
          */
     }
 
-
+    /**
+     * retourn un heros
+     * @param id
+     */
     fetchOne(id: string): Observable<Hero> {
         return of(this._herostab.find( (_: Hero) => _.id === id));
     }
 
+    /**
+     * cree un heros
+     * @param data
+     */
+    create(data: Hero): Observable<Hero> {
+        return null;
+    }
+
+    /**
+     * modifie un heros
+     * @param h
+     */
     update(h: Hero): Observable<Hero> {
         return null;
     }
