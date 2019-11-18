@@ -16,7 +16,7 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
   // la liste des hero simplifié
   private _heros: HeroSimple[];
   // variable tmp
-  tempData: HeroSimple[];
+  private _tempData: HeroSimple[];
   // Carousel item
   public carouselTileItems$: Observable<HeroSimple[]>;
   // carousel conf
@@ -51,18 +51,18 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
     this.load();
   }
   ngOnChanges(record) {
-    console.log(record.heros)
-      if (record.heros && record.heros.currentValue) {
+    console.log(record);
+      if (record.heros && record.heros.currentValue!==record.heros.previousValue) {
         this._heros = record.heros.currentValue;
         this.load();
       }
   }
 
   load(){
-    this.tempData = [] as HeroSimple[];
+    this._tempData = [] as HeroSimple[];
     this.carouselTileItems$ = of('carousel').pipe(
         map(val => {
-          const data = (this.tempData = this.tempData.concat(this._heros));
+          const data = (this._tempData = this._tempData.concat(this._heros));
           return data;
         })
     );
@@ -73,7 +73,7 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
    * @param id
    */
   image(id: number): string {
-    return '../../assets/heros/' + this.tempData[id].photo;
+    return '../../assets/heros/' + this._tempData[id].photo;
   }
 
   /**
@@ -104,5 +104,9 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
    */
   submit(hero: HeroSimple) {
     this._submit$.emit(hero);
+    this.load();
+  }
+  get tempData(): HeroSimple[] {
+    return this._tempData;
   }
 }

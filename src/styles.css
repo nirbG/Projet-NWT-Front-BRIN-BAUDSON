@@ -82,7 +82,13 @@ mat-dialog-container{
 
 
 .snackWatchers{
-    background-color: #740f00 !important;
+    width: 100%;
+    background-color: transparent !important;
+    box-shadow: none;
+    max-width: 10000px !important;
+
+    margin: 0 !important;
+    padding: 0%!important;
 }
 
 .snackWatchers h5{

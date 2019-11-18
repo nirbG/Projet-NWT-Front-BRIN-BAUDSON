@@ -8,6 +8,7 @@
     padding: 15px;
 }
 .btn-admin{
-    background-color: black !important;
+    background-color: transparent !important;
     color: #740f00 !important;
+    border-color: #740f00;
 }

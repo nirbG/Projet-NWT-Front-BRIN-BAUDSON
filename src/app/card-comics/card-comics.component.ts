@@ -41,7 +41,7 @@ export class CardComicsComponent implements OnInit {
    * ajoute le comics a la BD
    */
   add() {
-    this.openSnackBar('add :' + this._card.title);
+    this.openSnackBar('Vous avez ajouté  ' + this._card.title+' à votre BDtheque');
     this._card.inBD = true;
     this._card.wish = false;
   }
@@ -50,7 +50,7 @@ export class CardComicsComponent implements OnInit {
    * supprime le comics de la BD
    */
   supp() {
-    this.openSnackBar('supp :' + this._card.title);
+    this.openSnackBar('Vous avez supprimé ' + this._card.title+' à votre BDtheque');
     this._card.inBD = false;
   }
 
@@ -58,7 +58,7 @@ export class CardComicsComponent implements OnInit {
    * ajoute le comics aux envie
    */
   addWish() {
-    this.openSnackBar('addWish :' + this._card.title);
+    this.openSnackBar('Vous avez ajouté ' + this._card.title+' à vos envie');
     this._card.wish = true;
   }
 
@@ -66,7 +66,7 @@ export class CardComicsComponent implements OnInit {
    * supprime le comics de envie
    */
   suppWish() {
-    this.openSnackBar('suppWish :' + this._card.title);
+    this.openSnackBar('Vous avez supprimé ' + this._card.title+' à vos envie');
     this._card.wish = false;
   }
 

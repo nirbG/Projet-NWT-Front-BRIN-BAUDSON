@@ -25,6 +25,13 @@ export class ComicsComponent implements OnInit {
   private _nbend = 10;
   // boolean qui permet d'afficher une barre de chargement
   private _isLoadMore: boolean;
+  // etat de l'affichage
+  private _isList: boolean;
+  // nbComics
+  private _nbComics: number;
+  // indice
+  private _indice: number[];
+
 
   /**
    *
@@ -36,6 +43,13 @@ export class ComicsComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar, private _service: ServiceComicsService,
               private _dialog: MatDialog, private _router: Router) {
     this._dialogStatus = 'inactive';
+    this._isList = false;
+    this._nbComics = 10;
+    this._indice = [5,10,20];
+  }
+
+  get indice(): number[] {
+    return this._indice;
   }
 
   /**
@@ -62,7 +76,7 @@ export class ComicsComponent implements OnInit {
         () => {
           this._isLoadMore = false;
           this._nbstart = this._nbend;
-          this._nbend = this._nbend + 10;
+          this._nbend = this._nbend + this._nbComics;
           this.Load();
         }, 2000
     );
@@ -111,6 +125,7 @@ export class ComicsComponent implements OnInit {
     return this._service
         .create(comics);
   }
+
   /************************************************************GET & SET **********************************/
 
   get dialogStatus(): string {
@@ -121,5 +136,14 @@ export class ComicsComponent implements OnInit {
   }
   get isLoadMore(): boolean {
     return this._isLoadMore;
+  }
+  get isList(): boolean {
+    return this._isList;
+  }
+  changeAffichage(value: boolean) {
+    this._isList = value;
+  }
+  setInidce(newIndice: number){
+    this._nbComics=newIndice;
   }
 }

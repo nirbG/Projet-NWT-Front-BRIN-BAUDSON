@@ -129,7 +129,7 @@ export class FormHerosComponent implements OnInit, OnChanges {
         Validators.required, Validators.minLength(2)
       ])),
       pouvoir: new FormControl(''),
-      photo: new FormControl('https://randomuser.me/api/portraits/lego/6.jpg'),
+      photo: new FormControl('../../../assets/photoherosbase.png'),
       isHumain: new FormControl(false)
     });
   }

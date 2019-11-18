@@ -33,14 +33,22 @@ export class ComicsDetailComponent implements OnInit {
     this._dialogStatus = 'active';
     let data: Hero[];
     this._heroService.fetch().subscribe((_: Hero[]) => data = _);
-    const data2 = data as HeroSimple[];
+    const data2 = this._comics.otherHeros;
+    let objMap=data as HeroSimple[];
+    objMap = objMap.filter((_: HeroSimple) => this._comics.mainHeros.id !== _.id);
+    data.forEach((e1)=>data2.forEach((e2)=> {
+          if(e1.id === e2.id){
+            objMap= objMap.filter((_: HeroSimple) => e1.id !== _.id);
+          }
+        }
+    ));
     // open modal
     this._herosSimpleDialog = this._dialog.open(DialogaddHeroSimpleComponent, {
       width: '70%',
       height: '70%',
       disableClose: true,
       data: {
-        heros: data2,
+        heros: objMap,
         main: false,
       }
     });
@@ -49,8 +57,7 @@ export class ComicsDetailComponent implements OnInit {
     this._herosSimpleDialog.afterClosed()
         .pipe()
         .subscribe(
-            (_: HeroSimple) => {this._comics.otherHeros = this._comics.otherHeros.concat(_);
-              console.log(this._comics.otherHeros);},
+            (_: HeroSimple) => {this._comics.otherHeros = this._comics.otherHeros.concat(_);},
             _ => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive',
         );
@@ -74,8 +81,15 @@ export class ComicsDetailComponent implements OnInit {
     this._dialogStatus = 'active';
     let data: Hero[];
     this._heroService.fetch().subscribe((_: Hero[]) => data = _);
-    const data2 = data.filter( (_: HeroSimple) => _.id !== this._comics.mainHeros.id);
-    // open modal
+    const data2 = this._comics.otherHeros;
+    let objMap=data as HeroSimple[];
+    objMap = objMap.filter((_: HeroSimple) => this._comics.mainHeros.id !== _.id);
+    data.forEach((e1)=>data2.forEach((e2)=> {
+          if(e1.id === e2.id){
+            objMap= objMap.filter((_: HeroSimple) => e1.id !== _.id);
+          }
+        }
+    ));
     this._herosSimpleDialog = this._dialog.open(DialogaddHeroSimpleComponent, {
       width: '70%',
       height: '70%',

@@ -39,7 +39,7 @@ export class UpdateHeroComponent implements OnInit {
             width: '500px',
             disableClose: true,
             data: hero,
-            panelClass: 'col-lg-12',
+            //panelClass: 'col-lg-12',
           });
 
           // subscribe to afterClosed observable to set dialog status and do process

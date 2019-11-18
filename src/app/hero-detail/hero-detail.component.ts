@@ -106,7 +106,10 @@ export class HeroDetailComponent implements OnInit {
       width: '70%',
       height: '50%',
       disableClose: true,
-      data: data2
+      data: {
+        heros: data2,
+        main: true,
+      }
     });
 
     // subscribe to afterClosed observable to set dialog status and do process
@@ -134,7 +137,10 @@ export class HeroDetailComponent implements OnInit {
       width: '70%',
       height: '50%',
       disableClose: true,
-      data: data2
+      data: {
+        heros: data2,
+        main: true,
+      }
     });
 
     // subscribe to afterClosed observable to set dialog status and do process

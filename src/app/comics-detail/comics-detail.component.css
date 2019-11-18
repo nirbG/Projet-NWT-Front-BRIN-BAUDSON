@@ -48,13 +48,14 @@ mat-grid-tile:hover img{
 }
 
 .btn-comics.btn{
-    width: 100%;
     padding: 0%;
 }
 .btn-admin{
-    background-color: black !important;
+    background-color: transparent !important;
     color: #740f00 !important;
+    border-color: #740f00;
 }
+
 
 
 .button-sup{
@@ -63,6 +64,12 @@ mat-grid-tile:hover img{
     right: 0;
     background-color: #740f00;
 }
+
+.nameMainHero{
+    position: absolute;
+    top: 0;
+}
+
 .button-sup i{
     padding: 100%;
     margin: -100%;

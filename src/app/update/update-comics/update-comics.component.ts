@@ -38,7 +38,6 @@ export class UpdateComicsComponent implements OnInit {
             width: '500px',
             disableClose: true,
             data: comics,
-            panelClass: 'col-lg-12',
           });
 
           // subscribe to afterClosed observable to set dialog status and do process

@@ -2,31 +2,36 @@
 <main>
     <img src="../../assets/banner/{{hero.photo}}" style="width: 100%; height: 250px">
     <div style="margin: -150px 10% 0% 10%; padding: 0" class="row">
-        <img src="../../assets/heros/{{hero.photo}}" style="height: 400px; padding: 0" class="col-md-3">
+        <img src="../../assets/heros/{{hero.photo}}" style="height: 400px; padding: 0;" class="col-md-3">
         <div class="col-lg-9" style="padding: 0; margin-top: 6%">
             <div class="col-lg-12">
-                <h1 style="color: #fbf4ff;font-size: 60px;"><strong>{{hero.name}}</strong></h1>
+                <h1 style="color: #fbf4ff;font-size: 60px;padding-bottom: 5%;text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.7);
+        color:white;"><strong>{{hero.name}}</strong></h1>
             </div>
             <div class="col-md-12" style="padding: 0%;margin-top: 1%">
                 <div class="col-md-12">
-                    <p>Superman est un super-héros de bande dessinée américaine appartenant au monde imaginaire de l’Univers DC.
-                        Ce personnage est considéré comme une icône culturelle américaine.
-                        Créé en janvier 1933 par le scénariste américain Jerry Siegel et le dessinateur canadien Joe Shuster alors
-                        qu’ils habitaient tous deux à Cleveland, le personnage fut vendu à Detective Comics. Il apparaît pour la
-                        première fois dans un Action Comics en juin 1938. Le personnage est ensuite repris dans plusieurs pièces
-                        radiophoniques, émissions de télévision, films, comic strips et jeux vidéo. Au vu du succès et de la
-                        notoriété de ses aventures, Superman est essentiel dans la création d’un genre propre aux super-héros</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut mollis dui, quis iaculis felis. Nam ut laoreet lacus. Fusce ac velit consectetur ligula semper rutrum. Maecenas pulvinar scelerisque lacinia. Aliquam diam eros, pellentesque ac purus in, cursus pulvinar tellus. Suspendisse justo urna, eleifend sed maximus ac, viverra eget arcu. Vestibulum dapibus ultrices accumsan. Donec iaculis semper nisl, in rutrum felis. Praesent eleifend magna in elit mattis, sit amet tincidunt metus commodo.
+                    </p>
+                    <p>
+                        Sed in augue ut lorem fringilla eleifend. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed faucibus dignissim viverra. Nulla placerat ipsum nec lorem consequat, et volutpat sem finibus. Etiam in sodales arcu, et volutpat lorem. Integer dui metus, egestas eget mi in, volutpat ultrices urna. Mauris rutrum eros ac nunc mattis sodales. Duis diam lorem, aliquet nec neque quis, molestie euismod quam. Aliquam erat volutpat. Sed nisi mi, cursus a dapibus eget, auctor at eros. Vivamus id justo ac mi ultrices facilisis sit amet in metus. Fusce sed lacinia sem, quis tempus orci. Duis tristique odio lacus, in gravida dolor auctor vitae. Nunc venenatis, est ac sodales rhoncus, nunc ante convallis nibh, vitae malesuada nunc risus et diam. Nam condimentum diam velit, ac posuere quam ultrices quis. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                    </p>
+                    <p>
+                        Nullam lobortis nulla vitae vehicula tristique. Phasellus et consequat nunc. Fusce mollis vel libero nec pretium. Duis nulla sapien, fermentum eget lacus sit amet, ornare blandit metus. Nulla et tellus egestas, egestas ex at, cursus mi. Maecenas commodo libero ac mi gravida aliquet. Ut ac ornare enim. Proin ac risus massa.
+                    </p>
                 </div>
-                <button *ngIf="true" [routerLink]="['/heroEdit', hero.id]" mat-stroked-button class="btn-admin btn  col-lg-5"style="margin-right: 70%" >
-                    <h4>modifier le héros</h4>
-                </button>
-                <button *ngIf="true" mat-stroked-button class="btn-admin btn  col-lg-5" style="margin-right: 70%">
-                    <h4>Suprimer le héros</h4>
-                </button>
             </div>
         </div>
+        <div class="col-md-12 row" style="margin: 3% 0%">
+            <button *ngIf="true" [routerLink]="['/heroEdit', hero.id]" mat-stroked-button class="btn-admin btn  col-lg-6" >
+                <h4>modifier le héros</h4>
+            </button>
+            <button *ngIf="true" mat-stroked-button class="btn-admin btn  col-lg-6" >
+                <h4>Suprimer le héros</h4>
+            </button>
+        </div>
     </div>
-    <div class="col-lg-12 row" style="padding: 0% 10%;margin: 5% 0%">
+    <div class="col-lg-12 row" style="padding: 0% 10%;margin: 3% 0%">
         <div class="col-lg-3">
             <h3>Logo :</h3>
             <img class="col-lg-12" src="../../assets/logo/{{hero.name | lowercase}}.png">
@@ -64,7 +69,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12" style="padding: 3% 10% 3% 10%">
         <div class="title col-lg-12" style="overflow: hidden">
             <img src="../../assets/line.png" class="col-lg-12" height="90px"
                  style="float: right;position: absolute; margin-left: 30%;z-index: -1;">
@@ -74,7 +79,7 @@
             </div>
             <h1>Ses comics :</h1>
         </div>
-        <div class="listComics offset-1 col-lg-10 row" *ngIf="showComics" >
+        <div class="listComics  col-lg-12 row" *ngIf="showComics" >
             <app-card-comics class="col-md-2" style="width: 20%;margin: 1% 0%;flex: 20%;max-width: 20%;"  (addComics)="add($event)"
                              (addWish)="addWish($event)" *ngFor="let comic of comics"  [card]="comic"></app-card-comics>
         </div>

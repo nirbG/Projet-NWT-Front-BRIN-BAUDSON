@@ -45,6 +45,9 @@ import { FormSubscribeComponent } from './shared/form/form-subscribe/form-subscr
 import { DialogAccueilComponent } from './shared/dialog/dialog-accueil/dialog-accueil.component';
 import { DialogConnexionComponent } from './shared/dialog/dialog-connexion/dialog-connexion.component';
 import { DialogaddHeroSimpleComponent } from './shared/dialog/dialogadd-hero-simple/dialogadd-hero-simple.component';
+import {MatSelectModule} from "@angular/material/select";
+import { MaBDthequeComponent } from './ma-bdtheque/ma-bdtheque.component';
+import { MesEnvieComponent } from './mes-envie/mes-envie.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,8 @@ import { DialogaddHeroSimpleComponent } from './shared/dialog/dialogadd-hero-sim
     DialogAccueilComponent,
     DialogConnexionComponent,
     DialogaddHeroSimpleComponent,
+    MaBDthequeComponent,
+    MesEnvieComponent,
   ],
     imports: [
         BrowserModule,
@@ -91,7 +96,8 @@ import { DialogaddHeroSimpleComponent } from './shared/dialog/dialogadd-hero-sim
         ReactiveFormsModule,
         MatInputModule,
         MatDialogModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatSelectModule
     ],
   providers: [AutoCompleteComponent,
       { provide: MAT_SNACK_BAR_DATA, useValue: {} },

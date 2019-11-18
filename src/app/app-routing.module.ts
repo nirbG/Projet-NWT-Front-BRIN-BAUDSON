@@ -9,6 +9,8 @@ import {UpdateComicsComponent} from "./update/update-comics/update-comics.compon
 import {UpdateHeroComponent} from "./update/update-hero/update-hero.component";
 import {AccueilComponent} from "./accueil/accueil.component";
 import {ConnexionComponent} from "./connexion/connexion.component";
+import {MaBDthequeComponent} from "./ma-bdtheque/ma-bdtheque.component";
+import {MesEnvieComponent} from "./mes-envie/mes-envie.component";
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'heros', component: HerosComponent },
   { path: 'hero/:id', component: HeroDetailComponent },
   { path: 'heroEdit/:id', component: UpdateHeroComponent },
+  { path: 'maBDtheque', component: MaBDthequeComponent },
+  { path: 'mesEnvie', component: MesEnvieComponent },
 ];
 
 @NgModule({

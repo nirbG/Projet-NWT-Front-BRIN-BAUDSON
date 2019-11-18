@@ -8,7 +8,7 @@
                 <div class="comicsTitle overflow-ellipsis" style="margin-bottom: 5%; color: #fbf4ff">{{comics.title}}</div>
             </div>
             <div class="col-md-12 row" style="padding: 0%">
-                <div class="col-md-6">
+                <div class="col-md-6" style="padding: 0% 4%">
                     <p>paru le 10/02/2017 chez DC Comics</p>
                     <p>serie : {{comics.mainHeros.name}}</p>
                     <p>ISBN  : {{comics.isbn}}</p>
@@ -16,43 +16,48 @@
                     <p>Price : {{comics.price}} €</p>
                 </div>
                 <div class="col-md-6 btn-DetailComics btn-comics" >
-                    <button *ngIf="!comics.wish && !comics.inBD" mat-stroked-button class="btn" >
+                    <button class="col-lg-12 btn" *ngIf="!comics.wish && !comics.inBD" mat-stroked-button >
                         <h4>Ajouter à la liste d'envie</h4>
                     </button>
-                    <button *ngIf="comics.wish && !comics.inBD" mat-stroked-button class="btn">
+                    <button class="col-lg-12 btn" *ngIf="comics.wish && !comics.inBD" mat-stroked-button >
                         <h4>Supprimer de la liste d'envie</h4>
                     </button>
-                    <button *ngIf="!comics.inBD" mat-stroked-button class="btn">
+                    <button class="col-lg-12 btn" *ngIf="!comics.inBD" mat-stroked-button >
                         <h4>ajouter a la votre BDtheque</h4>
                     </button>
-                    <button *ngIf="comics.inBD" mat-stroked-button class="btn" >
-                        <h4>Suprimer de la votre BDtheque</h4>
+                    <button class="col-lg-12 btn" *ngIf="comics.inBD" mat-stroked-button  >
+                        <h4>Supprimer de la votre BDtheque</h4>
                     </button>
-                    <button *ngIf="true" [routerLink]="['/comicsEdit', comics.isbn]" mat-stroked-button class="btn-admin btn" >
+                    <button class="col-lg-12 btn-admin btn" *ngIf="true" [routerLink]="['/comicsEdit', comics.isbn]" mat-stroked-button>
                         <h4>modifier le comics</h4>
                     </button>
-                    <button *ngIf="true" mat-stroked-button class="btn-admin btn" >
-                        <h4>Suprimer le comics</h4>
+                    <button class="col-lg-12 btn-admin btn" *ngIf="true" mat-stroked-button >
+                        <h4>Supprimer le comics</h4>
                     </button>
                     <i class="fab fa-amazon"></i>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-12 " style="padding: 0% 10%">
+    <div class="col-lg-12 " style="padding: 3% 10% 3% 10%">
         <div class="title col-lg-12 " style="overflow: hidden">
             <img src="../../assets/line.png" class="col-lg-12" style="margin-left: 30%; position: absolute; z-index: -1" height="90px">
-            <h1 style="padding-left: 5%;padding-top: 2%;"><i class="material-icons" style="color:#740f00;"
-           (click)="showDialogOtherHero()" *ngIf="true">add</i>Héros</h1>
+            <h1 style="padding-top: 2%;"><i class="material-icons" style="color:#740f00;"
+           (click)="showDialogOtherHero()" *ngIf="true">add</i><strong style="color: #740f00">Ses </strong>Héros</h1>
         </div>
         <div class="col-lg-12 row">
             <div class="col-lg-9">
+                <h4 style="text-align: right">Héros & Méchant</h4>
                 <app-carrousel-heros [heros]="comics.otherHeros" (submit)="suppOtherHeros($event)"></app-carrousel-heros>
             </div>
             <div class="col-lg-3" style="text-align: center">
                 <img [src]='image(comics.mainHeros.photo) ' style="height: 400px">
+                <h4 class="nameMainHero " style="text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.7);
+                color:white;">
+                    <strong>Héros Principale</strong>
+                </h4>
                 <button mat-fab  class="button-sup" *ngIf="true">
-                    <i class="material-icons" (click)="showDialogMainHero()" >create</i>
+                    <i class="material-icons" (click)="showDialogMainHero()">create</i>
                 </button>
             </div>
         </div>

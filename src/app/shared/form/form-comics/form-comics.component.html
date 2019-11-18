@@ -5,8 +5,8 @@
 <mat-dialog-content>
     <form novalidate [formGroup]="form">
         <table class="full-width" cellspacing="0">
-            <tr>
-                <td>
+            <tr class="col-lg-12 row" style="padding: 0%;margin: 0%">
+                <td class="col-lg-6" style="">
                     <mat-form-field class="full-width" [class.mgb15]="form.get('isbn').dirty && form.get('isbn').invalid">
                         <input matInput placeholder="Isbn" formControlName="isbn" minlength="2" required name="isbn" />
                         <mat-error *ngIf="form.get('isbn').dirty && form.get('isbn').hasError('required')">
@@ -38,8 +38,9 @@
                         </mat-error>
                     </mat-form-field>
                 </td>
-                <td class="align-right">
-                    <img width="112" src="../../../assets/comics/{{ form.get('photo').value }}"/>
+                <td class="align-right col-lg-6" style="border-left: dashed gray;text-align: center">
+                    <img width="112" src="../../../assets/comics/{{ form.get('photo').value }}"
+                    style="height: 100%; margin: 0"/>
                     <input type="hidden" formControlName="photo" name="photo">
                 </td>
             </tr>

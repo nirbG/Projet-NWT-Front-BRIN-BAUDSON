@@ -5,11 +5,37 @@
     </button>
     <div class="title col-lg-12 " style="overflow: hidden">
         <img src="../../assets/line.png" class="col-lg-12" style="margin-left: 30%; position: absolute; z-index: -1" height="90px">
-        <h1 style="padding-left: 5%">Nos comics</h1>
+        <h1 style="padding-left: 5%"><strong style="color: #740f00">Nos</strong> comics</h1>
+        <div class="col-lg-12 row" style="padding: 0% 5%;">
+            <div class="col-lg-6">
+                <button mat-icon-button class="icon-view">
+                    <i class="medium material-icons"
+                       [ngClass]="!isList ? {'active': true} : {'active':false}"
+                       (click)="changeAffichage(false)">apps</i>
+                </button>
+                <button mat-icon-button class="icon-view">
+                    <i class="medium material-icons"
+                       [ngClass]="isList ? {'active': true} : {'active':false}"
+                       (click)="changeAffichage(true)">format_list_bulleted</i>
+                </button>
+            </div>
+            <mat-form-field style="float: right" class="col-lg-6">
+                <mat-label>nombre de comics</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let nombre of indice" [value]="nombre" (click)="setInidce(nombre)">
+                        {{nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
-    <div class="listComics row">
+    <div class="listComics row" *ngIf="!isList">
         <app-card-comics  class="col-md-2" style="width: 20%; margin: 1% 0%" *ngFor="let comic of comics"  [card]="comic"
         (deleteComics)="delete($event)"></app-card-comics>
+    </div>
+    <div class="listComics row" *ngIf="isList">
+        <app-list-comics  class="col-md-12"  *ngFor="let comic of comics"  [list]="comic"
+                          (deleteComics)="delete($event)"></app-list-comics>
     </div>
     <section class="col-lg-12" *ngIf="isLoadMore">
         <div class="loader " >
