@@ -5,6 +5,8 @@ import {environment} from "../../environments/environment";
 import {from, Observable, of} from "rxjs";
 import {Hero, HEROS} from "../shared/interfaces/Heros";
 import {defaultIfEmpty, filter, map} from "rxjs/operators";
+import {ServiceComicsService} from "./service-comics.service";
+import {HeroSimple} from "../shared/interfaces/HeroSimple";
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +21,7 @@ export class HerosService {
      *
      * @param _http
      */
-    constructor(private _http: HttpClient) {
+    constructor(private _http: HttpClient,private _comicsService: ServiceComicsService) {
         this._herostab = HEROS as Hero[];
         this._backendURL = {};
 
@@ -82,6 +84,8 @@ export class HerosService {
     }
 
     delete(id: string): Observable<string> {
+        this._comicsService.fetch().subscribe((_:Comics[]) => this.updateAllcomics(_,id));
+        this.fetch().subscribe((_: Hero[]) => this.updateAllHero(_,id));
         return this._http.delete(this._backendURL.delHero.replace(':id', id))
             .pipe(
                 map(_ => id)
@@ -94,6 +98,47 @@ export class HerosService {
         return { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList)) };
     }
 
+    updateAllcomics(comics: Comics[], id: string){
+        comics.forEach((c) => {
+            c.otherHeros.forEach((h) => {
+                if (h._id === id) {
+                    this._comicsService.update({
+                        _id: c._id, otherHeros:
+                            c.otherHeros.filter((__: HeroSimple) => __._id !== id)
+                    } as Comics).subscribe((_) => console.log('suppOther'+c.title))
+                }
 
+            });
+            if (c.mainHeros._id === id) {
+                this._comicsService.update({
+                    _id: c._id, mainHeros: {_id:'none',
+                        name:'none',
+                    photo:'none.jpg'
+                    }
+                } as Comics).subscribe((_) => console.log('suppMain'+c.title))
+            }
+        });
+    }
+    updateAllHero(heros: Hero[], id: string){
+        heros.forEach((c) => {
+            c.ennemi.forEach((h) => {
+                if (h._id === id) {
+                    this.update({
+                        _id: c._id, ennemi:
+                            c.ennemi.filter((__: HeroSimple) => __._id !== id)
+                    } as Hero).subscribe((_) => console.log('suppennemi'+c.name))
+                }
 
+            });
+            c.allie.forEach((h) => {
+                if (h._id === id) {
+                    this.update({
+                        _id: c._id, allie:
+                            c.allie.filter((__: HeroSimple) => __._id !== id)
+                    } as Hero).subscribe((_) => console.log('suppallie'+c.name))
+                }
+
+            });
+        });
+    }
 }

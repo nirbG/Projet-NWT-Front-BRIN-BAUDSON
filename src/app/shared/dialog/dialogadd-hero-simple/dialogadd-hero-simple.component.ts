@@ -13,11 +13,18 @@ export class DialogaddHeroSimpleComponent implements OnInit {
   private _data: HeroSimple[];
   private _heros: Hero[];
   private _mainHero: boolean;
+
+  get message(): string {
+    return this._message;
+  }
+
+  private _message: string;
   constructor(private _dialogRef: MatDialogRef<DialogaddHeroSimpleComponent>,
               @Inject(MAT_DIALOG_DATA) private _dataInject: any) {
     this._data = [] as HeroSimple[];
     this._heros = this._dataInject.heros;
     this._mainHero = this._dataInject.main;
+    this._message= this._dataInject.message;
   };
 
   ngOnInit() {}

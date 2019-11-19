@@ -131,12 +131,11 @@ export class FormHerosComponent implements OnInit, OnChanges {
    */
   private _buildForm(): FormGroup {
     return new FormGroup({
-      //_id: new FormControl('0'),
       name: new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),
       pouvoir: new FormControl(''),
-      photo: new FormControl('../../../assets/photoherosbase.png'),
+      photo: new FormControl('photoherosbase.png'),
       isHumain: new FormControl(false)
     });
   }

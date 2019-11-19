@@ -182,11 +182,12 @@ export class HeroDetailComponent implements OnInit {
     // open modal
     this._herosSimpleDialog = this._dialog.open(DialogaddHeroSimpleComponent, {
       width: '70%',
-      height: '50%',
+      height: '70%',
       disableClose: true,
       data: {
         heros: heroSimples,
         main: true,
+        message:'Ajouter des alliés'
       }
     });
 
@@ -214,11 +215,12 @@ export class HeroDetailComponent implements OnInit {
     // open modal
     this._herosSimpleDialog = this._dialog.open(DialogaddHeroSimpleComponent, {
       width: '70%',
-      height: '50%',
+      height: '70%',
       disableClose: true,
       data: {
         heros: heroSimples,
         main: true,
+        message:'Ajouter des ennemis'
       }
     });
 

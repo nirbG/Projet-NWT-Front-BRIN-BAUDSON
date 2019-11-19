@@ -68,6 +68,7 @@ export class ComicsDetailComponent implements OnInit {
       data: {
         heros: objMap,
         main: false,
+        message:'Ajouter des alliés'
       }
     });
 
@@ -85,8 +86,12 @@ export class ComicsDetailComponent implements OnInit {
         );
   }
   /************************************************************GET & SET **********************************/
-  image(photo: string) {
-    return '../../assets/heros/' + photo;
+  image() {
+    if(this._comics.mainHeros === {} as HeroSimple){
+      return '../../assets/heros/none.jpg'
+    }else {
+      return '../../assets/heros/' + this._comics.mainHeros.photo;
+    }
   }
 
   get comics(): any {
@@ -119,6 +124,7 @@ export class ComicsDetailComponent implements OnInit {
       data: {
         heros: objMap,
         main: true,
+        message:'Ajouter des alliés'
       }
     });
 

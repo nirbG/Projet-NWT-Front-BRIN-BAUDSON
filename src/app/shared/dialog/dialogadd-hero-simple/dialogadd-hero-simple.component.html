@@ -1,6 +1,13 @@
-<mat-toolbar style="background-color: #740f00; color: white"><h4>add heros</h4><i (click)="onCancel()">close</i></mat-toolbar>
+<mat-toolbar  class="col-lg-12"[ngStyle]="{'background-color': 'rgb(156, 48, 255)'}"  >
+    <mat-toolbar-row style="color: white">
+        <span>{{this.message}}</span>
+        <i class="material-icons x-men"  >do_not_disturb_alt</i>
+        <i class="material-icons x-men" (click)="onCancel()" >do_not_disturb</i>
+    </mat-toolbar-row>
+</mat-toolbar>
 <div class="col-lg-12 marPad row"style="max-height:200px">
     <div *ngFor="let hero of heros" (click)="add(hero)" class="tile col-lg-2 marPad" >
         <img style="height: 200px;" src="{{image(hero.photo)}}" class="col-lg-12  marPad">
     </div>
+
 </div>

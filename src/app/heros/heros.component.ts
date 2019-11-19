@@ -91,7 +91,8 @@ export class HerosComponent implements OnInit {
 
     // open modal
     this._herosDialog = this._dialog.open(DialogHerosComponent, {
-      width: '500px',
+      width: '50%',
+      maxHeight: '50%',
       disableClose: true
     });
 

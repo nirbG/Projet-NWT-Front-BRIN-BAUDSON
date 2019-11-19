@@ -1,6 +1,6 @@
 <mat-toolbar style="background-color: #740f00; color: #fbf4ff">
-    <h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ formh.get('name').value }}</h2>
-    <h2 mat-dialog-title *ngIf="!isUpdateMode">Create new Heros </h2>
+    <h2 mat-dialog-title *ngIf="isUpdateMode">Modifier {{ formh.get('name').value }}</h2>
+    <h2 mat-dialog-title *ngIf="!isUpdateMode">Ajouter Un Héros</h2>
 </mat-toolbar>
 <mat-dialog-content>
     <form novalidate [formGroup]="formh">

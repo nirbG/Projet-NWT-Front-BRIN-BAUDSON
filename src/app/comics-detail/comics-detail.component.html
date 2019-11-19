@@ -9,8 +9,8 @@
             </div>
             <div class="col-md-12 row" style="padding: 0%">
                 <div class="col-md-6" style="padding: 0% 4%">
-                    <p>paru le 10/02/2017 chez DC Comics</p>
-                    <p>serie : </p>
+                    <p>Paru le 10/02/2017 chez DC Comics</p>
+                    <p>Série : {{comics.mainHeros.name}}</p>
                     <p>ISBN  : {{comics._id}}</p>
                     <p>EAN   : 978-2809454130</p>
                     <p>Price : {{comics.price}} €</p>
@@ -26,14 +26,14 @@
                     </button>
                     <button class="col-lg-12 btn" (click)="add()"
                             *ngIf="!comics.inBD" mat-stroked-button >
-                        <h4>ajouter a la votre BDtheque</h4>
+                        <h4>Ajouter à votre BDtheque</h4>
                     </button>
                     <button class="col-lg-12 btn" (click)="supp()"
                             *ngIf="comics.inBD" mat-stroked-button >
-                        <h4>Supprimer de la votre BDtheque</h4>
+                        <h4>Supprimer de votre BDtheque</h4>
                     </button>
                     <button class="col-lg-12 btn-admin btn" *ngIf="true" [routerLink]="['/comicsEdit', comics._id]" mat-stroked-button>
-                        <h4>modifier le comics</h4>
+                        <h4>Modifier le comics</h4>
                     </button>
                     <button class="col-lg-12 btn-admin btn" *ngIf="true" (click)="suppComics()" mat-stroked-button >
                         <h4>Supprimer le comics</h4>
@@ -51,14 +51,14 @@
         </div>
         <div class="col-lg-12 row">
             <div class="col-lg-9">
-                <h4 style="text-align: right">Héros & Méchant</h4>
+                <h4 style="text-align: right">Héros & Méchants</h4>
                 <app-carrousel-heros [heros]="comics.otherHeros" (submit)="suppOtherHeros($event)"></app-carrousel-heros>
             </div>
             <div class="col-lg-3" style="text-align: center">
-                <img [src]='image(comics.mainHeros.photo) ' style="height: 400px">
+                <img [src]='image()' style="height: 400px;width: 110%;">
                 <h4 class="nameMainHero " style="text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.7);
                 color:white;">
-                    <strong>Héros Principale</strong>
+                    <strong>Héro principale</strong>
                 </h4>
                 <button mat-fab  class="button-sup" *ngIf="true">
                     <i class="material-icons" (click)="updateMainHeros()">create</i>

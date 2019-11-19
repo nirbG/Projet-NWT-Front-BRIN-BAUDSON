@@ -16,6 +16,12 @@ export class CardComicsComponent implements OnInit {
   private _show: boolean;
   // private property to store delete$ value
   private readonly _delete$: EventEmitter<Comics>;
+  // private property to store suppInBD value
+  private readonly _suppInBD$: EventEmitter<Comics>;
+  // private property to store suppInBD value
+  private readonly _suppInwish$: EventEmitter<Comics>;
+  // private property to store suppInBD value
+  private readonly _addInBD$: EventEmitter<Comics>;
   private _suppAuth: boolean;
 
   /**
@@ -24,6 +30,9 @@ export class CardComicsComponent implements OnInit {
    */
   constructor(private _snackBar: MatSnackBar, private _serviceComics: ServiceComicsService) {
     this._delete$ = new EventEmitter<Comics>();
+    this._suppInBD$ = new EventEmitter<Comics>();
+    this._suppInwish$ = new EventEmitter<Comics>();
+    this._addInBD$ = new EventEmitter<Comics>();
     this._show = false;
     this._card = {} as Comics ;
     this._suppAuth= false;
@@ -56,6 +65,7 @@ export class CardComicsComponent implements OnInit {
       this.openSnackBar('Vous avez ajouté  ' + this._card.title+' à votre BDtheque');
       this._card.inBD = true;
       this._card.wish = false;
+      this.addInBD();
     });
 
   }
@@ -66,10 +76,13 @@ export class CardComicsComponent implements OnInit {
   supp() {
     this._serviceComics.update({
       _id: this._card._id,
-      inBD: true,
+      inBD: false,
+      wish: false,
     }as Comics).subscribe( (_) => {
       this.openSnackBar('Vous avez supprimé ' + this._card.title + ' à votre BDtheque');
       this._card.inBD = false;
+      this._card.wish= false;
+      this.suppInBD();
     });
   }
 
@@ -96,6 +109,7 @@ export class CardComicsComponent implements OnInit {
     }as Comics).subscribe( (_) => {
       this.openSnackBar('Vous avez supprimé ' + this._card.title + ' à vos envie');
       this._card.wish = false;
+      this.suppInwish();
     })
   }
 
@@ -118,10 +132,32 @@ export class CardComicsComponent implements OnInit {
   suppComics(){
     this._delete$.emit(this.card);
   }
+  /**
+   * emet l'event a fin de supprimer le comics
+   */
+  suppInBD(){
+    this._suppInBD$.emit(this.card);
+  }
+
+  suppInwish(){
+    this._suppInwish$.emit(this.card);
+  }
+ addInBD(){
+    this._addInBD$.emit(this.card);
+  }
   /********************************************GET&SET*****************************************/
 
   @Output('deleteComics') get delete$(): EventEmitter<Comics> {
     return this._delete$;
+  }
+  @Output('suppInBD') get suppInBD$(): EventEmitter<Comics> {
+    return this._suppInBD$;
+  }
+  @Output('suppInwish') get suppInwish$(): EventEmitter<Comics> {
+    return this._suppInwish$;
+  }
+  @Output('addInBD') get addInBD$(): EventEmitter<Comics> {
+    return this._addInBD$;
   }
   /**
    * Returns Comics
