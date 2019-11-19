@@ -89,6 +89,8 @@ export class FormHerosComponent implements OnInit, OnChanges {
     if (record.model && record.model.currentValue) {
       this._model = record.model.currentValue;
       this._isUpdateMode = true;
+      console.log(record.model);
+      console.log(record.model.currentValue);
       this._formh.patchValue(this._model);
     } else {
       this._model = {

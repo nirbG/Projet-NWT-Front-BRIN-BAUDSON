@@ -1,11 +1,8 @@
 <app-navbar></app-navbar>
 <main>
-    <button id="button-add" (click)="showDialog()" *ngIf="dialogStatus === 'inactive'" mat-fab color="accent">
-        <i class="material-icons">add</i>
-    </button>
     <div class="title col-lg-12 " style="overflow: hidden">
         <img src="../../assets/line.png" class="col-lg-12" style="margin-left: 30%; position: absolute; z-index: -1" height="90px">
-        <h1 style="padding-left: 5%"><strong style="color: #740f00">Mes</strong> envie</h1>
+        <h1 style="padding-left: 5%"><strong style="color: #740f00">Mes</strong> envies</h1>
         <div class="col-lg-12 row" style="padding: 0% 5%;">
             <div class="col-lg-6">
                 <button mat-icon-button class="icon-view">
@@ -19,14 +16,6 @@
                        (click)="changeAffichage(true)">format_list_bulleted</i>
                 </button>
             </div>
-            <mat-form-field style="float: right" class="col-lg-6">
-                <mat-label>nombre de comics</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let nombre of indice" [value]="nombre" (click)="setInidce(nombre)">
-                        {{nombre}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
         </div>
     </div>
     <div class="listComics row" *ngIf="comics.length<1">
@@ -42,17 +31,10 @@
                           (deleteComics)="delete($event)" (suppInwish)="suppwish($event)" (addInBD)="addInBd($event)"
         ></app-list-comics>
     </div>
-    <section class="col-lg-12" *ngIf="isLoadMore">
-        <div class="loader " >
-            <svg class="circular">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-            </svg>
-        </div>
-    </section>
     <div class="title col-lg-12 " style="margin-bottom: 100px">
         <img src="../../assets/line.png" class="col-lg-12"
              style="float: right; position: absolute; z-index: -1;margin-left: -30%"
-             height="90px" (mouseover)="seeMore()" >
+             height="90px" >
     </div>
 </main>
 <app-footer></app-footer>

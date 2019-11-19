@@ -68,7 +68,7 @@ export class ComicsDetailComponent implements OnInit {
       data: {
         heros: objMap,
         main: false,
-        message:'Ajouter des alliés'
+        message:'Ajouter des heros secondaires'
       }
     });
 
@@ -124,7 +124,7 @@ export class ComicsDetailComponent implements OnInit {
       data: {
         heros: objMap,
         main: true,
-        message:'Ajouter des alliés'
+        message:'Modifier le héro principale'
       }
     });
 
@@ -214,5 +214,9 @@ export class ComicsDetailComponent implements OnInit {
       data: message,
       panelClass: ['snackWatchers']
     });
+  }
+
+  message() {
+    return 'Aucune donnée n\'est disponible';
   }
 }

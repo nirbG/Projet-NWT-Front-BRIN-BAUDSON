@@ -246,4 +246,7 @@ export class HeroDetailComponent implements OnInit {
     return this._hero;
   }
 
+  message() {
+   return 'Aucune donnée n\'est disponible';
+  }
 }
