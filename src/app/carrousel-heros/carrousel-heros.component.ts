@@ -19,6 +19,7 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
   private _tempData: HeroSimple[];
   // Carousel item
   public carouselTileItems$: Observable<HeroSimple[]>;
+
   // carousel conf
   public carouselTileConfig: NguCarouselConfig = {
     grid: {xs: 1, sm: 1, md: 3, lg: 3, all: 0},
@@ -33,6 +34,9 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
   };
   // private property to store submit$ value
   private readonly _submit$: EventEmitter<HeroSimple>;
+  private readonly _showDialog$: EventEmitter<void>;
+  //
+  private readonly _addotherHerosImg: string;
 
 
   /**
@@ -42,6 +46,8 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
   constructor(private cdr: ChangeDetectorRef) {
     this._heros = [] as HeroSimple[] ;
     this._submit$= new EventEmitter<HeroSimple>();
+    this._showDialog$= new EventEmitter<void>();
+    this._addotherHerosImg = '../../assets/heros/otherHeros.jpg';
   }
 
   /**
@@ -91,6 +97,12 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
     return this._heros;
   }
 
+  /**
+   * Returns les heros
+   */
+  get addotherHerosImg(): string {
+    return this._addotherHerosImg;
+  }
 
   /**
    * Returns private property _submit$
@@ -106,6 +118,22 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
     this._submit$.emit(hero);
     this.load();
   }
+
+  /**
+   * Returns private property _submit$
+   */
+  @Output('showDialog')
+  get showDialog$(): EventEmitter<void> {
+    return this._showDialog$;
+  }
+  /**
+   * Function to emit event to submit form and person
+   */
+  showDialog() {
+    this._showDialog$.emit();
+  }
+
+
   get tempData(): HeroSimple[] {
     return this._tempData;
   }

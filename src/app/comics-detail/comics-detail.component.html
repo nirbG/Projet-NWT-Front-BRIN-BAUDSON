@@ -13,7 +13,7 @@
                     <p>Série : {{comics.mainHeros.name}}</p>
                     <p>ISBN  : {{comics._id}}</p>
                     <p>EAN   : 978-2809454130</p>
-                    <p>Price : {{comics.price}} €</p>
+                    <p>Prix : {{comics.price}} €</p>
                 </div>
                 <div class="col-md-6 btn-DetailComics btn-comics" >
                     <button class="col-lg-12 btn" (click)="addWish()"
@@ -46,12 +46,12 @@
     <div class="col-lg-12 " style="padding: 3% 10% 3% 10%">
         <div class="title col-lg-12 " style="overflow: hidden">
             <img src="../../assets/line.png" class="col-lg-12" style="margin-left: 30%; position: absolute; z-index: -1" height="90px">
-            <h1 style="padding-top: 2%;"><i class="material-icons" style="color:#740f00;"
-           (click)="updateOthersHeros()" *ngIf="true">add</i><strong style="color: #740f00">Ses </strong>Héros</h1>
+            <h1 style="padding-top: 2%;"><strong style="color: #740f00">Ses </strong>Héros</h1>
         </div>
         <div class="col-lg-12 row">
             <div class="col-lg-9">
-                <h4 style="text-align: right">Héros & Méchants</h4>
+                <h4 style="text-align: right"><i class="material-icons" style="color:#740f00; float :right"
+                                                 (click)="updateOthersHeros()" *ngIf="true">add</i>Héros & Méchants</h4>
                 <div class="listComics row" *ngIf="comics.otherHeros.length<1">
                     <app-none-value class="col-lg-12" [message]="message()"></app-none-value>
                 </div>

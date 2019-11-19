@@ -132,7 +132,7 @@ export class FormComicsComponent implements OnInit, OnChanges {
       title: new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(10)
       ])),
-      photo: new FormControl('../../../assets/photobase.png'),
+      photo: new FormControl('photobase.png'),
       price: new FormControl('', Validators.compose([
         Validators.required, CustomValidators.price
       ])),

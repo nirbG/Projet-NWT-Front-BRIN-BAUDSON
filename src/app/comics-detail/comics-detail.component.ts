@@ -171,7 +171,7 @@ export class ComicsDetailComponent implements OnInit {
   supp() {
     this._comicsService.update({
       _id: this._comics._id,
-      inBD: true,
+      inBD: false,
     }as Comics).subscribe( (_) => {
       this.openSnackBar('Vous avez supprimé ' + this._comics.title + ' à votre BDtheque');
       this._comics.inBD = false;
