@@ -12,7 +12,7 @@ export const environment = {
       allComics: '/comics',
       someComics: '/comics/:start/:end',
       oneComics: '/comics/:isbn',
-      addComics: '/comics/',
+      addComics: '/comics',
       putComics: '/comics/:isbn',
       delComics: '/comics/:isbn',
       allHeros: '/heros',

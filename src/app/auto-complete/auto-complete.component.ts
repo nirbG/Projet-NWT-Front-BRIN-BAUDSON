@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Hero} from "../shared/interfaces/Heros";
+import {HerosService} from "../services/heros.service";
 
 @Component({
   selector: 'app-auto-complete',
@@ -14,13 +15,15 @@ export class AutoCompleteComponent implements OnInit {
   value = '' ;
   // tableau de heros
   private _models: Hero[];
+  // tablleau permetant de revenir en arriere
+  private _modelsback: Hero[];
   // eventEmitter qui retourne les heros
   private readonly _submit$: EventEmitter<Hero[]>;
 
   /**
    * Constructor
    */
-  constructor() {
+  constructor(private _serviceHeros: HerosService) {
     this.form = new FormGroup({
       search: new FormControl()
     });
@@ -39,10 +42,20 @@ export class AutoCompleteComponent implements OnInit {
    * @param event lettre
    */
   onKey(event: any) { // without type info
-    this.value = event.target.value;
-    const filterValue = this.value.toLowerCase();
-    this._models = this._models.filter((model : Hero) => model.name.toLowerCase().indexOf(filterValue) === 0);
-    this.submit(this._models);
+    console.log(this.value.length >= event.target.value.length);
+    if(this.value.length >= event.target.value.length){
+      this.value = event.target.value;
+      const filterValue = this.value.toLowerCase();
+       this._serviceHeros.fetch().subscribe((_: Hero[]) => {this._models=
+           _.filter((model: Hero) => model.name.toLowerCase().indexOf(filterValue) === 0),
+           this.submit(this._models)}
+       );
+    }else {
+      this.value = event.target.value;
+      const filterValue = this.value.toLowerCase();
+      this._models = this._models.filter((model: Hero) => model.name.toLowerCase().indexOf(filterValue) === 0);
+      this.submit(this._models);
+    }
   }
 
 

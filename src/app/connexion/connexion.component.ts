@@ -25,7 +25,7 @@ export class ConnexionComponent implements OnInit {
    */
   logIn($event: any) {
     console.log( {$event} );
-    this._router.navigate(['BDtheque']);
+    this._router.navigate(['comics']);
   }
   /************************************************************GET & SET **********************************/
   image(): string {

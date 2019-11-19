@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: AccueilComponent },
   { path: 'connexion', component: ConnexionComponent },
-  { path: 'BDtheque', component: HomeComponent },
   { path: 'comics', component: ComicsComponent },
   { path: 'comics/:isbn', component: ComicsDetailComponent },
   { path: 'comicsEdit/:isbn', component: UpdateComicsComponent },

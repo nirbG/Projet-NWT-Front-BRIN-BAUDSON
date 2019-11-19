@@ -99,26 +99,16 @@ export class HerosComponent implements OnInit {
     this._herosDialog.afterClosed()
         .pipe(
             filter(_ => !!_),
-            flatMap(_ => this._add(_))
+            flatMap(_ => this._herosService.create(_))
         )
         .subscribe(
             (_: Hero) =>this._router.navigate(
-                [ '/Hero/'+ _._id]),
+                [ '/hero/'+ _._id]),
             _ => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive',
         );
   }
 
-  /**
-   * Add new person and fetch all people to refresh the list
-   */
-  private _add(heros: Hero): Observable<Hero> {
-    return this._herosService
-        .create(heros)
-        .pipe(
-            flatMap((_: Hero) => this._herosService.fetchOne(_._id))
-        );
-  }
   /************************************************************GET & SET **********************************/
 
   get dialogStatus(): string {

@@ -65,19 +65,19 @@ mat-dialog-container{
 }
 
 #divider span:first-child {				/* color changes in here */
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#000));
-    background-image: -webkit-linear-gradient(180deg, transparent, #000);
-    background-image: -moz-linear-gradient(180deg, transparent, #000);
-    background-image: -o-linear-gradient(180deg, transparent, #000);
-    background-image: linear-gradient(90deg, transparent, #000);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#ffffff));
+    background-image: -webkit-linear-gradient(180deg, transparent, #ffffff);
+    background-image: -moz-linear-gradient(180deg, transparent, #ffffff);
+    background-image: -o-linear-gradient(180deg, transparent, #ffffff);
+    background-image: linear-gradient(90deg, transparent, #ffffff);
 }
 
 #divider span:last-child {				/* color changes in here */
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#000), to(transparent));
-    background-image: -webkit-linear-gradient(180deg, #000, transparent);
-    background-image: -moz-linear-gradient(180deg, #000, transparent);
-    background-image: -o-linear-gradient(180deg, #000, transparent);
-    background-image: linear-gradient(90deg, #000, transparent);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(transparent));
+    background-image: -webkit-linear-gradient(180deg, #ffffff, transparent);
+    background-image: -moz-linear-gradient(180deg, #ffffff, transparent);
+    background-image: -o-linear-gradient(180deg, #ffffff, transparent);
+    background-image: linear-gradient(90deg, #ffffff, transparent);
 }
 
 
@@ -96,4 +96,9 @@ mat-dialog-container{
 }
 #mat-autocomplete-0{
     display: none;
+}
+.x-men{
+    position: absolute;
+    right: 31px;
+    cursor: pointer;
 }
