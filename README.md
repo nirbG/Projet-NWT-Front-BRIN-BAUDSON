@@ -1,6 +1,6 @@
 # ProjetNwtBAUDSONBRIN
 
-##instalation
+## instalation du projet
 
 Tout d'abord il faut cloner le projet :
 https://github.com/nirbG/Projet-NWT-BRIN-BAUDSON.git
