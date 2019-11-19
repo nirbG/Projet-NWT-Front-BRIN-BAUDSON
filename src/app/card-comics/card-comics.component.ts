@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Comics} from "../shared/interfaces/Comics";
 import {CardComicsSnackBarComponent} from "../snackBar/card-comics-snack-bar/card-comics-snack-bar.component";
+import {ServiceComicsService} from "../services/service-comics.service";
 
 @Component({
   selector: 'app-card-comics',
@@ -20,7 +21,7 @@ export class CardComicsComponent implements OnInit {
    *
    * @param _snackBar      permet d'afficher le resultat des requette
    */
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private _serviceComics: ServiceComicsService) {
     this._delete$ = new EventEmitter<Comics>();
     this._show = false;
     this._card = {} as Comics ;
@@ -41,33 +42,55 @@ export class CardComicsComponent implements OnInit {
    * ajoute le comics a la BD
    */
   add() {
-    this.openSnackBar('Vous avez ajouté  ' + this._card.title+' à votre BDtheque');
-    this._card.inBD = true;
-    this._card.wish = false;
+    this._serviceComics.update({
+      _id: this._card._id,
+      inBD: true,
+      wish: false,
+    }as Comics).subscribe( (_) =>{
+      this.openSnackBar('Vous avez ajouté  ' + this._card.title+' à votre BDtheque');
+      this._card.inBD = true;
+      this._card.wish = false;
+    });
+
   }
 
   /**
    * supprime le comics de la BD
    */
   supp() {
-    this.openSnackBar('Vous avez supprimé ' + this._card.title+' à votre BDtheque');
-    this._card.inBD = false;
+    this._serviceComics.update({
+      _id: this._card._id,
+      inBD: true,
+    }as Comics).subscribe( (_) => {
+      this.openSnackBar('Vous avez supprimé ' + this._card.title + ' à votre BDtheque');
+      this._card.inBD = false;
+    });
   }
 
   /**
    * ajoute le comics aux envie
    */
   addWish() {
-    this.openSnackBar('Vous avez ajouté ' + this._card.title+' à vos envie');
-    this._card.wish = true;
+    this._serviceComics.update({
+      _id: this._card._id,
+      wish: true,
+    }as Comics).subscribe( (_) => {
+      this.openSnackBar('Vous avez ajouté ' + this._card.title + ' à vos envie');
+      this._card.wish = true;
+    });
   }
 
   /**
    * supprime le comics de envie
    */
   suppWish() {
-    this.openSnackBar('Vous avez supprimé ' + this._card.title+' à vos envie');
-    this._card.wish = false;
+    this._serviceComics.update({
+      _id: this._card._id,
+      wish: false,
+    }as Comics).subscribe( (_) => {
+      this.openSnackBar('Vous avez supprimé ' + this._card.title + ' à vos envie');
+      this._card.wish = false;
+    })
   }
 
   /**

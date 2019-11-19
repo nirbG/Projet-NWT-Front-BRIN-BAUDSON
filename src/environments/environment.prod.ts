@@ -7,6 +7,10 @@ export const environment = {
     endpoints: {
       allComics: '/comics',
       someComics: '/comics/:start/:end',
+      oneComics: '/comics/:isbn',
+      addComics: '/comics/',
+      putComics: '/comics/:isbn',
+      delComics: '/comics/:isbn',
     }
   }
 };

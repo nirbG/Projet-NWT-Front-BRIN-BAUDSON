@@ -31,7 +31,7 @@ export class UpdateComicsComponent implements OnInit {
     this._route.params
         .pipe(
             map((params: any) => params.isbn),
-            flatMap((isbn: string) => this._comicsService.fetchOne(isbn))
+            flatMap((_id: string) => this._comicsService.fetchOne(_id))
         )
         .subscribe((comics: Comics) => {
           this._peopleDialog = this._dialog.open(DialogComicsComponent, {

@@ -1,7 +1,7 @@
 import {HeroSimple} from "./HeroSimple";
 
 export interface Hero {
-  id: string;
+  _id: string;
   photo?: string;
   name: string;
   pouvoir: string;
@@ -13,25 +13,25 @@ export interface Hero {
 
 export const HEROS = [
   {
-    id: '1',
+    _id: '1',
     photo: 'deadpool.jpg',
     name: 'Deadpool',
     pouvoir: 'none',
     ennemi: [
       {
-        id: '7',
+        _id: '7',
         photo: 'cable.jpg',
         name: 'Cable',
       },
       {
-        id: '14',
+        _id: '14',
         photo: 'hulk.jpg',
         name: 'Hulk',
       },
     ],
     allie: [
       {
-        id: '7',
+        _id: '7',
         photo: 'cable.jpg',
         name: 'Cable',
       },
@@ -39,7 +39,7 @@ export const HEROS = [
     isHumain: true,
   },
   {
-    id: '2',
+    _id: '2',
     photo: 'antman.jpg',
     name: 'Ant-Man',
     pouvoir: 'none',
@@ -48,40 +48,40 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '3',
+    _id: '3',
     photo: 'batman.jpg',
     name: 'Batman',
     pouvoir: 'none',
     ennemi: [
       {
-        id: '5',
+        _id: '5',
         photo: 'joker.jpg',
         name: 'Joker',
       },
       {
-        id: '19',
+        _id: '19',
         photo: 'deathstroke.jpg',
         name: 'deathstroke',
       },
       {
-        id: '20',
+        _id: '20',
         photo: 'doubleface.jpg',
         name: 'Double-Faces',
       },
     ],
     allie: [
       {
-        id: '12',
+        _id: '12',
         photo: 'robin.jpg',
         name: 'Robin',
       },
       {
-        id: '11',
+        _id: '11',
         photo: 'aquaman.jpg',
         name: 'Aquaman',
       },
       {
-        id: '18',
+        _id: '18',
         photo: 'superman.jpg',
         name: 'Superman',
       },
@@ -89,7 +89,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '4',
+    _id: '4',
     photo: 'dardevile.jpg',
     name: 'Dardevile',
     pouvoir: 'none',
@@ -98,23 +98,23 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '5',
+    _id: '5',
     photo: 'joker.jpg',
     name: 'Joker',
     pouvoir: 'none',
     ennemi: [
       {
-        id: '3',
+        _id: '3',
         photo: 'batman.jpg',
         name: 'Batman',
       },
       {
-        id: '12',
+        _id: '12',
         photo: 'robin.jpg',
         name: 'Robin',
       },
       {
-        id: '9',
+        _id: '9',
         photo: 'catwoman.jpg',
         name: 'Catwoman',
       },
@@ -122,12 +122,12 @@ export const HEROS = [
     ],
     allie: [
       {
-        id: '20',
+        _id: '20',
         photo: 'doubleface.jpg',
         name: 'Double-Faces',
       },
       {
-        id: '19',
+        _id: '19',
         photo: 'deathstroke.jpg',
         name: 'deathstroke',
       }
@@ -135,24 +135,24 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '6',
+    _id: '6',
     photo: 'ironman.jpg',
     name: 'Iron Man',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
     allie: [
       {
-        id: '15',
+        _id: '15',
         photo: 'thor.jpg',
         name: 'Thor',
       },
       {
-        id: '14',
+        _id: '14',
         photo: 'hulk.jpg',
         name: 'Hulk',
       },
       {
-        id: '16',
+        _id: '16',
         photo: 'Captain_America.png',
         name: 'Captain America',
       }
@@ -160,7 +160,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '7',
+    _id: '7',
     photo: 'cable.jpg',
     name: 'Cable',
     pouvoir: 'none',
@@ -169,7 +169,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '8',
+    _id: '8',
     photo: 'spawn.jpg',
     name: 'Spawn',
     pouvoir: 'none',
@@ -178,7 +178,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '9',
+    _id: '9',
     photo: 'catwoman.jpg',
     name: 'Catwoman',
     pouvoir: 'none',
@@ -187,7 +187,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '10',
+    _id: '10',
     photo: 'hellboy.png',
     name: 'Hellboy',
     pouvoir: 'none',
@@ -196,19 +196,19 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '11',
+    _id: '11',
     photo: 'aquaman.jpg',
     name: 'Aquaman',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
     allie: [
       {
-        id: '3',
+        _id: '3',
         photo: 'batman.jpg',
         name: 'Batman',
       },
       {
-        id: '18',
+        _id: '18',
         photo: 'superman.jpg',
         name: 'Superman',
       },
@@ -216,19 +216,19 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '12',
+    _id: '12',
     photo: 'robin.jpg',
     name: 'Robin',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
     allie: [
       {
-        id: '9',
+        _id: '9',
         photo: 'catwoman.jpg',
         name: 'Catwoman',
       },
       {
-        id: '3',
+        _id: '3',
         photo: 'batman.jpg',
         name: 'Batman',
       },
@@ -236,7 +236,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '13',
+    _id: '13',
     photo: 'wolverine.jpg',
     name: 'Wolverine',
     pouvoir: 'none',
@@ -245,24 +245,24 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '14',
+    _id: '14',
     photo: 'hulk.jpg',
     name: 'Hulk',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
     allie: [
       {
-        id: '6',
+        _id: '6',
         photo: 'ironman.jpg',
         name: 'Iron Man',
       },
       {
-        id: '15',
+        _id: '15',
         photo: 'thor.jpg',
         name: 'Thor',
       },
       {
-        id: '16',
+        _id: '16',
         photo: 'Captain_America.png',
         name: 'Captain America',
       }
@@ -270,24 +270,24 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '15',
+    _id: '15',
     photo: 'thor.jpg',
     name: 'Thor',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
     allie: [
       {
-        id: '6',
+        _id: '6',
         photo: 'ironman.jpg',
         name: 'Iron Man',
       },
       {
-        id: '14',
+        _id: '14',
         photo: 'hulk.jpg',
         name: 'Hulk',
       },
       {
-        id: '16',
+        _id: '16',
         photo: 'Captain_America.png',
         name: 'Captain America',
       }
@@ -295,24 +295,24 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '16',
+    _id: '16',
     photo: 'Captain_America.png',
     name: 'Captain America',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
     allie: [
       {
-        id: '6',
+        _id: '6',
         photo: 'ironman.jpg',
         name: 'Iron Man',
       },
       {
-        id: '15',
+        _id: '15',
         photo: 'thor.jpg',
         name: 'Thor',
       },
       {
-        id: '14',
+        _id: '14',
         photo: 'hulk.jpg',
         name: 'Hulk',
       }
@@ -320,7 +320,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '17',
+    _id: '17',
     photo: '4fan.jpg',
     name: 'Les 4 Fantastique',
     pouvoir: 'none',
@@ -329,19 +329,19 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '18',
+    _id: '18',
     photo: 'superman.jpg',
     name: 'Superman',
     pouvoir: 'none',
     ennemi: [] as HeroSimple[],
     allie: [
       {
-        id: '11',
+        _id: '11',
         photo: 'aquaman.jpg',
         name: 'Aquaman',
       },
       {
-        id: '3',
+        _id: '3',
         photo: 'batman.jpg',
         name: 'Batman',
       },
@@ -349,7 +349,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '19',
+    _id: '19',
     photo: 'deathstroke.jpg',
     name: 'Deathstroke',
     pouvoir: 'none',
@@ -358,7 +358,7 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '20',
+    _id: '20',
     photo: 'doubleface.jpg',
     name: 'Double-Faces',
     pouvoir: 'none',
@@ -367,28 +367,28 @@ export const HEROS = [
     isHumain: true
   },
   {
-    id: '21',
+    _id: '21',
     photo: 'avengers.jpg',
     name: 'Avengers',
     pouvoir: 'none',
     ennemi: [
       {
-        id: '6',
+        _id: '6',
         photo: 'ironman.jpg',
         name: 'Iron Man',
       },
       {
-        id: '15',
+        _id: '15',
         photo: 'thor.jpg',
         name: 'Thor',
       },
       {
-        id: '14',
+        _id: '14',
         photo: 'hulk.jpg',
         name: 'Hulk',
       },
       {
-        id: '16',
+        _id: '16',
         photo: 'Captain_America.png',
         name: 'Captain America',
       }

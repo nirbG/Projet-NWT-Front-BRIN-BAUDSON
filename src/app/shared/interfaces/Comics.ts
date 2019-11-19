@@ -1,7 +1,7 @@
 import {HeroSimple} from "./HeroSimple";
 
 export interface Comics {
-    isbn: string;
+    _id: string;
     photo?: string;
     title: string;
     mainHeros: HeroSimple;
@@ -12,11 +12,11 @@ export interface Comics {
 }
 export const COMICS = [
     {
-        isbn: '2809481067',
+        _id: '2809481067',
         photo: '2809481067.jpg',
         title: 'Wolverine - Tome 7 : Fresh start',
         mainHeros: {
-            id: '13',
+            _id: '13',
             photo: 'wolverine.jpg',
             name: 'Wolverine',
         },
@@ -26,32 +26,32 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '2809479011',
+        _id: '2809479011',
         photo: '2809479011.jpg',
         title: 'Avengers - Tome 9 : Fresh Start',
         mainHeros: {
-            id: '21',
+            _id: '21',
             photo: 'avengers.jpg',
             name: 'Avengers',
         },
         otherHeros: [
             {
-                id: '6',
+                _id: '6',
                 photo: 'ironman.jpg',
                 name: 'Iron Man',
             },
             {
-                id: '15',
+                _id: '15',
                 photo: 'thor.jpg',
                 name: 'Thor',
             },
             {
-                id: '14',
+                _id: '14',
                 photo: 'hulk.jpg',
                 name: 'Hulk',
             },
             {
-                id: '16',
+                _id: '16',
                 photo: 'Captain_America.png',
                 name: 'Captain America',
             }
@@ -61,11 +61,11 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '1026816750',
+        _id: '1026816750',
         photo: '1026816750.jpg',
         title: 'Batman - Tome 0 : Damned ',
         mainHeros: {
-            id: '3',
+            _id: '3',
             photo: 'batman.jpg',
             name: 'Batman',
         },
@@ -75,17 +75,17 @@ export const COMICS = [
         inBD: true
     },
     {
-        isbn: '1026814243',
+        _id: '1026814243',
         photo: '1026814243.jpg',
         title: 'KILLING JOKE édition limitée',
         mainHeros: {
-            id: '3',
+            _id: '3',
             photo: 'batman.jpg',
             name: 'Batman',
         },
         otherHeros:  [
             {
-                id: '5',
+                _id: '5',
                 photo: 'joker.jpg',
                 name: 'Joker',
             }
@@ -95,11 +95,11 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '280947902X',
+        _id: '280947902X',
         photo: '280947902X.jpg',
         title: 'Deadpool - Tome 9 : Fresh Start',
         mainHeros: {
-            id: '1',
+            _id: '1',
             photo: 'deadpool.jpg',
             name: 'Deadpool',
         },
@@ -109,11 +109,11 @@ export const COMICS = [
         inBD: true
     },
     {
-        isbn: '1026819644',
+        _id: '1026819644',
         photo: '1026819644.jpg',
         title: 'Joker - nouvelle édition ',
         mainHeros: {
-            id: '5',
+            _id: '5',
             photo: 'joker.jpg',
             name: 'Joker',
         },
@@ -123,17 +123,17 @@ export const COMICS = [
         inBD: true
     },
     {
-        isbn: '1026817315',
+        _id: '1026817315',
         photo: '1026817315.jpg',
         title: 'Batman - Tome 7 : Detective comics',
         mainHeros: {
-            id: '3',
+            _id: '3',
             photo: 'batman.jpg',
             name: 'Batman',
         },
         otherHeros:  [
             {
-                id: '12',
+                _id: '12',
                 photo: 'robin.jpg',
                 name: 'Robin',
             }
@@ -143,11 +143,11 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '1026819695',
+        _id: '1026819695',
         photo: '1026819695.jpg',
         title: 'Joker L\'homme qui rit',
         mainHeros: {
-            id: '5',
+            _id: '5',
             photo: 'joker.jpg',
             name: 'Joker',
         },
@@ -157,32 +157,32 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '2809478708',
+        _id: '2809478708',
         photo: '2809478708.jpg',
         title: 'Avengers - Tome 8 : Fresh start',
         mainHeros: {
-            id: '21',
+            _id: '21',
             photo: 'avengers.jpg',
             name: 'Avengers',
         },
         otherHeros:  [
             {
-                id: '6',
+                _id: '6',
                 photo: 'ironman.jpg',
                 name: 'Iron Man',
             },
             {
-                id: '15',
+                _id: '15',
                 photo: 'thor.jpg',
                 name: 'Thor',
             },
             {
-                id: '14',
+                _id: '14',
                 photo: 'hulk.jpg',
                 name: 'Hulk',
             },
             {
-                id: '16',
+                _id: '16',
                 photo: 'Captain_America.png',
                 name: 'Captain America',
             }
@@ -192,11 +192,11 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '102681622X',
+        _id: '102681622X',
         photo: '102681622X.jpg',
         title: 'Superman - Tome 2 : New Metropolis',
         mainHeros: {
-            id: '18',
+            _id: '18',
             photo: 'superman.jpg',
             name: 'Superman',
         },
@@ -206,11 +206,11 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '2809478716',
+        _id: '2809478716',
         photo: '2809478716.jpg',
         title: 'Deadpool - Tome 8 : Fresh start',
         mainHeros: {
-            id: '1',
+            _id: '1',
             photo: 'deadpool.jpg',
             name: 'Deadpool',
         },
@@ -220,11 +220,11 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '2365773540',
+        _id: '2365773540',
         photo: '2365773540.jpg',
         title: 'Aquaman - Tome 3 : Aquaman',
         mainHeros: {
-            id: '11',
+            _id: '11',
             photo: 'aquaman.jpg',
             name: 'Aquaman',
         },
@@ -234,37 +234,37 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '1026824109',
+        _id: '1026824109',
         photo: '1026824109.jpg',
         title: ' Batman - Tome 3 : Batman metal',
         mainHeros: {
-            id: '3',
+            _id: '3',
             photo: 'batman.jpg',
             name: 'Batman',
         },
         otherHeros: [
             {
-                id: '5',
+                _id: '5',
                 photo: 'joker.jpg',
                 name: 'Joker',
             },
             {
-                id: '9',
+                _id: '9',
                 photo: 'catwoman.jpg',
                 name: 'Catwoman',
             },
             {
-                id: '12',
+                _id: '12',
                 photo: 'robin.jpg',
                 name: 'Robin',
             },
             {
-                id: '18',
+                _id: '18',
                 photo: 'superman.jpg',
                 name: 'Superman',
             },
             {
-                id: '11',
+                _id: '11',
                 photo: 'aquaman.jpg',
                 name: 'Aquaman',
             }
@@ -274,27 +274,27 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '1026814367',
+        _id: '1026814367',
         photo: '1026814367.jpg',
         title: 'Batman - : White Knight',
         mainHeros: {
-            id: '3',
+            _id: '3',
             photo: 'batman.jpg',
             name: 'Batman',
         },
         otherHeros: [
             {
-                id: '5',
+                _id: '5',
                 photo: 'joker.jpg',
                 name: 'Joker',
             },
             {
-                id: '9',
+                _id: '9',
                 photo: 'catwoman.jpg',
                 name: 'Catwoman',
             },
             {
-                id: '12',
+                _id: '12',
                 photo: 'robin.jpg',
                 name: 'Robin',
             },
@@ -304,27 +304,27 @@ export const COMICS = [
         inBD: false
     },
     {
-        isbn: '2365773567',
+        _id: '2365773567',
         photo: '2365773567.jpg',
         title: '    Batman - Tome 3 : Le deuil de la famille',
         mainHeros: {
-            id: '3',
+            _id: '3',
             photo: 'batman.jpg',
             name: 'Batman',
         },
         otherHeros: [
             {
-                id: '5',
+                _id: '5',
                 photo: 'joker.jpg',
                 name: 'Joker',
             },
             {
-                id: '9',
+                _id: '9',
                 photo: 'catwoman.jpg',
                 name: 'Catwoman',
             },
             {
-                id: '12',
+                _id: '12',
                 photo: 'robin.jpg',
                 name: 'Robin',
             },

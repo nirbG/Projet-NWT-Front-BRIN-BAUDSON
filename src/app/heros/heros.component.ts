@@ -39,7 +39,7 @@ export class HerosComponent implements OnInit {
   constructor(private  _herosService: HerosService, private _dialog: MatDialog, private _router: Router) {
   this._dialogStatus = 'inactive';
     this._isLoadMore = false;
-    this._herosService.some(this._nbstart, this._nbend).subscribe( (_: Hero[]) =>
+    this._herosService.fetch().subscribe( (_: Hero[]) =>
         this._heros = _
     );
     this._filtre = 'none';
@@ -58,7 +58,7 @@ export class HerosComponent implements OnInit {
    * @constructor
    */
   Load() {
-    this._herosService.some(this._nbstart, this._nbend).subscribe( (_: Hero[]) =>
+    this._herosService.fetch().subscribe( (_: Hero[]) =>
         this._heros = this._heros.concat(_)
     );
 
@@ -103,7 +103,7 @@ export class HerosComponent implements OnInit {
         )
         .subscribe(
             (_: Hero) =>this._router.navigate(
-                [ '/Hero/'+ _.id]),
+                [ '/Hero/'+ _._id]),
             _ => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive',
         );
@@ -114,7 +114,10 @@ export class HerosComponent implements OnInit {
    */
   private _add(heros: Hero): Observable<Hero> {
     return this._herosService
-        .create(heros);
+        .create(heros)
+        .pipe(
+            flatMap((_: Hero) => this._herosService.fetchOne(_._id))
+        );
   }
   /************************************************************GET & SET **********************************/
 

@@ -3,7 +3,7 @@
         <img mat-card-image class="col-lg-1 no_padding"  style="margin: 0%"
              src="../../assets/comics/{{list.photo}}" alt="{{list.title}}">
         <div class="col-lg-11 row">
-            <h3 [routerLink]="['/comics', list.isbn]" class="col-lg-12">{{list.title}}</h3>
+            <h3 [routerLink]="['/comics', list._id]" class="col-lg-12">{{list.title}}</h3>
             <div class="col-lg-12 no_padding" style="text-align: right;margin-top: 20px;color: #740f00">
                 <button mat-icon-button  (click)="addWish()" *ngIf="!list.wish && !list.inBD">
                     <i class="material-icons">favorite_border</i>
@@ -20,7 +20,7 @@
                 <button mat-icon-button  (click)="suppComics()" *ngIf="true">
                     <i class="material-icons">delete</i>
                 </button>
-                <button mat-icon-button  [routerLink]="['/comicsEdit', list.isbn]" *ngIf="true">
+                <button mat-icon-button  [routerLink]="['/comicsEdit', list._id]" *ngIf="true">
                     <i class="material-icons">create</i>
                 </button>
             </div>

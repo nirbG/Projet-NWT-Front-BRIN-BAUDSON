@@ -46,6 +46,7 @@ export class ComicsComponent implements OnInit {
     this._isList = false;
     this._nbComics = 10;
     this._indice = [5,10,20];
+    this._service.fetch().subscribe((_: Comics[]) => {this._comics = _});
   }
 
   get indice(): number[] {
@@ -56,14 +57,13 @@ export class ComicsComponent implements OnInit {
    *
    */
   ngOnInit() {
-    this._service.some(this._nbstart + '', this._nbend + '').subscribe((comics: Comics[]) => this._comics = comics);
   }
 
   /**
    * load des comics et les ajoute a la liste
    */
   Load() {
-    this._service.some(this._nbstart + '', this._nbend + '')
+    this._service.some(this._nbstart , this._nbend )
         .subscribe((comics: Comics[]) => this._comics = this._comics.concat(comics));
   }
 
@@ -87,8 +87,10 @@ export class ComicsComponent implements OnInit {
    * @param data
    */
   delete(data: Comics) {
-    this._comics = this._comics.filter(__ => __.isbn !== data.isbn);
-
+    this._comics = this._comics.filter(__ => __._id !== data._id);
+    this._service.delete(data._id).subscribe(
+        (_: string) => this._comics = this._comics.filter((__: Comics) => __._id !== _ )
+    );
   }
 
   /**
@@ -112,7 +114,7 @@ export class ComicsComponent implements OnInit {
         )
         .subscribe(
             (_: Comics) =>this._router.navigate(
-                [ '/comics/'+ _.isbn]),
+                [ '/comics/'+ _._id]),
             _ => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive',
         );

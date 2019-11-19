@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {COMICS, Comics} from "../shared/interfaces/Comics";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {from, Observable, of} from "rxjs";
 import {Hero, HEROS} from "../shared/interfaces/Heros";
+import {defaultIfEmpty, filter, map} from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
@@ -36,18 +37,17 @@ export class HerosService {
      * retourne les heros
      */
     fetch(): Observable<Hero[]> {
-        return of(this._herostab);
-        /*this._http.get<Comics[]>(this._backendURL.allComics)
+        return this._http.get<Hero[]>(this._backendURL.allHeros)
             .pipe(
                 filter(_ => !!_),
                 defaultIfEmpty([])
-            );*/
+            );
     }
     /**
      * retourne quelque heros
      */
     some(start: number, end: number): Observable<Hero[]> {
-        return of(this._herostab.slice(start, end));
+        return this.fetch();//return of(this._herostab.slice(start, end));
         /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))
             .pipe(
                 filter(_ => !!_),
@@ -62,23 +62,38 @@ export class HerosService {
      * @param id
      */
     fetchOne(id: string): Observable<Hero> {
-        return of(this._herostab.find( (_: Hero) => _.id === id));
+        return this._http.get<Hero>(this._backendURL.oneHero.replace(':id', id));
     }
 
     /**
      * cree un heros
      * @param data
      */
-    create(data: Hero): Observable<Hero> {
-        return null;
+    create(data: Hero): Observable<any> {
+        return this._http.post<Hero>(this._backendURL.addHero, data, this._options());
     }
 
     /**
      * modifie un heros
      * @param h
      */
-    update(h: Hero): Observable<Hero> {
-        return null;
+    update(data: Hero): Observable<any> {
+        return this._http.put<Hero>(this._backendURL.putHero.replace(':id', data._id), data, this._options());
     }
+
+    delete(id: string): Observable<string> {
+        return this._http.delete(this._backendURL.delHero.replace(':id', id))
+            .pipe(
+                map(_ => id)
+            );
+    }
+    /**
+     * Function to return request options
+     */
+    private _options(headerList: object = {}): any {
+        return { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList)) };
+    }
+
+
 
 }

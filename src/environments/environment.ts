@@ -11,6 +11,16 @@ export const environment = {
     endpoints: {
       allComics: '/comics',
       someComics: '/comics/:start/:end',
+      oneComics: '/comics/:isbn',
+      addComics: '/comics/',
+      putComics: '/comics/:isbn',
+      delComics: '/comics/:isbn',
+      allHeros: '/heros',
+      someHeros: '/heros/:start/:end',
+      oneHero: '/heros/:id',
+      addHero: '/heros',
+      putHero: '/heros/:id',
+      delHero: '/heros/:id',
     }
   }
 };

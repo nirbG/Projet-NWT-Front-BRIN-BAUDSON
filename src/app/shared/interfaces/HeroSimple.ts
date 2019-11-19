@@ -1,5 +1,5 @@
 export interface HeroSimple {
-    id: string;
+    _id: string;
     photo?: string;
     name: string;
 }

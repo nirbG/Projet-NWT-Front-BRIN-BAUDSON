@@ -20,12 +20,18 @@ export class HeroDetailComponent implements OnInit {
   comics : Comics[];
   // statu de l'affichage de comics
   showComics: boolean;
+  showOhtersComics: boolean;
   // hero
+  get comicsOther(): Comics[] {
+    return this._comicsOther;
+  }
+
   private _hero: Hero;
   // dialog d'ajout d'allie et ennemi
   private _herosSimpleDialog: MatDialogRef<DialogaddHeroSimpleComponent>;
   // etat du dialog
   private _dialogStatus: string;
+  private _comicsOther: Comics[];
 
   /**
    *
@@ -37,32 +43,52 @@ export class HeroDetailComponent implements OnInit {
    */
   constructor(private _route: ActivatedRoute,private _service: ServiceComicsService,
               private _heroService: HerosService, private _dialog: MatDialog,
-              private _router: Router) {
+              private _router: Router,) {
     this._dialogStatus = 'inactive';
     this.showComics = true;
+    this.showOhtersComics = true;
     this._hero = {} as Hero;
-    console.log(this._route.snapshot.params.id);
   }
 
   /**
    *
    */
   ngOnInit() {
-    this._hero = HEROS.filter( _ => _.id === this._route.snapshot.params.id).shift();
-    this._service.comicsByHeros(this._hero.id).subscribe((_ : Comics[]) => this.comics = _);
+    this._heroService.fetchOne( this._route.snapshot.params.id).subscribe((_: Hero) => this._hero = _);
+    this._service.comicsByHeros().subscribe((_ : Comics[]) => this.comics =
+        _.filter((_: Comics) => _.mainHeros._id === this._hero._id ),
+    );
+    this._service.comicsByHeros().subscribe((_ : Comics[]) => this._comicsOther = this.herosSecondCharacterComics(_)
+    );
   }
+  herosSecondCharacterComics(array: Comics[]): Comics[]{
+    const data2 = this._hero.allie;
+    let objMap=[] as Comics[];
+    array.forEach((e1)=>e1.otherHeros.forEach((e2)=> {
+          if(this._hero._id === e2._id){
+            objMap= objMap.concat([e1]);
+          }
+        }
+    ));
+    return objMap;
+  }
+
 
   /**
    * ajoute le comics a la BD
    * @param $event
    */
-  add($event: string) {}
+  add($event: string) {
+
+  }
 
   /**
    * ajoute le comics au envie
    * @param $event
    */
-  addWish($event: string) {}
+  addWish($event: string) {
+
+  }
 
   /**
    * cache les comics ou les affichent
@@ -72,13 +98,24 @@ export class HeroDetailComponent implements OnInit {
   }
 
   /**
+   * cache les comics ou les affichent
+   */
+  hideOhtersComics() {
+    this.showOhtersComics = (this.showOhtersComics === true) ? false : true;
+  }
+
+
+  /**
    * supprime un allie donne
    * @param id
    */
   suppAllie(id: any) {
-     const allie = this._hero.allie;
-     this._hero.allie=allie.filter((_: HeroSimple) => _.id !== id);
-     this._heroService.update(null);
+    this._heroService.update({
+      _id:this._hero._id,
+      allie: this._hero.allie.filter((_: HeroSimple) => _._id !== id),
+    } as Hero).subscribe(
+        (_: Hero) =>this._hero.allie = _.allie,
+    );
   }
 
   /**
@@ -86,20 +123,61 @@ export class HeroDetailComponent implements OnInit {
    * @param id
    */
   suppEnnemi(id: any) {
-    const ennemi = this._hero.ennemi;
-    this._hero.ennemi=ennemi.filter((_: HeroSimple) => _.id !== id);
-    this._heroService.update(null);
+    this._heroService.update({
+      _id:this._hero._id,
+      ennemi: this._hero.ennemi.filter((_: HeroSimple) => _._id !== id),
+    } as Hero).subscribe(
+        (_: Hero) =>this._hero.ennemi = _.ennemi,
+    );
   }
 
+  suppHero(){
+    this._heroService.delete(this.hero._id).subscribe(
+        () => undefined,
+        _ => undefined,
+        () => this._router.navigate(['heros']),
+    )
+  }
+
+  delDuplicate(array: Hero[]): HeroSimple[]{
+    const data2 = this._hero.allie;
+    let objMap=array as HeroSimple[];
+        array.forEach((e1)=>data2.forEach((e2)=> {
+              if(e1._id === e2._id){
+                objMap= objMap.filter((_: HeroSimple) => e1._id !== _._id);
+              }
+            }
+        ));
+    return objMap;
+  }
+  updateAllie(){
+    this._heroService.fetch().subscribe((_: Hero[]) => {
+      this.showDialogAllie(this.delDuplicate(_))
+    });
+  }
+
+  delDuplicateEnnemi(array: Hero[]): HeroSimple[]{
+    const data2 = this._hero.allie;
+    let objMap=array as HeroSimple[];
+    array.forEach((e1)=>data2.forEach((e2)=> {
+          if(e1._id === e2._id){
+            objMap= objMap.filter((_: HeroSimple) => e1._id !== _._id);
+          }
+        }
+    ));
+    return objMap;
+  }
+  updateEnnemi(){
+    this._heroService.fetch().subscribe((_: Hero[]) => {
+      this.showDialogEnnemi(this.delDuplicateEnnemi(_))
+    });
+  }
   /**
    * Function to display modal
    */
-  showDialogAllie() {
+  showDialogAllie(heroSimples: HeroSimple[]) {
     // set dialog status
     this._dialogStatus = 'active';
-    let data: Hero[];
-    this._heroService.fetch().subscribe( (_: Hero[]) => data = _ );
-    const data2 = data as HeroSimple[];
 
     // open modal
     this._herosSimpleDialog = this._dialog.open(DialogaddHeroSimpleComponent, {
@@ -107,16 +185,20 @@ export class HeroDetailComponent implements OnInit {
       height: '50%',
       disableClose: true,
       data: {
-        heros: data2,
+        heros: heroSimples,
         main: true,
       }
     });
 
     // subscribe to afterClosed observable to set dialog status and do process
     this._herosSimpleDialog.afterClosed()
-        .pipe()
+        .pipe(
+            filter(_ => !!_),
+            flatMap(_ => this._heroService.update({_id:this._hero._id,
+              allie:this._hero.allie.concat(_)} as Hero))
+        )
         .subscribe(
-            (_: HeroSimple) => this._hero.allie =this._hero.allie.concat(_),
+            (_: Hero) => this._hero.allie =_.allie,
             _ => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive',
         );
@@ -125,12 +207,9 @@ export class HeroDetailComponent implements OnInit {
   /**
    * Function to display modal
    */
-  showDialogEnnemi() {
+  showDialogEnnemi(heroSimples: HeroSimple[]) {
     // set dialog status
     this._dialogStatus = 'active';
-    let data: Hero[];
-    this._heroService.fetch().subscribe( (_: Hero[]) => data = _ );
-    const data2 = data as HeroSimple[];
 
     // open modal
     this._herosSimpleDialog = this._dialog.open(DialogaddHeroSimpleComponent, {
@@ -138,16 +217,20 @@ export class HeroDetailComponent implements OnInit {
       height: '50%',
       disableClose: true,
       data: {
-        heros: data2,
+        heros: heroSimples,
         main: true,
       }
     });
 
     // subscribe to afterClosed observable to set dialog status and do process
     this._herosSimpleDialog.afterClosed()
-        .pipe()
+        .pipe(
+            filter(_ => !!_),
+            flatMap(_ => this._heroService.update({_id:this._hero._id,
+              ennemi:this._hero.ennemi.concat(_)} as Hero))
+        )
         .subscribe(
-            (_: HeroSimple) => this._hero.ennemi =this._hero.ennemi.concat(_),
+            (_: Hero) => this._hero.ennemi =_.ennemi,
             _ => this._dialogStatus = 'inactive',
             () => this._dialogStatus = 'inactive',
         );

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {COMICS, Comics} from "../shared/interfaces/Comics";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {from, Observable, of} from "rxjs";
 import {defaultIfEmpty, filter, flatMap, map} from "rxjs/operators";
@@ -26,22 +26,22 @@ export class ServiceComicsService {
     // build all backend urls
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints[ k ]}`);
   }
+
   /**
-   * Function to return list of person
+   * retourne les heros
    */
   fetch(): Observable<Comics[]> {
-    return of(this._comicstab);
-    /*this._http.get<Comics[]>(this._backendURL.allComics)
+    return this._http.get<Comics[]>(this._backendURL.allComics)
         .pipe(
             filter(_ => !!_),
             defaultIfEmpty([])
-        );*/
+        );
   }
   /**
-   * Function to return list of person
+   * retourne quelque heros
    */
-  some(start: string, end: string): Observable<Comics[]> {
-    return of(this._comicstab.slice(+start, +end));
+  some(start: number, end: number): Observable<Comics[]> {
+    return this.fetch();//return of(this._herostab.slice(start, end));
     /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))
         .pipe(
             filter(_ => !!_),
@@ -51,27 +51,45 @@ export class ServiceComicsService {
      */
   }
 
+  /**
+   * retourn un heros
+   * @param id
+   */
   fetchOne(isbn: string): Observable<Comics> {
-    return of(this._comicstab.find( (_: Comics) => _.isbn === isbn));
+    return this._http.get<Comics>(this._backendURL.oneComics.replace(':isbn', isbn));
   }
 
-  update(data: Comics): Observable<Comics> {
-    return null;
+  /**
+   * cree un heros
+   * @param data
+   */
+  create(data: Comics): Observable<any> {
+    return this._http.post<Comics>(this._backendURL.addComics, data, this._options());
   }
 
-  create(data: Comics): Observable<Comics> {
-    return null;
+  /**
+   * modifie un heros
+   * @param h
+   */
+  update(newData: Comics): Observable<any> {
+    console.log(newData);
+    return this._http.put<Comics>(this._backendURL.putComics.replace(':isbn', newData._id), newData, this._options());
   }
 
-
-  comicsByHeros(id: string): Observable<Comics[]> {
-    return of(COMICS.filter((_: Comics) => _.mainHeros.id === id ).slice(0,5));
-    /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))
+  delete(id: string): Observable<string> {
+    return this._http.delete(this._backendURL.delComics.replace(':isbn', id))
         .pipe(
-            filter(_ => !!_),
-            defaultIfEmpty([])
+            map(_ => id)
         );
+  }
+  /**
+   * Function to return request options
+   */
+  private _options(headerList: object = {}): any {
+    return { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList)) };
+  }
 
-     */
+  comicsByHeros(): Observable<Comics[]> {
+    return this.fetch()
   }
 }

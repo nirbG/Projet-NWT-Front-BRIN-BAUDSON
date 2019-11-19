@@ -58,7 +58,7 @@
     </div>
     <div class="listHeros row">
         <mat-card class="example-card col-lg-2" style="margin: 2% 1%" *ngFor="let hero of heros"
-                  [routerLink]="['/hero',hero.id]" >
+                  [routerLink]="['/hero',hero._id]" >
             <img mat-card-image style="height: 250px" src="../../assets/heros/{{hero.photo}}" alt="{{hero.name}}">
             <mat-card-content style="text-align: center">
                 <h3>{{hero.name}}</h3>

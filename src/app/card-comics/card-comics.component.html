@@ -14,9 +14,9 @@
             <i class="material-icons" (click)="suppComics()" >delete</i>
         </button>
         <button  mat-fab  class="button-up" *ngIf="show">
-            <i class="material-icons" [routerLink]="['/comicsEdit', card.isbn]" >create</i>
+            <i class="material-icons" [routerLink]="['/comicsEdit', card._id]" >create</i>
         </button>
-        <button [routerLink]="['/comics',card.isbn]"  mat-fab class="button-info"  *ngIf="show">
+        <button [routerLink]="['/comics',card._id]"  mat-fab class="button-info"  *ngIf="show">
             <i class="material-icons">info</i>
         </button>
         <button (click)="toggle()" mat-fab class="btn-default-color" >

@@ -92,7 +92,7 @@ export class FormComicsComponent implements OnInit, OnChanges {
       this._form.patchValue(this._model);
     } else {
       this._model = {
-        isbn: '',
+        _id: '',
         photo: '',
         title: '',
         mainHeros: {} as HeroSimple,
@@ -126,7 +126,7 @@ export class FormComicsComponent implements OnInit, OnChanges {
    */
   private _buildForm(): FormGroup {
     return new FormGroup({
-      isbn: new FormControl('', Validators.compose([
+      _id: new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(10), Validators.maxLength(10)
       ])),
       title: new FormControl('', Validators.compose([

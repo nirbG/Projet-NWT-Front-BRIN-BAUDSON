@@ -36,13 +36,13 @@ export class DialogaddHeroSimpleComponent implements OnInit {
 
   add(hero: Hero) {
     const new_hero = {
-      id: hero.id,
+      _id: hero._id,
       name: hero.name,
       photo: hero.photo
     }as HeroSimple;
     if(!this._mainHero) {
       this._data = this._data.concat([new_hero]);
-      this._heros = this._heros.filter((_: Hero) => _.id !== hero.id)
+      this._heros = this._heros.filter((_: Hero) => _._id !== hero._id)
     }else{
       this._data = [new_hero];
       this.onCancel();

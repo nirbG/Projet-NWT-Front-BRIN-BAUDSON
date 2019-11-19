@@ -13,7 +13,7 @@ export class FormHerosComponent implements OnInit, OnChanges {
   // private property to store update mode flag
   private _isUpdateMode: boolean;
   // private property to store model value
-  private _model: Hero;
+  private _model: any;
   // private property to store cancel$ value
   private readonly _cancel$: EventEmitter<void>;
   // private property to store submit$ value
@@ -92,7 +92,6 @@ export class FormHerosComponent implements OnInit, OnChanges {
       this._formh.patchValue(this._model);
     } else {
       this._model = {
-        id: '',
         photo: '',
         name: '',
         pouvoir: '',
@@ -116,7 +115,14 @@ export class FormHerosComponent implements OnInit, OnChanges {
    * Function to emit event to submit form and person
    */
   submit(hero: Hero) {
-    this._submit$.emit(hero);
+    console.log(this._model);
+    if( !this._isUpdateMode ) {
+      this._submit$.emit(hero);
+    }else{
+      let h= hero as Hero;
+      h._id=this._model._id;
+      this._submit$.emit(h);
+    }
   }
 
 
@@ -125,6 +131,7 @@ export class FormHerosComponent implements OnInit, OnChanges {
    */
   private _buildForm(): FormGroup {
     return new FormGroup({
+      //_id: new FormControl('0'),
       name: new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),

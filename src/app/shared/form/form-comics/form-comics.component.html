@@ -1,5 +1,5 @@
 <mat-toolbar style="background-color: #740f00; color: #fbf4ff">
-    <h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ form.get('isbn').value }}</h2>
+    <h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ form.get('_id').value }}</h2>
     <h2 mat-dialog-title *ngIf="!isUpdateMode">Create new Comics </h2>
 </mat-toolbar>
 <mat-dialog-content>
@@ -7,15 +7,15 @@
         <table class="full-width" cellspacing="0">
             <tr class="col-lg-12 row" style="padding: 0%;margin: 0%">
                 <td class="col-lg-6" style="">
-                    <mat-form-field class="full-width" [class.mgb15]="form.get('isbn').dirty && form.get('isbn').invalid">
-                        <input matInput placeholder="Isbn" formControlName="isbn" minlength="2" required name="isbn" />
-                        <mat-error *ngIf="form.get('isbn').dirty && form.get('isbn').hasError('required')">
+                    <mat-form-field class="full-width" [class.mgb15]="form.get('_id').dirty && form.get('_id').invalid">
+                        <input matInput placeholder="Isbn" formControlName="_id" minlength="2" required name="_id" />
+                        <mat-error *ngIf="form.get('_id').dirty && form.get('_id').hasError('required')">
                             First name is <strong>required</strong>
                         </mat-error>
-                        <mat-error *ngIf="form.get('isbn').dirty && form.get('isbn').hasError('minlength')">
+                        <mat-error *ngIf="form.get('_id').dirty && form.get('_id').hasError('minlength')">
                             First name is <strong>10 chars min</strong>
                         </mat-error>
-                        <mat-error *ngIf="form.get('isbn').dirty && form.get('isbn').hasError('maxlength')">
+                        <mat-error *ngIf="form.get('_id').dirty && form.get('_id').hasError('maxlength')">
                             First name is <strong>10 chars max</strong>
                         </mat-error>
                     </mat-form-field>
@@ -29,7 +29,7 @@
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width">
-                        <input matInput placeholder="Price" formControlName="price" required name="price" />
+                        <input matInput placeholder="Price" formControlName="price" type="number" required name="price" />
                         <mat-error *ngIf="form.get('price').dirty && form.get('price').hasError('required')">
                             price is <strong>required</strong>
                         </mat-error>
