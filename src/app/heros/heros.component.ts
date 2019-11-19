@@ -5,7 +5,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DialogHerosComponent} from "../shared/dialog/dialog-heros/dialog-heros.component";
 import {Router} from "@angular/router";
 import {filter, flatMap} from "rxjs/operators";
-import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-heros',
@@ -20,7 +20,7 @@ export class HerosComponent implements OnInit {
   // indice de depart
   private _nbstart = 0;
   // nombre a afficher
-  private _nbend = 10;
+  private _nb = 10;
   // status de la barre de chargement
   private _isLoadMore: boolean;
   // lettre selectione
@@ -39,7 +39,7 @@ export class HerosComponent implements OnInit {
   constructor(private  _herosService: HerosService, private _dialog: MatDialog, private _router: Router) {
   this._dialogStatus = 'inactive';
     this._isLoadMore = false;
-    this._herosService.fetch().subscribe( (_: Hero[]) =>
+    this._herosService.some(this._nbstart,this._nb).subscribe( (_: Hero[]) =>
         this._heros = _
     );
     this._filtre = 'none';
@@ -58,7 +58,7 @@ export class HerosComponent implements OnInit {
    * @constructor
    */
   Load() {
-    this._herosService.fetch().subscribe( (_: Hero[]) =>
+    this._herosService.some(this._nbstart,this._nb).subscribe( (_: Hero[]) =>
         this._heros = this._heros.concat(_)
     );
 
@@ -74,8 +74,7 @@ export class HerosComponent implements OnInit {
       setTimeout(
           () => {
             this._isLoadMore = false;
-            this._nbstart = this._nbend;
-            this._nbend = this._nbend + 10;
+            this._nbstart =this._nbstart+ this._nb;
             this.Load();
           }, 2000
       );
@@ -130,7 +129,6 @@ export class HerosComponent implements OnInit {
 
   switchFilter(f: string) {
     this._nbstart = 0;
-    this._nbend = 10;
     switch (f) {
       case 'Alphabet' :
         this._herosService.fetch().subscribe( (_: Hero[]) =>
@@ -143,7 +141,7 @@ export class HerosComponent implements OnInit {
         );
         break;
       default :
-        this._herosService.some(this._nbstart, this._nbend).subscribe( (_: Hero[]) =>
+        this._herosService.some(this._nbstart, this._nb).subscribe( (_: Hero[]) =>
             this._heros = _
         );
         break;

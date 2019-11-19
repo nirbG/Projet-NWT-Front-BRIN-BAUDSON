@@ -40,15 +40,12 @@ export class ServiceComicsService {
   /**
    * retourne quelque heros
    */
-  some(start: number, end: number): Observable<Comics[]> {
-    return this.fetch();//return of(this._herostab.slice(start, end));
-    /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))
-        .pipe(
-            filter(_ => !!_),
-            defaultIfEmpty([])
-        );
-
-     */
+  some(start: number, nb: number): Observable<Comics[]> {
+    return this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':nb', nb))
+            .pipe(
+                filter(_ => !!_),
+                defaultIfEmpty([])
+            );
   }
 
   /**

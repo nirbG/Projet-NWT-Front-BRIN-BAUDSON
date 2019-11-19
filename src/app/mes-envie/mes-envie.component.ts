@@ -161,4 +161,8 @@ export class MesEnvieComponent implements OnInit {
     this._comics = this._comics.filter(__ => __._id !== data._id);
 
   }
+
+    message() {
+        return 'Vous n\'avez pas encore ajouté de comics à votre liste d\'envie.';
+    }
 }

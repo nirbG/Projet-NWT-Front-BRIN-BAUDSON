@@ -48,15 +48,12 @@ export class HerosService {
     /**
      * retourne quelque heros
      */
-    some(start: number, end: number): Observable<Hero[]> {
-        return this.fetch();//return of(this._herostab.slice(start, end));
-        /*this._http.get<Comics[]>(this._backendURL.someComics.replace(':start', start).replace(':end', end))
+    some(start: number, nb: number): Observable<Hero[]> {
+        return this._http.get<Hero[]>(this._backendURL.someHeros.replace(':start', start).replace(':nb', nb))
             .pipe(
                 filter(_ => !!_),
                 defaultIfEmpty([])
             );
-
-         */
     }
 
     /**

@@ -155,6 +155,9 @@ export class MaBDthequeComponent implements OnInit {
 
   suppInBd(data: Comics) {
     this._comics = this._comics.filter(__ => __._id !== data._id);
+  }
 
+  message() {
+    return 'Vous n\'avez pas encore ajouté de comics à votre BDtheque.';
   }
 }

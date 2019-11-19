@@ -36,6 +36,7 @@ export class CardComicsComponent implements OnInit {
     this._show = false;
     this._card = {} as Comics ;
     this._suppAuth= false;
+
   }
 
   get suppAuth(): boolean {

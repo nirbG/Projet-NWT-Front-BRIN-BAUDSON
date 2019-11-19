@@ -22,7 +22,6 @@ export class ComicsComponent implements OnInit {
   private _comics: Comics[];
   // lindice de depart pour l'affichage
   private _nbstart = 0;
-  private _nbend = 10;
   // boolean qui permet d'afficher une barre de chargement
   private _isLoadMore: boolean;
   // etat de l'affichage
@@ -46,7 +45,8 @@ export class ComicsComponent implements OnInit {
     this._isList = false;
     this._nbComics = 10;
     this._indice = [5,10,20];
-    this._service.fetch().subscribe((_: Comics[]) => {this._comics = _});
+    this._service.some(this._nbstart, this. _nbComics).subscribe((_: Comics[]) =>  {this._comics = _,
+        this._nbstart=this._nbstart+this._nbComics});
   }
 
   get indice(): number[] {
@@ -63,8 +63,9 @@ export class ComicsComponent implements OnInit {
    * load des comics et les ajoute a la liste
    */
   Load() {
-    this._service.some(this._nbstart , this._nbend )
-        .subscribe((comics: Comics[]) => this._comics = this._comics.concat(comics));
+    this._service.some(this._nbstart , this._nbComics )
+        .subscribe((comics: Comics[]) => {this._comics = this._comics.concat(comics),
+            this._nbstart=this._nbstart+this._nbComics});
   }
 
   /**
@@ -75,8 +76,6 @@ export class ComicsComponent implements OnInit {
     setTimeout(
         () => {
           this._isLoadMore = false;
-          this._nbstart = this._nbend;
-          this._nbend = this._nbend + this._nbComics;
           this.Load();
         }, 2000
     );

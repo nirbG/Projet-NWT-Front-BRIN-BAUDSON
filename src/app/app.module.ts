@@ -48,6 +48,7 @@ import { DialogaddHeroSimpleComponent } from './shared/dialog/dialogadd-hero-sim
 import {MatSelectModule} from "@angular/material/select";
 import { MaBDthequeComponent } from './ma-bdtheque/ma-bdtheque.component';
 import { MesEnvieComponent } from './mes-envie/mes-envie.component';
+import { NoneValueComponent } from './none-value/none-value.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { MesEnvieComponent } from './mes-envie/mes-envie.component';
     DialogaddHeroSimpleComponent,
     MaBDthequeComponent,
     MesEnvieComponent,
+    NoneValueComponent,
   ],
     imports: [
         BrowserModule,
