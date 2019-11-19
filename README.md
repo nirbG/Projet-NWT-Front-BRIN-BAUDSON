@@ -1,6 +1,17 @@
 # ProjetNwtBAUDSONBRIN
 
-Après le  clone, il faut lancer 'run yarn install' dans le treminal de webStorm
+## instalation du projet
+
+Tout d'abord il faut cloner le projet :
+https://github.com/nirbG/Projet-NWT-BRIN-BAUDSON.git
+
+Puis ensuite, 
+il faut lancer 'run yarn install' dans le treminal de webStorm pour télécharger les dépendances.
+
+Mais avant de lancer la partie front, il faut vérifier que le serveur est lancé et que les configs sont bien identiques  dans 'environment.ts'.
+
+Il vous suffira de lancer le projet avec l'ide ou dans le terminale avec 'yarn run start'
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
 
