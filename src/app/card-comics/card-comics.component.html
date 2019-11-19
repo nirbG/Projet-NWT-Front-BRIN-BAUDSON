@@ -10,7 +10,7 @@
             <i class="material-icons" (click)="add()" *ngIf="!card.inBD">add</i>
             <i class="material-icons" (click)="supp()" *ngIf="card.inBD">remove</i>
         </button>
-        <button mat-fab  class="button-sup" *ngIf="show">
+        <button mat-fab  class="button-sup" *ngIf="show" [disabled]="suppAuth">
             <i class="material-icons" (click)="suppComics()" >delete</i>
         </button>
         <button  mat-fab  class="button-up" *ngIf="show">

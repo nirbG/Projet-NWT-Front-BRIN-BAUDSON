@@ -16,6 +16,7 @@ export class CardComicsComponent implements OnInit {
   private _show: boolean;
   // private property to store delete$ value
   private readonly _delete$: EventEmitter<Comics>;
+  private _suppAuth: boolean;
 
   /**
    *
@@ -25,6 +26,11 @@ export class CardComicsComponent implements OnInit {
     this._delete$ = new EventEmitter<Comics>();
     this._show = false;
     this._card = {} as Comics ;
+    this._suppAuth= false;
+  }
+
+  get suppAuth(): boolean {
+    return this._suppAuth;
   }
 
   ngOnInit() {
@@ -130,6 +136,14 @@ export class CardComicsComponent implements OnInit {
   @Input()
   set card(c: Comics) {
     this._card = c;
+  }
+
+  /**
+   * Sets Comics
+   */
+  @Input()
+  set suppDisable(c: boolean) {
+    this._suppAuth = c;
   }
   /**
    * return l'etat des boutons
