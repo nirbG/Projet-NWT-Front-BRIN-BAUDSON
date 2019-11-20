@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <main>
-    <button id="button-add" (click)="showDialog()" *ngIf="dialogStatus === 'inactive'" mat-fab color="accent">
+    <button id="button-add" (click)="showDialog()" class="button-add-admin"
+            *ngIf="dialogStatus === 'inactive'" mat-fab color="accent">
         <i class="material-icons">add</i>
     </button>
     <div class="title col-lg-12 " style="overflow: hidden">

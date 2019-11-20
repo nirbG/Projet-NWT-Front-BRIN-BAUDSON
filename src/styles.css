@@ -102,3 +102,13 @@ mat-dialog-container{
     right: 31px;
     cursor: pointer;
 }
+.button-add-admin{
+    border: 2px solid #740f00 !important;
+    color: #740f00 !important;
+    background-color: white !important;
+}
+
+.button-add-admin span{
+    padding: 0% !important;
+}
+
