@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="listComics row" *ngIf="comics.length<1">
-        <app-none-value [message]="message()"></app-none-value>
+        <app-none-value  style="text-align: center; width: 100%" [message]="message()"></app-none-value>
     </div>
     <div class="listComics row" *ngIf="!isList">
         <app-card-comics  class="col-md-2" style="width: 20%; margin: 1% 0%" *ngFor="let comic of comics"  [card]="comic"

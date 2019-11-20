@@ -55,7 +55,7 @@
                    (click)="updateOthersHeros()" *ngIf="true">add</i>
                 <h4 style="text-align: right">Héros & Méchants</h4>
                 <div class="listComics row" *ngIf="comics.otherHeros.length<1">
-                    <app-none-value class="col-lg-12" [message]="message()"></app-none-value>
+                    <app-none-value class="col-lg-12" style="text-align: center" [message]="message()"></app-none-value>
                 </div>
                 <app-carrousel-heros *ngIf="comics.otherHeros.length>=1" [heros]="comics.otherHeros" (submit)="suppOtherHeros($event)"></app-carrousel-heros>
             </div>
