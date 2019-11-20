@@ -6,7 +6,7 @@ Tout d'abord il faut cloner le projet :
 https://github.com/nirbG/Projet-NWT-BRIN-BAUDSON.git
 
 Puis ensuite, 
-il faut lancer 'run yarn install' dans le treminal de webStorm pour télécharger les dépendances.
+il faut lancer 'yarn install' dans le treminal de webStorm pour télécharger les dépendances.
 
 Mais avant de lancer la partie front, il faut vérifier que le serveur est lancé et que les configs sont bien identiques  dans 'environment.ts'.
 
