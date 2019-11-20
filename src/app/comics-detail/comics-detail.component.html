@@ -4,8 +4,8 @@
     <div style="margin: -150px 10% 0% 10%; padding: 0" class="row">
         <img src="../../assets/comics/{{comics.photo}}" style="height: 400px; padding: 0" class="col-md-3">
         <div class="col-lg-9" style="padding: 0;">
-            <div class="col-lg-12">
-                <div class="comicsTitle overflow-ellipsis" style="margin-bottom: 5%; color: #fbf4ff">{{comics.title}}</div>
+            <div class="col-lg-12" style="margin: -1%;">
+                <div class="comicsTitle overflow-ellipsis" style="margin-bottom: 5%; color: #fbf4ff;">{{comics.title}}</div>
             </div>
             <div class="col-md-12 row" style="padding: 0%">
                 <div class="col-md-6" style="padding: 0% 4%">
@@ -50,8 +50,10 @@
         </div>
         <div class="col-lg-12 row">
             <div class="col-lg-9">
-                <h4 style="text-align: right"><i class="material-icons" style="color:#740f00; float :right"
-                                                 (click)="updateOthersHeros()" *ngIf="true">add</i>Héros & Méchants</h4>
+                <i class="material-icons"
+                   style="color:#740f00; float :right;font-size: 1.5rem;line-height: 1.2;"
+                   (click)="updateOthersHeros()" *ngIf="true">add</i>
+                <h4 style="text-align: right">Héros & Méchants</h4>
                 <div class="listComics row" *ngIf="comics.otherHeros.length<1">
                     <app-none-value class="col-lg-12" [message]="message()"></app-none-value>
                 </div>
