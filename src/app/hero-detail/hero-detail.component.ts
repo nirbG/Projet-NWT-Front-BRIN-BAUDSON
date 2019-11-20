@@ -5,7 +5,6 @@ import {Hero, HEROS} from "../shared/interfaces/Heros";
 import {ServiceComicsService} from "../services/service-comics.service";
 import {HeroSimple} from "../shared/interfaces/HeroSimple";
 import {HerosService} from "../services/heros.service";
-import {DialogHerosComponent} from "../shared/dialog/dialog-heros/dialog-heros.component";
 import {filter, flatMap} from "rxjs/operators";
 import {DialogaddHeroSimpleComponent} from "../shared/dialog/dialogadd-hero-simple/dialogadd-hero-simple.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
@@ -18,19 +17,17 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 export class HeroDetailComponent implements OnInit {
   // comics lie au heros
   comics : Comics[];
-  // statu de l'affichage de comics
+  // statut de l'affichage de comics
   showComics: boolean;
+  // statut
   showOhtersComics: boolean;
   // hero
-  get comicsOther(): Comics[] {
-    return this._comicsOther;
-  }
-
   private _hero: Hero;
   // dialog d'ajout d'allie et ennemi
   private _herosSimpleDialog: MatDialogRef<DialogaddHeroSimpleComponent>;
   // etat du dialog
   private _dialogStatus: string;
+  // les heros secondaires
   private _comicsOther: Comics[];
 
   /**
@@ -61,8 +58,12 @@ export class HeroDetailComponent implements OnInit {
     this._service.comicsByHeros().subscribe((_ : Comics[]) => this._comicsOther = this.herosSecondCharacterComics(_)
     );
   }
+
+  /**
+   * retourne les comics dont il fait une apparition
+   * @param array
+   */
   herosSecondCharacterComics(array: Comics[]): Comics[]{
-    const data2 = this._hero.allie;
     let objMap=[] as Comics[];
     array.forEach((e1)=>e1.otherHeros.forEach((e2)=> {
           if(this._hero._id === e2._id){
@@ -72,7 +73,6 @@ export class HeroDetailComponent implements OnInit {
     ));
     return objMap;
   }
-
 
   /**
    * ajoute le comics a la BD
@@ -131,6 +131,9 @@ export class HeroDetailComponent implements OnInit {
     );
   }
 
+  /**
+   * supprime le hero
+   */
   suppHero(){
     this._heroService.delete(this.hero._id).subscribe(
         () => undefined,
@@ -139,7 +142,11 @@ export class HeroDetailComponent implements OnInit {
     )
   }
 
-  delDuplicate(array: Hero[]): HeroSimple[]{
+  /**
+   * supprime les les allies et lui meme de la liste des heros
+   * @param array
+   */
+  delDuplicateAllie(array: Hero[]): HeroSimple[]{
     const data2 = this._hero.allie;
     let objMap=array as HeroSimple[];
         array.forEach((e1)=>data2.forEach((e2)=> {
@@ -150,12 +157,20 @@ export class HeroDetailComponent implements OnInit {
         ));
     return objMap;
   }
+
+  /**
+   * lance le dialog pour modifier les allies a renvoyer
+   */
   updateAllie(){
     this._heroService.fetch().subscribe((_: Hero[]) => {
-      this.showDialogAllie(this.delDuplicate(_))
+      this.showDialogAllie(this.delDuplicateAllie(_))
     });
   }
 
+  /**
+   * supprime les ennemis et lui meme de la liste des heros a renvoyer
+   * @param array
+   */
   delDuplicateEnnemi(array: Hero[]): HeroSimple[]{
     const data2 = this._hero.allie;
     let objMap=array as HeroSimple[];
@@ -167,13 +182,17 @@ export class HeroDetailComponent implements OnInit {
     ));
     return objMap;
   }
+
+  /**
+   * lance le dialog pour modifier les ennemis
+   */
   updateEnnemi(){
     this._heroService.fetch().subscribe((_: Hero[]) => {
       this.showDialogEnnemi(this.delDuplicateEnnemi(_))
     });
   }
   /**
-   * Function to display modal
+   * lance le modal pour modifier les allies
    */
   showDialogAllie(heroSimples: HeroSimple[]) {
     // set dialog status
@@ -206,7 +225,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   /**
-   * Function to display modal
+   *  lance le modal pour modifier les ennemi
    */
   showDialogEnnemi(heroSimples: HeroSimple[]) {
     // set dialog status
@@ -239,11 +258,11 @@ export class HeroDetailComponent implements OnInit {
   }
   /************************************************************GET & SET **********************************/
 
-  get dialogStatus(): string {
-    return this._dialogStatus;
-  }
   get hero(): Hero {
     return this._hero;
+  }
+  get comicsOther(): Comics[] {
+    return this._comicsOther;
   }
 
   message() {

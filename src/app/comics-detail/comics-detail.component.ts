@@ -20,10 +20,20 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class ComicsDetailComponent implements OnInit {
   // comics a afficher
   private _comics: Comics;
+  // etat du dialog
   private _dialogStatus: string;
+  // dialog
   private _herosSimpleDialog: MatDialogRef<DialogaddHeroSimpleComponent>;
-  private _dataDialog: Hero[];
 
+  /**
+   *
+   * @param _route
+   * @param _heroService
+   * @param _comicsService
+   * @param _dialog
+   * @param _router
+   * @param _snackBar
+   */
   constructor(private _route: ActivatedRoute, private _heroService: HerosService,
               private _comicsService: ServiceComicsService,private _dialog: MatDialog,
               private _router: Router,private _snackBar: MatSnackBar) {
@@ -33,30 +43,36 @@ export class ComicsDetailComponent implements OnInit {
         filter(params => !!params.isbn),
         flatMap(params => this._comicsService.fetchOne(params.isbn))
     ).subscribe((_: Comics) => this._comics = _);
-    this._dataDialog= [] as Hero[]
   }
 
+  /**
+   *
+   */
   ngOnInit() {
   }
 
-  delDuplicate(array: HeroSimple[]): HeroSimple[]{
-    const data2 = this._comics.otherHeros;
-    let objMap=array as HeroSimple[];
-        objMap = objMap.filter((_: HeroSimple) => this._comics.mainHeros._id !== _._id),
-            array.forEach((e1)=>data2.forEach((e2)=> {
-              if(e1._id === e2._id){
-                objMap= objMap.filter((_: HeroSimple) => e1._id !== _._id);
-              }
-            }
-        ));
-        return objMap;
-  }
+  /**
+   * prepare les donnees et lance le dialog pour modifier les heros secondaires
+   */
   updateOthersHeros(){
-    let tmp: HeroSimple
     this._heroService.fetch().subscribe((_: Hero[]) => {
           this.showDialogOtherHero(this.delDuplicate(_))
     });
   }
+
+  /**
+   * prepare les donnees et lance le dialog pour modifier les hero
+   */
+  updateMainHeros(){
+    this._heroService.fetch().subscribe((_: Hero[]) => {
+      this.showDialogMainHero(this.delDuplicate(_))
+    });
+  }
+
+  /**
+   * lance le dialog
+   * @param objMap
+   */
   showDialogOtherHero(objMap: HeroSimple[]) {
     // set dialog stats
     this._dialogStatus = 'active';
@@ -85,35 +101,11 @@ export class ComicsDetailComponent implements OnInit {
             () => this._dialogStatus = 'inactive',
         );
   }
-  /************************************************************GET & SET **********************************/
-  image() {
-    if(this._comics.mainHeros === {} as HeroSimple){
-      return '../../assets/heros/none.jpg'
-    }else {
-      return '../../assets/heros/' + this._comics.mainHeros.photo;
-    }
-  }
 
-  get comics(): any {
-    return this._comics;
-  }
-
-  suppOtherHeros(hero: HeroSimple) {
-    this._comicsService.update({
-      _id:this._comics._id,
-    otherHeros: this._comics.otherHeros.filter( (_: HeroSimple) => _._id !== hero._id),
-  } as Comics).subscribe(
-        (_: Comics) =>this._comics.otherHeros = _.otherHeros,
-    );
-  }
-
-  updateMainHeros(){
-    let tmp: HeroSimple
-    this._heroService.fetch().subscribe((_: Hero[]) => {
-      this.showDialogMainHero(this.delDuplicate(_))
-    });
-  }
-
+  /**
+   * lance le dialog pour modifier le hero
+   * @param objMap
+   */
   showDialogMainHero(objMap: HeroSimple[]){
     // set dialog stats
     this._dialogStatus = 'active';
@@ -141,6 +133,39 @@ export class ComicsDetailComponent implements OnInit {
         );
   }
 
+  /**
+   * supprime les heros secondaire et le hero de la liste de tous les heros
+   * @param array
+   */
+  delDuplicate(array: HeroSimple[]): HeroSimple[]{
+    const data2 = this._comics.otherHeros;
+    let objMap=array as HeroSimple[];
+    objMap = objMap.filter((_: HeroSimple) => this._comics.mainHeros._id !== _._id),
+        array.forEach((e1)=>data2.forEach((e2)=> {
+              if(e1._id === e2._id){
+                objMap= objMap.filter((_: HeroSimple) => e1._id !== _._id);
+              }
+            }
+        ));
+    return objMap;
+  }
+
+  /**
+   * supprime le hero secondaire donnees
+   * @param hero
+   */
+  suppOtherHeros(hero: HeroSimple) {
+    this._comicsService.update({
+      _id:this._comics._id,
+    otherHeros: this._comics.otherHeros.filter( (_: HeroSimple) => _._id !== hero._id),
+  } as Comics).subscribe(
+        (_: Comics) =>this._comics.otherHeros = _.otherHeros,
+    );
+  }
+
+  /**
+   * supprime le comics
+   */
   suppComics() {
     this._comicsService.delete(this._comics._id).subscribe(
         () => undefined,
@@ -150,7 +175,7 @@ export class ComicsDetailComponent implements OnInit {
   }
 
   /**
-   * ajoute le comics a la BD
+   * ajoute le comics a la BDtheque
    */
   add() {
     this._comicsService.update({
@@ -166,7 +191,7 @@ export class ComicsDetailComponent implements OnInit {
   }
 
   /**
-   * supprime le comics de la BD
+   * supprime le comics de la BDtheque
    */
   supp() {
     this._comicsService.update({
@@ -214,6 +239,19 @@ export class ComicsDetailComponent implements OnInit {
       data: message,
       panelClass: ['snackWatchers']
     });
+  }
+
+  /************************************************************GET & SET **********************************/
+  image() {
+    if(this._comics.mainHeros === {} as HeroSimple){
+      return '../../assets/heros/none.jpg'
+    }else {
+      return '../../assets/heros/' + this._comics.mainHeros.photo;
+    }
+  }
+
+  get comics(): any {
+    return this._comics;
   }
 
   message() {

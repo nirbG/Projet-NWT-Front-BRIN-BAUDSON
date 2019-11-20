@@ -43,6 +43,7 @@ export class AutoCompleteComponent implements OnInit {
    */
   onKey(event: any) { // without type info
     console.log(this.value.length >= event.target.value.length);
+    // si on supprime un caractere
     if(this.value.length >= event.target.value.length){
       this.value = event.target.value;
       const filterValue = this.value.toLowerCase();
@@ -51,6 +52,7 @@ export class AutoCompleteComponent implements OnInit {
            this.submit(this._models)}
        );
     }else {
+      //si on ajoute un caractere
       this.value = event.target.value;
       const filterValue = this.value.toLowerCase();
       this._models = this._models.filter((model: Hero) => model.name.toLowerCase().indexOf(filterValue) === 0);

@@ -22,6 +22,7 @@ export class CardComicsComponent implements OnInit {
   private readonly _suppInwish$: EventEmitter<Comics>;
   // private property to store suppInBD value
   private readonly _addInBD$: EventEmitter<Comics>;
+  // boolean qui determine si on peu supprimer le comics ou non
   private _suppAuth: boolean;
 
   /**
@@ -134,12 +135,14 @@ export class CardComicsComponent implements OnInit {
     this._delete$.emit(this.card);
   }
   /**
-   * emet l'event a fin de supprimer le comics
+   * emet l'event a fin de supprimer le comics dans la bd
    */
   suppInBD(){
     this._suppInBD$.emit(this.card);
   }
-
+    /**
+     * emet l'event a fin de supprimer le comics dans les envie
+     */
   suppInwish(){
     this._suppInwish$.emit(this.card);
   }

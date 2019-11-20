@@ -49,10 +49,6 @@ export class ComicsComponent implements OnInit {
         this._nbstart=this._nbstart+this._nbComics});
   }
 
-  get indice(): number[] {
-    return this._indice;
-  }
-
   /**
    *
    */
@@ -146,5 +142,8 @@ export class ComicsComponent implements OnInit {
   }
   setInidce(newIndice: number){
     this._nbComics=newIndice;
+  }
+  get indice(): number[] {
+    return this._indice;
   }
 }

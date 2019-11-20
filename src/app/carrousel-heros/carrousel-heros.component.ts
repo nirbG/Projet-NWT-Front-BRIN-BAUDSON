@@ -34,8 +34,9 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
   };
   // private property to store submit$ value
   private readonly _submit$: EventEmitter<HeroSimple>;
+  // private property to store _showDialohg
   private readonly _showDialog$: EventEmitter<void>;
-  //
+  // Image du bouton add
   private readonly _addotherHerosImg: string;
 
 
@@ -56,6 +57,11 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.load();
   }
+
+  /**
+   * fonction appele quand les donnees sont modifie
+   * @param record
+   */
   ngOnChanges(record) {
     console.log(record);
       if (record.heros && record.heros.currentValue!==record.heros.previousValue) {
@@ -64,6 +70,9 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
       }
   }
 
+  /**
+   * load les donnees
+   */
   load(){
     this._tempData = [] as HeroSimple[];
     this.carouselTileItems$ = of('carousel').pipe(
@@ -73,6 +82,8 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
         })
     );
   }
+
+  /********************************************GET&SET*****************************************/
 
   /**
    * retourn l'image
@@ -95,13 +106,6 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
    */
   get heros(): HeroSimple[] {
     return this._heros;
-  }
-
-  /**
-   * Returns les heros
-   */
-  get addotherHerosImg(): string {
-    return this._addotherHerosImg;
   }
 
   /**
@@ -133,8 +137,4 @@ export class CarrouselHerosComponent implements OnInit, OnChanges {
     this._showDialog$.emit();
   }
 
-
-  get tempData(): HeroSimple[] {
-    return this._tempData;
-  }
 }

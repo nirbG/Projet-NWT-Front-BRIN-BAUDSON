@@ -12,20 +12,17 @@ export class AccueilComponent implements OnInit {
   private _dialogStatus: string;
   // private property to store dialog reference
   private _peopleDialog: MatDialogRef<DialogAccueilComponent>;
-  //
-  private _accueil: boolean;
-  //status hover btn
+  //status hover bouton
   hoverActive: boolean;
+  //status hover Dialog bouton
   hoverDialogActive: boolean;
 
   /**
    *
    * @param _dialog
    */
-  constructor( private _dialog: MatDialog) {;
-    this._accueil = true;
+  constructor( private _dialog: MatDialog) {
     this._dialogStatus = 'inactive';
-
   }
 
   /**
@@ -56,9 +53,7 @@ export class AccueilComponent implements OnInit {
         );
   }
   /********************************************GET&SET*****************************************/
-  get accueil(): boolean {
-    return this._accueil;
-  }
+
   image(): string {
     return '../../assets/joker.jpg';
   }

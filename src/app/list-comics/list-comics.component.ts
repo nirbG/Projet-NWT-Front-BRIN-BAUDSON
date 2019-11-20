@@ -16,7 +16,6 @@ export class ListComicsComponent implements OnInit {
   private _show: boolean;
   // private property to store delete$ value
   private readonly _delete$: EventEmitter<Comics>;
-
   // private property to store suppInBD value
   private readonly _suppInBD$: EventEmitter<Comics>;
   // private property to store suppInBD value
@@ -44,7 +43,7 @@ export class ListComicsComponent implements OnInit {
   }
 
   /**
-   * ajoute le comics a la BD
+   * ajoute le comics a la BDtheque
    */
   add() {
     this._serviceComics.update({
@@ -61,7 +60,7 @@ export class ListComicsComponent implements OnInit {
   }
 
   /**
-   * supprime le comics de la BD
+   * supprime le comics de la BDtheque
    */
   supp() {
     this._serviceComics.update({
@@ -77,7 +76,7 @@ export class ListComicsComponent implements OnInit {
   }
 
   /**
-   * ajoute le comics aux envie
+   * ajoute le comics aux envies
    */
   addWish() {
     this._serviceComics.update({
@@ -90,7 +89,7 @@ export class ListComicsComponent implements OnInit {
   }
 
   /**
-   * supprime le comics de envie
+   * supprime le comics des envies
    */
   suppWish() {
     this._serviceComics.update({
@@ -114,16 +113,28 @@ export class ListComicsComponent implements OnInit {
       panelClass: ['snackWatchers']
     });
   }
+
+  /**
+   * fonction qui emet l'event afin de supprimer le comics de la BD
+   */
   suppComics() {
     this._delete$.emit(this._list);
   }
+  /**
+   * fonction qui emet l'event afin de supprimer le comics de la BDtheque
+   */
   suppInBD(){
     this._suppInBD$.emit(this._list);
   }
-
+  /**
+   * fonction qui emet l'event afin de supprimer le comics de la liste des envies
+   */
   suppInwish(){
     this._suppInwish$.emit(this._list);
   }
+  /**
+   * fonction qui emet l'event afin d'ajout du comics de la BDtheque
+   */
   addInBD(){
     this.addInBD$.emit(this._list);
   }
@@ -146,9 +157,6 @@ export class ListComicsComponent implements OnInit {
   @Input()
   set list(l: Comics) {
     this._list = l;
-  }
-  get show(): boolean {
-    return this._show;
   }
 
 }
